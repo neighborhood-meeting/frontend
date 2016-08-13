@@ -29,8 +29,10 @@ class NavigationRouter extends Component {
         <Scene initial hideNavBar key='splash' component={SplashScreen}/>
         <Scene key='drawer' component={NavigationDrawer}>
           <Scene key='drawerChildrenWrapper' navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
+            
             <Scene key='homeScreen' component={HomeScreen} title='지역선택' renderLeftButton={NavItems.editButton} />
-            <Scene key='presentationScreen' component={PresentationScreen} title='Ignite' renderLeftButton={NavItems.hamburgerButton} />
+            
+            <Scene key='presentationScreen' component={PresentationScreen} title='Ignite'/>
             <Scene key='componentExamples' component={AllComponentsScreen} title='Components' />
             <Scene key='usageExamples' component={UsageExamplesScreen} title='Usage' rightTitle='Example' onRight={() => window.alert('Example Pressed')} />
             <Scene key='login' component={LoginScreen} title='Login' hideNavBar />
