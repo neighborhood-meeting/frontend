@@ -1,9 +1,9 @@
-import React, { PropTypes, Component } from 'react'
-import Drawer from 'react-native-drawer'
-import { DefaultRenderer, Actions as NavigationActions } from 'react-native-router-flux'
-import DrawerContent from '../Containers/DrawerContent'
-import { connect } from 'react-redux'
-import Styles from './Styles/NavigationDrawerStyle'
+import React, { PropTypes, Component } from 'react';
+import Drawer from 'react-native-drawer';
+import { DefaultRenderer, Actions as NavigationActions } from 'react-native-router-flux';
+import DrawerContent from '../Containers/DrawerContent';
+import { connect } from 'react-redux';
+import Styles from './Styles/NavigationDrawerStyle';
 
 /* *******************
 * Documentation: https://github.com/root-two/react-native-drawer
@@ -12,11 +12,12 @@ import Styles from './Styles/NavigationDrawerStyle'
 class NavigationDrawer extends Component {
   static propTypes = {
     navigationState: PropTypes.object
-  }
+  };
 
   render () {
-    const state = this.props.navigationState
-    const children = state.children
+    const state = this.props.navigationState;
+    const children = state.children;
+    console.log(children);
     return (
       <Drawer
         ref='navigation'
@@ -36,18 +37,18 @@ class NavigationDrawer extends Component {
       >
         <DefaultRenderer navigationState={children[0]} onNavigate={this.props.onNavigate} />
       </Drawer>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
   }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
   }
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavigationDrawer)
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationDrawer);

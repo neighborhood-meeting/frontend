@@ -1,16 +1,16 @@
-import React from 'react'
-import { TouchableOpacity } from 'react-native'
-import styles from './Styles/NavItemsStyle'
-import { Actions as NavigationActions } from 'react-native-router-flux'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import { Colors, Metrics } from '../Themes'
+import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
+import styles from './Styles/NavItemsStyle';
+import { Actions as NavigationActions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Colors, Metrics } from '../Themes';
 
 const toggleDrawer = () => {
   NavigationActions.refresh({
     key: 'drawer',
     open: value => !value
   })
-}
+};
 
 export default {
   backButton () {
@@ -35,6 +35,13 @@ export default {
         />
       </TouchableOpacity>
     )
-  }
+  },
 
+  editButton () {
+    return (
+      <TouchableOpacity>
+        <Text style={styles.navButtonLeft}>edit</Text>
+      </TouchableOpacity>
+    );
+  }
 }
