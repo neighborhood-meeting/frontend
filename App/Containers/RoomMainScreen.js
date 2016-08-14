@@ -10,11 +10,9 @@ import RoomButton from '../Components/RoomButton';
 // Styles
 import styles from './Styles/HomeScreenStyle';
 
-class HomeScreen extends React.Component {
+class RoomMainScreen extends React.Component {
 
-  static propTypes = {
-    presentationScreen: PropTypes.func
-  };
+  static propTypes = {};
 
   constructor(props) {
     super(props);
@@ -31,8 +29,8 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.mainContainer}>
         <View style={styles.container}>
-        {this.createRoomButtons()}
-          </View>
+          {this.createRoomButtons()}
+        </View>
       </View>
     );
   }
@@ -45,7 +43,7 @@ class HomeScreen extends React.Component {
   };
 
   handleRoomPress = (room) => {
-    return this.props.presentationScreen();
+    return ToastAndroid.show(`room pressed ${room.title}`, ToastAndroid.SHORT);
   };
 
   fetchRooms = () => {
@@ -73,9 +71,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    presentationScreen: NavigationActions.presentationScreen
-  }
+  return {}
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(RoomMainScreen);
