@@ -51,11 +51,11 @@ export default {
 
   homeButton () {
     return (
-      <TouchableOpacity onPress={() => NavigationActions.popTo('homeScreen')}>
+      <TouchableOpacity onPress={NavigationActions.home} style={{position: 'absolute', right: 0}}>
         <Icon name='home'
               size={Metrics.icons.medium}
               color={Colors.snow}
-              style={styles.navButtonLeft}
+              style={styles.navButtonRight}
         />
       </TouchableOpacity>
     );

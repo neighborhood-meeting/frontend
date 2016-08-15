@@ -11,11 +11,11 @@ import styles from './Styles/SplashScreenStyle';
 
 class SplashScreen extends React.Component {
   static propTypes = {
-    homeScreen: PropTypes.func.isRequired
+    toHome: PropTypes.func.isRequired
   };
 
   componentDidMount() {
-    setTimeout(this.props.homeScreen, 0);
+    setTimeout(this.props.toHome, 0);
   }
 
   render() {
@@ -38,7 +38,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    homeScreen: NavigationActions.drawer
+    toHome: NavigationActions.home
   };
 };
 

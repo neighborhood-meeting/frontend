@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { Actions as NavigationActions } from 'react-native-router-flux';
 import { TouchableOpacity } from 'react-native';
 
-import RoomButton from '../Components/RoomButton';
+import Actions from '../Actions/Creators';
+
+import RoomInfo from '../Components/RoomInfo';
 
 // Styles
 import styles from './Styles/HomeScreenStyle';
@@ -13,14 +15,14 @@ import styles from './Styles/HomeScreenStyle';
 class HomeScreen extends React.Component {
 
   static propTypes = {
-    presentationScreen: PropTypes.func
+    toRoomMain: PropTypes.func,
+    usageExamples: PropTypes.func,
+    fetchRoomList: PropTypes.func,
+    rooms: PropTypes.array
   };
 
   constructor(props) {
     super(props);
-    this.state = {
-      rooms: []
-    };
   }
 
   componentDidMount() {
@@ -30,52 +32,45 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <View style={styles.container}>
-        {this.createRoomButtons()}
-          </View>
+        <ScrollView style={styles.container}>
+          {this.createRoomInfos()}
+        </ScrollView>
       </View>
     );
   }
 
-  createRoomButtons = () => {
-    const {rooms} = this.state;
-    return rooms.map((room) => {
-      return <RoomButton room={room} onPress={() => this.handleRoomPress(room)}/>
+  createRoomInfos = () => {
+    const {rooms} = this.props;
+    return rooms.map((room, i) => {
+      return <RoomInfo room={room} onPress={() => this.handleRoomPress(room, i)}/>
     });
   };
 
-  handleRoomPress = (room) => {
-    return this.props.presentationScreen();
+  handleRoomPress = (room, i) => {
+    if (i == 2) {
+      return this.props.usageExamples();
+    }
+    return this.props.toRoomMain({roomId: room.roomId, title: room.title});
   };
 
-  fetchRooms = () => {
-    this.setState({
-      rooms: [
-        {
-          title: '1번 방',
-          host: 'aa'
-        },
-        {
-          title: '2번 방',
-          host: 'bb'
-        },
-        {
-          title: '3번 방',
-          host: 'cc'
-        }
-      ]
-    });
+  fetchRooms = (userId) => {
+    this.props.fetchRoomList(userId);
   };
+
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    rooms: state.roomList.rooms
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    presentationScreen: NavigationActions.presentationScreen
-  }
+    toRoomMain: NavigationActions.drawer,
+    usageExamples: NavigationActions.usageExamples,
+    fetchRoomList: (userId) => dispatch(Actions.fetchRoomList(userId))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

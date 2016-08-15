@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { ScrollView, Image } from 'react-native'
+import { ScrollView, Image, View } from 'react-native'
 import styles from './Styles/DrawerContentStyle'
 import { Images } from '../Themes'
 import DrawerButton from '../Components/DrawerButton'
@@ -38,14 +38,14 @@ class DrawerContent extends Component {
 
   render () {
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
+      <ScrollView>
         <Image source={Images.logo} style={styles.logo} />
-        <DrawerButton text='Component Examples' onPress={this.handlePressComponents} />
-        <DrawerButton text='Usage Examples' onPress={this.handlePressUsage} />
-        <DrawerButton text='API Testing' onPress={this.handlePressAPI} />
-        <DrawerButton text='Themes' onPress={this.handlePressTheme} />
-        <DrawerButton text='Device Info' onPress={this.handlePressDevice} />
+        <DrawerButton text='글쓰기' onPress={this.handlePressComponents} />
+        <DrawerButton text='내가 쓴 글' onPress={this.handlePressUsage} />
+        <DrawerButton text='채팅방' onPress={this.handlePressAPI} />
       </ScrollView>
+      </View>
     )
   }
 
