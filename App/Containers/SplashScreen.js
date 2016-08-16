@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react'
+import React, { PropTypes } from 'react'
 import { View, Image, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { Images } from '../Themes'
@@ -22,10 +22,12 @@ class SplashScreen extends React.Component {
     return (
       <View style={styles.splash}>
         <View style={styles.backgroundImage} />
-        <Animatable.View animation='jello' iterationCount='infinite' >
+        <Animatable.View animation='jello' iterationCount='infinite'>
           <Image source={Images.clearLogo} style={styles.logo} />
         </Animatable.View>
-        <Text style={styles.text}>이거시 스플래시다!!!!!!!!!!!</Text>
+        <Text style={styles.text}>
+          이거시 스플래시다!!!!!!!!!!!
+        </Text>
       </View>
     )
   }

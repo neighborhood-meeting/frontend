@@ -1,4 +1,4 @@
-import {take, call, put} from 'redux-saga/effects'
+import { take, call, put } from 'redux-saga/effects'
 import R from 'ramda'
 import Types from '../Actions/Types'
 import Actions from '../Actions/Creators'
@@ -68,6 +68,5 @@ export default (api) => {
   // often required in some flow control cases.
   return {
     watcher,
-    worker
-  }
+  worker}
 }

@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Scene, Router, ActionConst} from 'react-native-router-flux'
+import React, { Component } from 'react'
+import { Scene, Router, ActionConst } from 'react-native-router-flux'
 import Styles from './Styles/NavigationContainerStyle'
 import NavigationDrawer from './NavigationDrawer'
 import NavItems from './NavItems'
@@ -27,18 +27,54 @@ class NavigationRouter extends Component {
   render () {
     return (
       <Router>
-        <Scene key='root' navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
-          <Scene initial hideNavBar key='splash' component={SplashScreen} />
-          <Scene key='home' type={ActionConst.RESET} component={HomeScreen} title='지역선택' renderLeftButton={NavItems.editButton} />
-          <Scene key='usageExamples' component={UsageExamplesScreen} title='Usage' rightTitle='Example' onRight={() => window.alert('Example Pressed')} />
+        <Scene
+          key='root'
+          navigationBarStyle={Styles.navBar}
+          titleStyle={Styles.title}
+          leftButtonIconStyle={Styles.leftButton}
+          rightButtonTextStyle={Styles.rightButton}>
+          <Scene
+            initial
+            hideNavBar
+            key='splash'
+            component={SplashScreen} />
+          <Scene
+            key='home'
+            type={ActionConst.RESET}
+            component={HomeScreen}
+            title='지역선택'
+            renderLeftButton={NavItems.editButton} />
+          <Scene
+            key='usageExamples'
+            component={UsageExamplesScreen}
+            title='Usage'
+            rightTitle='Example'
+            onRight={;() => window.alert('Example Pressed')} />
           <Scene key='listviewExample' component={ListviewExample} title='Listview Example' />
           <Scene key='listviewGridExample' component={ListviewGridExample} title='Listview Grid' />
           <Scene key='drawer' component={NavigationDrawer}>
-            <Scene key='drawerChildrenWrapper' navigationBarStyle={Styles.navBar} titleStyle={Styles.title} leftButtonIconStyle={Styles.leftButton} rightButtonTextStyle={Styles.rightButton}>
-              <Scene key='roomMain' component={RoomMainScreen} title='방 정보' renderRightButton={NavItems.homeButton} />
-              <Scene key='presentationScreen' component={PresentationScreen} title='Ignite' renderRightButton={NavItems.homeButton} />
+            <Scene
+              key='drawerChildrenWrapper'
+              navigationBarStyle={Styles.navBar}
+              titleStyle={Styles.title}
+              leftButtonIconStyle={Styles.leftButton}
+              rightButtonTextStyle={Styles.rightButton}>
+              <Scene
+                key='roomMain'
+                component={RoomMainScreen}
+                title='방 정보'
+                renderRightButton={NavItems.homeButton} />
+              <Scene
+                key='presentationScreen'
+                component={PresentationScreen}
+                title='Ignite'
+                renderRightButton={NavItems.homeButton} />
               <Scene key='componentExamples' component={AllComponentsScreen} title='Components' />
-              <Scene key='login' component={LoginScreen} title='Login' hideNavBar />
+              <Scene
+                key='login'
+                component={LoginScreen}
+                title='Login'
+                hideNavBar />
               <Scene key='mapviewExample' component={MapviewExample} title='Mapview Example' />
               <Scene key='apiTesting' component={APITestingScreen} title='API Testing' />
               <Scene key='theme' component={ThemeScreen} title='Theme' />

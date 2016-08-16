@@ -29,7 +29,9 @@ test('onPress', t => {
 })
 
 test('renders children text when passed', t => {
-  const wrapper = shallow(<RoundedButton onPress={() => {}}>Howdy</RoundedButton>)
+  const wrapper = shallow(<RoundedButton onPress={() => {}}>
+                            Howdy
+                          </RoundedButton>)
   t.is(wrapper.children().length, 1) // has 1 child
   t.is(wrapper.children().first().name(), 'Text') // that child is Text
 })

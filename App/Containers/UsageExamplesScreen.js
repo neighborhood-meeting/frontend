@@ -82,7 +82,9 @@ class UsageExamplesScreen extends React.Component {
   renderHeader (title) {
     return (
       <View style={styles.componentLabelContainer}>
-        <Text style={styles.componentLabel}>{title}</Text>
+        <Text style={styles.componentLabel}>
+          {title}
+        </Text>
       </View>
     )
   }
@@ -95,11 +97,15 @@ class UsageExamplesScreen extends React.Component {
         {loggedIn ? this.renderLogoutButton() : this.renderLoginButton()}
         {this.renderHeader('I18n Locale')}
         <View style={styles.groupContainer}>
-          <Text style={styles.locale}>{I18n.locale}</Text>
+          <Text style={styles.locale}>
+            {I18n.locale}
+          </Text>
         </View>
         {this.renderHeader(I18n.t('api') + `: ${city}`)}
         <View style={[styles.groupContainer, {height: 50}]}>
-          <Text style={styles.temperature}>{temperature && `${temperature} ${I18n.t('tempIndicator')}`}</Text>
+          <Text style={styles.temperature}>
+            {temperature && `${temperature} ${I18n.t('tempIndicator')}`}
+          </Text>
         </View>
         {this.renderHeader(I18n.t('rnVectorIcons'))}
         <View style={styles.groupContainer}>
@@ -116,15 +122,25 @@ class UsageExamplesScreen extends React.Component {
           <Icon name='warning' size={Metrics.icons.medium} color={Colors.ember} />
         </View>
         <View style={styles.groupContainer}>
-          <Icon.Button name='facebook' style={styles.facebookButton} backgroundColor={Colors.facebook} onPress={() => window.alert('Facebook')}>
+          <Icon.Button
+            name='facebook'
+            style={styles.facebookButton}
+            backgroundColor={Colors.facebook}
+            onPress={() => window.alert('Facebook')}>
             {I18n.t('loginWithFacebook')}
           </Icon.Button>
         </View>
         {this.renderHeader(I18n.t('rnAnimatable'))}
         <View style={styles.groupContainer}>
-          <Animatable.Text animation='fadeIn' iterationCount='infinite' direction='alternate' style={styles.subtitle}>{I18n.t('rnAnimatable')}</Animatable.Text>
+          <Animatable.Text
+            animation='fadeIn'
+            iterationCount='infinite'
+            direction='alternate'
+            style={styles.subtitle}>
+            {I18n.t('rnAnimatable')}
+          </Animatable.Text>
           <Animatable.Image animation='pulse' iterationCount='infinite' source={Images.logo} />
-          <Animatable.View animation='jello' iterationCount='infinite' >
+          <Animatable.View animation='jello' iterationCount='infinite'>
             <Icon name='cab' size={Metrics.icons.medium} color={Colors.snow} />
           </Animatable.View>
         </View>
@@ -145,9 +161,9 @@ class UsageExamplesScreen extends React.Component {
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
         <ScrollView style={styles.container}>
           <View style={styles.section}>
-            <Text style={styles.sectionText} >
-              The Usage Examples screen is a playground for 3rd party libs and logic proofs.
-              Items on this screen can be composed of multiple components working in concert.  Functionality demos of libs and practices
+            <Text style={styles.sectionText}>
+              The Usage Examples screen is a playground for 3rd party libs and logic proofs. Items on this screen can be composed of multiple components working in concert. Functionality
+              demos of libs and practices
             </Text>
           </View>
           {this.renderUsageExamples()}

@@ -30,7 +30,9 @@ export default class UsageExamplesScreen extends React.Component {
           <Image style={styles.backerImage} source={Images.tile_bg} key={`${color}BackgroundImage`} />
           <View style={[styles.colorSquare, {backgroundColor: Colors[color]}]} key={`${color}Square`} />
         </View>
-        <Text style={styles.colorName} key={`${color}Text`}>{color}</Text>
+        <Text style={styles.colorName} key={`${color}Text`}>
+          {color}
+        </Text>
       </View>
     )
   }
@@ -41,9 +43,9 @@ export default class UsageExamplesScreen extends React.Component {
 
   renderFont (font) {
     return (
-      <Text style={[styles.fontRow, {fontFamily: Fonts.type[font]}]} key={font}>{
-        `${font}: ${Fonts.type[font]}`
-      }</Text>
+      <Text style={[styles.fontRow, {fontFamily: Fonts.type[font]}]} key={font}>
+        {`${font}: ${Fonts.type[font]}`}
+      </Text>
     )
   }
 
@@ -52,7 +54,9 @@ export default class UsageExamplesScreen extends React.Component {
   }
 
   renderStyle (fontStyle) {
-    return (<Text style={[styles.fontRow, {...Fonts.style[fontStyle]}]} key={fontStyle}>{`This is ${fontStyle} style`}</Text>)
+    return (<Text style={[styles.fontRow, {...Fonts.style[fontStyle]}]} key={fontStyle}>
+              {`This is ${fontStyle} style`}
+            </Text>)
   }
 
   renderStyles () {
@@ -65,25 +69,30 @@ export default class UsageExamplesScreen extends React.Component {
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
         <ScrollView style={styles.container}>
           <View style={styles.section} key='colors-header'>
-            <Text style={styles.sectionText} key='colors'>List of Theme specific settings.  Auto-generated from Themes folder.</Text>
+            <Text style={styles.sectionText} key='colors'>
+              List of Theme specific settings. Auto-generated from Themes folder.
+            </Text>
           </View>
           <View style={styles.sectionHeaderContainer}>
-            <Text style={styles.sectionHeader}>Colors</Text>
+            <Text style={styles.sectionHeader}>
+              Colors
+            </Text>
           </View>
           <View style={styles.colorsContainer}>
             {this.renderColors()}
           </View>
-
           <View style={styles.sectionHeaderContainer}>
-            <Text style={styles.sectionHeader}>Fonts</Text>
+            <Text style={styles.sectionHeader}>
+              Fonts
+            </Text>
           </View>
           {this.renderFonts()}
-
           <View style={styles.sectionHeaderContainer}>
-            <Text style={styles.sectionHeader}>Styles</Text>
+            <Text style={styles.sectionHeader}>
+              Styles
+            </Text>
           </View>
           {this.renderStyles()}
-
         </ScrollView>
       </View>
     )

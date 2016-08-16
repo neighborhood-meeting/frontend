@@ -49,7 +49,11 @@ export default class APITestingScreen extends React.Component {
   renderButton (apiEndpoint) {
     const { label, endpoint, args = [''] } = apiEndpoint
     return (
-      <FullButton text={label || `${endpoint}(${args.join(', ')})`} onPress={this.tryEndpoint.bind(this, apiEndpoint)} styles={{marginTop: 10}} key={`${endpoint}-${args.join('-')}`} />
+      <FullButton
+        text={label || `${endpoint}(${args.join(', ')})`}
+        onPress={this.tryEndpoint.bind(this, apiEndpoint)}
+        styles={{marginTop: 10}}
+        key={`${endpoint}-${args.join('-')}`} />
     )
   }
 
@@ -62,11 +66,9 @@ export default class APITestingScreen extends React.Component {
       <View style={styles.mainContainer}>
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
         <ScrollView style={styles.container} ref='container'>
-
           <View style={styles.section}>
             <Text style={styles.sectionText}>
-              Testing API with Postman or APIary.io verifies the server works.
-              The API Test screen is the next step; a simple in-app way to verify and debug your in-app API functions.
+              Testing API with Postman or APIary.io verifies the server works. The API Test screen is the next step; a simple in-app way to verify and debug your in-app API functions.
             </Text>
             <Text style={styles.sectionText}>
               Create new endpoints in Services/Api.js then add example uses to endpoints array in Containers/APITestingScreen.js
@@ -97,11 +99,10 @@ class APIResult extends React.Component {
   renderView () {
     return (
       <ScrollView style={{ top: 0, bottom: 0, left: 0, right: 0, position: 'absolute' }} overflow='hidden'>
-        <TouchableOpacity
-          style={{backgroundColor: 'white', padding: 20}}
-          onPress={this.onApiPress}
-        >
-          <Text>{this.state.title} Response:</Text>
+        <TouchableOpacity style={{backgroundColor: 'white', padding: 20}} onPress={this.onApiPress}>
+          <Text>
+            {this.state.title} Response:
+          </Text>
           <Text allowFontScaling={false} style={{fontFamily: 'CourierNewPS-BoldMT', fontSize: 10}}>
             {this.state.message}
           </Text>
