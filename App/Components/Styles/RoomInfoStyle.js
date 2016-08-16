@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-import { StyleSheet } from 'react-native';
-import { Fonts, Colors, Metrics } from '../../Themes/';
+import { StyleSheet } from 'react-native'
+import { Colors, Metrics } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
@@ -23,5 +23,5 @@ export default StyleSheet.create({
     alignSelf: 'center',
     color: Colors.panther,
     textAlign: 'center'
-  },
-});
+  }
+})

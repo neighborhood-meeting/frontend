@@ -11,7 +11,7 @@ export const INITIAL_STATE = Immutable({
 // login attempts
 const request = (state, action) =>
   state.merge({
-    fetching: ture
+    fetching: true
   })
 
 // receive temp

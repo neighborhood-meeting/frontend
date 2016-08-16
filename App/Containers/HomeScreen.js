@@ -1,16 +1,14 @@
-import React, { PropTypes } from 'react';
-import { ScrollView, Text, Image, View, ToastAndroid } from 'react-native';
-import { Images } from '../Themes';
-import { connect } from 'react-redux';
-import { Actions as NavigationActions } from 'react-native-router-flux';
-import { TouchableOpacity } from 'react-native';
+import React, { PropTypes } from 'react'
+import { ScrollView, View } from 'react-native'
+// import { Images } from '../Themes'
+import { connect } from 'react-redux'
+import { Actions as NavigationActions } from 'react-native-router-flux'
+import Actions from '../Actions/Creators'
 
-import Actions from '../Actions/Creators';
-
-import RoomInfo from '../Components/RoomInfo';
+import RoomInfo from '../Components/RoomInfo'
 
 // Styles
-import styles from './Styles/HomeScreenStyle';
+import styles from './Styles/HomeScreenStyle'
 
 class HomeScreen extends React.Component {
 
@@ -19,58 +17,54 @@ class HomeScreen extends React.Component {
     usageExamples: PropTypes.func,
     fetchRoomList: PropTypes.func,
     rooms: PropTypes.array
-  };
-
-  constructor(props) {
-    super(props);
   }
 
-  componentDidMount() {
-    this.fetchRooms();
+  componentDidMount () {
+    this.fetchRooms()
   }
 
-  render() {
+  render () {
     return (
       <View style={styles.mainContainer}>
         <ScrollView style={styles.container}>
           {this.createRoomInfos()}
         </ScrollView>
       </View>
-    );
+    )
   }
 
   createRoomInfos = () => {
-    const {rooms} = this.props;
+    const {rooms} = this.props
     return rooms.map((room, i) => {
-      return <RoomInfo room={room} onPress={() => this.handleRoomPress(room, i)}/>
-    });
-  };
+      return <RoomInfo room={room} onPress={() => this.handleRoomPress(room, i)} />
+    })
+  }
 
   handleRoomPress = (room, i) => {
-    if (i == 2) {
-      return this.props.usageExamples();
+    if (i === 2) {
+      return this.props.usageExamples()
     }
-    return this.props.toRoomMain({roomId: room.roomId, title: room.title});
-  };
+    return this.props.toRoomMain({roomId: room.roomId, title: room.title})
+  }
 
   fetchRooms = (userId) => {
-    this.props.fetchRoomList(userId);
-  };
+    this.props.fetchRoomList(userId)
+  }
 
 }
 
 const mapStateToProps = (state) => {
   return {
     rooms: state.roomList.rooms
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
     toRoomMain: NavigationActions.drawer,
     usageExamples: NavigationActions.usageExamples,
     fetchRoomList: (userId) => dispatch(Actions.fetchRoomList(userId))
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

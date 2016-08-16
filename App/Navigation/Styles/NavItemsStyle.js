@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import { Metrics, Colors, Fonts } from '../../Themes/';
+import {StyleSheet} from 'react-native'
+import { Metrics, Colors } from '../../Themes/'
 
 export default StyleSheet.create({
   navButtonLeft: {
@@ -14,4 +14,4 @@ export default StyleSheet.create({
     backgroundColor: Colors.transparent,
     width: Metrics.icons.medium
   }
-});
+})

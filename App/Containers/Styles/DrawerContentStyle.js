@@ -3,7 +3,7 @@ export default {
     flex: 1,
     padding: 20,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   logo: {
     alignSelf: 'center'

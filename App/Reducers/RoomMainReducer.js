@@ -19,7 +19,7 @@ export const INITIAL_STATE = Immutable({
 // login attempts
 const request = (state, action) =>
   state.merge({
-    fetching: ture
+    fetching: true
   })
 
 // receive temp
@@ -34,7 +34,7 @@ const receive = (state, action) =>
 const failure = (state, action) =>
   state.merge({
     fetching: false,
-    error: true,
+    error: true
   })
 
 // map our types to our handlers

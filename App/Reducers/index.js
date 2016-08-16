@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import LoginReducer from './LoginReducer'
 import WeatherReducer from './WeatherReducer'
-import RoomListReducer from './RoomListReducer';
-import RoomMainReducer from './RoomMainReducer';
+import RoomListReducer from './RoomListReducer'
+import RoomMainReducer from './RoomMainReducer'
 
 // glue all the reducers together into 1 root reducer
 export default combineReducers({

@@ -2,39 +2,39 @@ import React, {PropTypes} from 'react'
 import {View, StatusBar} from 'react-native'
 import {Provider} from 'react-redux'
 import Actions from './Actions/Creators'
-import DebugSettings from './Config/DebugSettings'
+// import DebugSettings from './Config/DebugSettings'
 import NavigationRouter from './Navigation/NavigationRouter'
 // import './Config/PushConfig'
 
 // Styles
 import styles from './Containers/Styles/RootStyle'
 
-console.disableYellowBox = true;
+console.disableYellowBox = true
 
 export default class Root extends React.Component {
   static propTypes = {
     store: PropTypes.object.isRequired
   }
 
-  componentWillMount() {
+  componentWillMount () {
     const {dispatch} = this.props.store
     dispatch(Actions.startup())
   }
 
-  renderApp() {
+  renderApp () {
     // console.disableYellowBox = !DebugSettings.yellowBox
-    console.disableYellowBox = true;
+    console.disableYellowBox = true
     return (
       <Provider store={this.props.store}>
         <View style={styles.applicationView}>
-          <StatusBar barStyle='light-content'/>
-          <NavigationRouter/>
+          <StatusBar barStyle='light-content' />
+          <NavigationRouter />
         </View>
       </Provider>
     )
   }
 
-  render() {
+  render () {
     return this.renderApp()
   }
 }

@@ -1,5 +1,5 @@
 // A list of all actions in the system.
-import { createTypes } from 'reduxsauce';
+import { createTypes } from 'reduxsauce'
 
 export default createTypes(`
   LOGIN_ATTEMPT
@@ -21,4 +21,4 @@ export default createTypes(`
   ROOM_MAIN_REQUEST
   ROOM_MAIN_RECEIVE
   ROOM_MAIN_FAILURE
-`);
+`)
