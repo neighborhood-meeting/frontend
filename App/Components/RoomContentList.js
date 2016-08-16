@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react';
-import { View, Text, ListView } from 'react-native';
+import React from 'react'
+import { View, Text, ListView } from 'react-native'
 
 // Styles
-import styles from './Styles/RoomContentListStyle';
+import styles from './Styles/RoomContentListStyle'
 
 export default class RoomContentList extends React.Component {
 
@@ -90,6 +90,6 @@ export default class RoomContentList extends React.Component {
           renderRow={this._renderRow}
         />
       </View>
-    );
+    )
   }
 }

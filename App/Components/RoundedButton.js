@@ -18,11 +18,11 @@ export default class RoundedButton extends React.Component {
     text: React.PropTypes.string,
     onPress: React.PropTypes.func.isRequired,
     children: React.PropTypes.string
-  };
+  }
 
   getText () {
-    const buttonText = this.props.text || this.props.children.toString();
-    return buttonText.toUpperCase();
+    const buttonText = this.props.text || this.props.children.toString()
+    return buttonText.toUpperCase()
   }
 
   render () {
@@ -30,6 +30,6 @@ export default class RoundedButton extends React.Component {
       <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
         <Text style={styles.buttonText}>{this.getText()}</Text>
       </TouchableOpacity>
-    );
+    )
   }
 }

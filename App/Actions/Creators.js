@@ -1,4 +1,4 @@
-import Types from './Types';
+import Types from './Types'
 
 const attemptLogin = (username, password) =>
   ({ type: Types.LOGIN_ATTEMPT, username, password })
@@ -17,31 +17,31 @@ const requestTemperature = (city) => ({ type: Types.TEMPERATURE_REQUEST, city })
 const receiveTemperature = (temperature) => ({ type: Types.TEMPERATURE_RECEIVE, temperature })
 const receiveTemperatureFailure = () => ({ type: Types.TEMPERATURE_FAILURE })
 
-const requestRoomList = (userId) => ({ type: Types.ROOM_LIST_REQUEST, userId})
-const receiveRoomList = (rooms) => ({ type: Types.ROOM_LIST_RECEIVE, rooms})
+const requestRoomList = (userId) => ({ type: Types.ROOM_LIST_REQUEST, userId })
+const receiveRoomList = (rooms) => ({ type: Types.ROOM_LIST_RECEIVE, rooms })
 const fetchRoomList = (userId) => {
   return (dispatch) => {
     // return fetch('rooms.json')
     // .then((response) => response.json())
     // .then((responseJson) => {
-    //   dispatch(receiveRoomList(responseJson.rooms));
-    //   return responseJson.rooms;
+    //   dispatch(receiveRoomList(responseJson.rooms))
+    //   return responseJson.rooms
     // })
     // .catch((error) => {
-    //   console.error(error);
-    // });
-    dispatch(receiveRoomList(rooms.rooms));
+    //   console.error(error)
+    // })
+    dispatch(receiveRoomList(rooms.rooms))
   }
 }
 
-const requestRoomMain = () => ({ type: Types.ROOM_MAIN_REQUEST });
-const receiveRoomMain = (room) => ({ type: Types.ROOM_MAIN_RECEIVE, room});
-const receiveRoomMainFailure = () => ({ type: Types.ROOM_MAIN_FAILURE});
+const requestRoomMain = () => ({ type: Types.ROOM_MAIN_REQUEST })
+const receiveRoomMain = (room) => ({ type: Types.ROOM_MAIN_RECEIVE, room })
+const receiveRoomMainFailure = () => ({ type: Types.ROOM_MAIN_FAILURE })
 const fetchRoomMain = (roomId) => {
   return (dispatch) => {
-    dispatch(receiveRoomMain(room));
-  };
-};
+    dispatch(receiveRoomMain(room))
+  }
+}
 
 /**
  Makes available all the action creators we've created.
@@ -60,8 +60,11 @@ export default {
   receiveRoomList,
   fetchRoomList,
 
+  requestRoomMain,
+  receiveRoomMain,
+  receiveRoomMainFailure,
   fetchRoomMain
-};
+}
 
 const rooms = {
   rooms: [
@@ -108,7 +111,7 @@ const rooms = {
       hostName: '행지'
     }
   ]
-};
+}
 
 const room = {
   roomId: 1,
@@ -119,5 +122,5 @@ const room = {
     userId: 2,
     userName: '영희',
     text: '웰컴 베베'
-  },
-};
+  }
+}
