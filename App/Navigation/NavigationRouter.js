@@ -49,7 +49,7 @@ class NavigationRouter extends Component {
             component={UsageExamplesScreen}
             title='Usage'
             rightTitle='Example'
-            onRight={;() => window.alert('Example Pressed')} />
+            onRight={() => window.alert('Example Pressed')} />
           <Scene key='listviewExample' component={ListviewExample} title='Listview Example' />
           <Scene key='listviewGridExample' component={ListviewGridExample} title='Listview Grid' />
           <Scene key='drawer' component={NavigationDrawer}>
