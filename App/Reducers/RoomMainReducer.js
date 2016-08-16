@@ -17,25 +17,22 @@ export const INITIAL_STATE = Immutable({
 })
 
 // login attempts
-const request = (state, action) =>
-  state.merge({
-    fetching: true
-  })
+const request = (state, action) => state.merge({
+  fetching: true
+})
 
 // receive temp
-const receive = (state, action) =>
-  state.merge({
-    fetching: false,
-    error: null,
-    ...action.room
-  })
+const receive = (state, action) => state.merge({
+  fetching: false,
+  error: null,
+  ...action.room
+})
 
 // temp failure
-const failure = (state, action) =>
-  state.merge({
-    fetching: false,
-    error: true
-  })
+const failure = (state, action) => state.merge({
+  fetching: false,
+  error: true
+})
 
 // map our types to our handlers
 const ACTION_HANDLERS = {

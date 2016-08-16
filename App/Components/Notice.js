@@ -14,8 +14,12 @@ export default class Notice extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.boldLabel}>{notice.title}</Text>
-        <Text style={styles.label}>{notice.text}</Text>
+        <Text style={styles.boldLabel}>
+          {notice.title}
+        </Text>
+        <Text style={styles.label}>
+          {notice.text}
+        </Text>
       </View>
     )
   }

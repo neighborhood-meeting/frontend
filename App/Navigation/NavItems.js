@@ -17,10 +17,9 @@ export default {
     return (
       <TouchableOpacity onPress={NavigationActions.pop}>
         <Icon name='angle-left'
-          size={Metrics.icons.medium}
-          color={Colors.snow}
-          style={styles.navButtonLeft}
-        />
+              size={Metrics.icons.medium}
+              color={Colors.snow}
+              style={styles.navButtonLeft} />
       </TouchableOpacity>
     )
   },
@@ -29,10 +28,9 @@ export default {
     return (
       <TouchableOpacity onPress={toggleDrawer}>
         <Icon name='bars'
-          size={Metrics.icons.medium}
-          color={Colors.snow}
-          style={styles.navButtonLeft}
-        />
+              size={Metrics.icons.medium}
+              color={Colors.snow}
+              style={styles.navButtonLeft} />
       </TouchableOpacity>
     )
   },
@@ -41,10 +39,9 @@ export default {
     return (
       <TouchableOpacity>
         <Icon name='edit'
-          size={Metrics.icons.medium}
-          color={Colors.snow}
-          style={styles.navButtonLeft}
-        />
+              size={Metrics.icons.medium}
+              color={Colors.snow}
+              style={styles.navButtonLeft} />
       </TouchableOpacity>
     )
   },
@@ -53,10 +50,9 @@ export default {
     return (
       <TouchableOpacity onPress={NavigationActions.home} style={{position: 'absolute', right: 0}}>
         <Icon name='home'
-          size={Metrics.icons.medium}
-          color={Colors.snow}
-          style={styles.navButtonRight}
-        />
+              size={Metrics.icons.medium}
+              color={Colors.snow}
+              style={styles.navButtonRight} />
       </TouchableOpacity>
     )
   }

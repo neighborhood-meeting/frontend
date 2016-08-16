@@ -51,8 +51,12 @@ export default class RoomContentList extends React.Component {
   _renderRow (rowData) {
     return (
       <View style={styles.row}>
-        <Text style={styles.boldLabel}>{rowData.title}</Text>
-        <Text style={styles.label}>{rowData.description}</Text>
+        <Text style={styles.boldLabel}>
+          {rowData.title}
+        </Text>
+        <Text style={styles.label}>
+          {rowData.description}
+        </Text>
       </View>
     )
   }
@@ -84,11 +88,7 @@ export default class RoomContentList extends React.Component {
   render () {
     return (
       <View style={styles.container}>
-        <ListView
-          contentContainerStyle={styles.listContent}
-          dataSource={this.state.dataSource}
-          renderRow={this._renderRow}
-        />
+        <ListView contentContainerStyle={styles.listContent} dataSource={this.state.dataSource} renderRow={this._renderRow} />
       </View>
     )
   }

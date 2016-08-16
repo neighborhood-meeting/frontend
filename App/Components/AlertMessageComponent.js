@@ -8,16 +8,10 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import ExamplesRegistry from '../Services/ExamplesRegistry'
 
 // Example
-ExamplesRegistry.add('Alert Message', () =>
-  <View>
-    <AlertMessage
-      title='Alert Message with animation'
-    />
-    <AlertMessage
-      title='Never see me'
-      show={false}
-    />
-  </View>
+ExamplesRegistry.add('Alert Message', () => <View>
+                                              <AlertMessage title='Alert Message with animation' />
+                                              <AlertMessage title='Never see me' show={false} />
+                                            </View>
 )
 
 export default class AlertMessage extends React.Component {
@@ -38,18 +32,12 @@ export default class AlertMessage extends React.Component {
     if (this.props.show) {
       const { title } = this.props
       return (
-        <Animatable.View
-          style={[styles.container, this.props.style]}
-          delay={800}
-          animation='bounceIn'
-        >
+        <Animatable.View style={[styles.container, this.props.style]} delay={800} animation='bounceIn'>
           <View style={styles.contentContainer}>
-            <Icon
-              name={this.props.icon || 'ios-alert'}
-              size={Metrics.icons.large}
-              style={styles.icon}
-            />
-            <Text allowFontScaling={false} style={styles.message}>{title && title.toUpperCase()}</Text>
+            <Icon name={this.props.icon || 'ios-alert'} size={Metrics.icons.large} style={styles.icon} />
+            <Text allowFontScaling={false} style={styles.message}>
+              {title && title.toUpperCase()}
+            </Text>
           </View>
         </Animatable.View>
       )

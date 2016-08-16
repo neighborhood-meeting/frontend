@@ -5,13 +5,11 @@ import { Images } from '../Themes'
 import styles from './Styles/ProgressiveImageStyle'
 
 // Example
-ExamplesRegistry.add('Progressive Image', () =>
-  <ProgressiveImage
-    style={styles.progressiveImage}
-    defaultSource={Images.logo}
-    source='https://upload.wikimedia.org/wikipedia/commons/c/cc/ESC_large_ISS022_ISS022-E-11387-edit_01.JPG'
-    thumbnail='http://i.imgur.com/eVAFUhj.png'
-  />
+ExamplesRegistry.add('Progressive Image', () => <ProgressiveImage
+                                                  style={styles.progressiveImage}
+                                                  defaultSource={Images.logo}
+                                                  source='https://upload.wikimedia.org/wikipedia/commons/c/cc/ESC_large_ISS022_ISS022-E-11387-edit_01.JPG'
+                                                  thumbnail='http://i.imgur.com/eVAFUhj.png' />
 )
 
 export default class ProgressiveImage extends Component {
@@ -69,12 +67,8 @@ export default class ProgressiveImage extends Component {
 
   render () {
     return (
-      <View
-        width={this.props.style.width}
-        height={this.props.style.height}
-        backgroundColor={'#CCC'}
-      >
-      {this.handleImage()}
+      <View width={this.props.style.width} height={this.props.style.height} backgroundColor={'#CCC'}>
+        {this.handleImage()}
       </View>
     )
   }

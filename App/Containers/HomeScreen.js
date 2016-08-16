@@ -36,7 +36,7 @@ class HomeScreen extends React.Component {
   createRoomInfos = () => {
     const {rooms} = this.props
     return rooms.map((room, i) => {
-      return <RoomInfo room={room} onPress={() => this.handleRoomPress(room, i)} />
+      return <RoomInfo key={i} room={room} onPress={() => this.handleRoomPress(room, i)} />
     })
   }
 

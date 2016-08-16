@@ -1,18 +1,9 @@
-import React, {PropTypes} from 'react'
-import {
-  View,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  Keyboard,
-  LayoutAnimation
-} from 'react-native'
+import React, { PropTypes } from 'react'
+import { View, ScrollView, Text, TextInput, TouchableOpacity, Image, Keyboard, LayoutAnimation } from 'react-native'
 import { connect } from 'react-redux'
 import Styles from './Styles/LoginScreenStyle'
 import Actions from '../Actions/Creators'
-import {Images, Metrics} from '../Themes'
+import { Images, Metrics } from '../Themes'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 // I18n
@@ -95,7 +86,9 @@ class LoginScreen extends React.Component {
         <Image source={Images.logo} style={[Styles.topLogo, this.state.topLogo]} />
         <View style={Styles.form}>
           <View style={Styles.row}>
-            <Text style={Styles.rowLabel}>{I18n.t('username')}</Text>
+            <Text style={Styles.rowLabel}>
+              {I18n.t('username')}
+            </Text>
             <TextInput
               ref='username'
               style={textInputStyle}
@@ -108,9 +101,10 @@ class LoginScreen extends React.Component {
               onSubmitEditing={() => this.refs.password.focus()}
               placeholder={I18n.t('username')} />
           </View>
-
           <View style={Styles.row}>
-            <Text style={Styles.rowLabel}>{I18n.t('password')}</Text>
+            <Text style={Styles.rowLabel}>
+              {I18n.t('password')}
+            </Text>
             <TextInput
               ref='password'
               style={textInputStyle}
@@ -124,21 +118,23 @@ class LoginScreen extends React.Component {
               onSubmitEditing={this.handlePressLogin}
               placeholder={I18n.t('password')} />
           </View>
-
           <View style={[Styles.loginRow]}>
             <TouchableOpacity style={Styles.loginButtonWrapper} onPress={this.handlePressLogin}>
               <View style={Styles.loginButton}>
-                <Text style={Styles.loginText}>{I18n.t('signIn')}</Text>
+                <Text style={Styles.loginText}>
+                  {I18n.t('signIn')}
+                </Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity style={Styles.loginButtonWrapper} onPress={this.props.close}>
               <View style={Styles.loginButton}>
-                <Text style={Styles.loginText}>{I18n.t('cancel')}</Text>
+                <Text style={Styles.loginText}>
+                  {I18n.t('cancel')}
+                </Text>
               </View>
             </TouchableOpacity>
           </View>
         </View>
-
       </ScrollView>
     )
   }

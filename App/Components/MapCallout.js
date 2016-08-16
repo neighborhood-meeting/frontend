@@ -23,7 +23,9 @@ export default class MapCallout extends React.Component {
     return (
       <MapView.Callout style={Styles.callout}>
         <TouchableOpacity onPress={this.onPress}>
-          <Text>{location.title}</Text>
+          <Text>
+            {location.title}
+          </Text>
         </TouchableOpacity>
       </MapView.Callout>
     )

@@ -11,7 +11,8 @@ import Styles from './Styles/NavigationDrawerStyle'
 
 class NavigationDrawer extends Component {
   static propTypes = {
-    navigationState: PropTypes.object
+    navigationState: PropTypes.object,
+    onNavigate: PropTypes.func
   }
 
   render () {
@@ -33,8 +34,7 @@ class NavigationDrawer extends Component {
         negotiatePan
         tweenHandler={(ratio) => ({
           main: { opacity: Math.max(0.54, 1 - ratio) }
-        })}
-      >
+        })}>
         <DefaultRenderer navigationState={children[0]} onNavigate={this.props.onNavigate} />
       </Drawer>
     )

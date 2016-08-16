@@ -4,12 +4,9 @@ import styles from './Styles/RoundedButtonStyle'
 import ExamplesRegistry from '../Services/ExamplesRegistry'
 
 // Example
-ExamplesRegistry.add('Rounded Button', () =>
-  <RoundedButton
-    text='real buttons have curves'
-    onPress={() => window.alert('Rounded Button Pressed!')}
-  />
-)
+ExamplesRegistry.add('Rounded Button', () => {
+  <RoundedButton text='real buttons have curves' onPress={() => window.alert('Rounded Button Pressed!')} />
+})
 
 export default class RoundedButton extends React.Component {
 
@@ -28,7 +25,9 @@ export default class RoundedButton extends React.Component {
   render () {
     return (
       <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-        <Text style={styles.buttonText}>{this.getText()}</Text>
+        <Text style={styles.buttonText}>
+          {this.getText()}
+        </Text>
       </TouchableOpacity>
     )
   }

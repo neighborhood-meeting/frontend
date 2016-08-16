@@ -1,8 +1,8 @@
-import React, {PropTypes} from 'react'
-import {View, StatusBar} from 'react-native'
-import {Provider} from 'react-redux'
+import React, { PropTypes } from 'react'
+import { View, StatusBar } from 'react-native'
+import { Provider } from 'react-redux'
 import Actions from './Actions/Creators'
-// import DebugSettings from './Config/DebugSettings'
+import DebugSettings from './Config/DebugSettings'
 import NavigationRouter from './Navigation/NavigationRouter'
 // import './Config/PushConfig'
 
@@ -22,8 +22,7 @@ export default class Root extends React.Component {
   }
 
   renderApp () {
-    // console.disableYellowBox = !DebugSettings.yellowBox
-    console.disableYellowBox = true
+    console.disableYellowBox = !DebugSettings.yellowBox
     return (
       <Provider store={this.props.store}>
         <View style={styles.applicationView}>

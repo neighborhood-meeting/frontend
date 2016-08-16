@@ -55,8 +55,12 @@ class ListviewExample extends React.Component {
   _renderRow (rowData) {
     return (
       <View style={styles.row}>
-        <Text style={styles.boldLabel}>{rowData.title}</Text>
-        <Text style={styles.label}>{rowData.description}</Text>
+        <Text style={styles.boldLabel}>
+          {rowData.title}
+        </Text>
+        <Text style={styles.label}>
+          {rowData.description}
+        </Text>
       </View>
     )
   }
@@ -89,11 +93,7 @@ class ListviewExample extends React.Component {
     return (
       <View style={styles.container}>
         <AlertMessage title='Nothing to See Here, Move Along' show={this._noRowData()} />
-        <ListView
-          contentContainerStyle={styles.listContent}
-          dataSource={this.state.dataSource}
-          renderRow={this._renderRow}
-        />
+        <ListView contentContainerStyle={styles.listContent} dataSource={this.state.dataSource} renderRow={this._renderRow} />
       </View>
     )
   }

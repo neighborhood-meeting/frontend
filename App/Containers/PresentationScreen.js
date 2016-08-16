@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react'
+import React, { PropTypes } from 'react'
 import { ScrollView, Text, Image, View } from 'react-native'
 import { Images } from '../Themes'
 import { connect } from 'react-redux'
@@ -26,38 +26,31 @@ class PresentationScreen extends React.Component {
           <View style={styles.centered}>
             <Image source={Images.clearLogo} style={styles.logo} />
           </View>
-
-          <View style={styles.section} >
-            <Text style={styles.sectionText} >
-              Default screens for development, debugging, and alpha testing
-              are available below.
+          <View style={styles.section}>
+            <Text style={styles.sectionText}>
+              Default screens for development, debugging, and alpha testing are available below.
             </Text>
           </View>
-
           <RoundedButton onPress={this.props.componentExamples}>
             Component Examples Screen
           </RoundedButton>
-
           <RoundedButton onPress={this.props.usageExamples}>
             Usage Examples Screen
           </RoundedButton>
-
           <RoundedButton onPress={this.props.apiTesting}>
             API Testing Screen
           </RoundedButton>
-
           <RoundedButton onPress={this.props.theme}>
             Theme Screen
           </RoundedButton>
-
           <RoundedButton onPress={this.props.deviceInfo}>
             Device Info Screen
           </RoundedButton>
-
           <View style={styles.centered}>
-            <Text style={styles.subtitle}>Made with ❤️ by Infinite Red</Text>
+            <Text style={styles.subtitle}>
+              Made with ❤️ by Infinite Red
+            </Text>
           </View>
-
         </ScrollView>
       </View>
     )

@@ -1,13 +1,10 @@
 import Types from './Types'
 
-const attemptLogin = (username, password) =>
-  ({ type: Types.LOGIN_ATTEMPT, username, password })
+const attemptLogin = (username, password) => ({ type: Types.LOGIN_ATTEMPT, username, password })
 
-const loginSuccess = (username) =>
-  ({ type: Types.LOGIN_SUCCESS, username })
+const loginSuccess = (username) => ({ type: Types.LOGIN_SUCCESS, username })
 
-const loginFailure = (errorCode) =>
-  ({ type: Types.LOGIN_FAILURE, errorCode })
+const loginFailure = (errorCode) => ({ type: Types.LOGIN_FAILURE, errorCode })
 
 const logout = () => ({ type: Types.LOGOUT })
 

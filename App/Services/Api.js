@@ -59,7 +59,7 @@ const create = (baseURL = 'http://openweathermap.org/data/2.1') => {
   return {
     // a list of the API functions from step 2
     getCity,
-    // additional utilities
+  // additional utilities
     addMonitor
   }
 }
