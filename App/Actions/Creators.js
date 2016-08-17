@@ -1,10 +1,13 @@
 import Types from './Types'
 
 const attemptLogin = (username, password) => ({ type: Types.LOGIN_ATTEMPT, username, password })
-
-const loginSuccess = (username) => ({ type: Types.LOGIN_SUCCESS, username })
-
+const loginSuccess = (user) => ({ type: Types.LOGIN_SUCCESS, user })
 const loginFailure = (errorCode) => ({ type: Types.LOGIN_FAILURE, errorCode })
+const fetchUser = () => {
+  return (dispatch) => {
+    dispatch(loginSuccess(dummyUser))
+  }
+}
 
 const logout = () => ({ type: Types.LOGOUT })
 
@@ -48,6 +51,8 @@ export default {
   loginSuccess,
   loginFailure,
   logout,
+  fetchUser,
+
   startup,
   requestTemperature,
   receiveTemperature,
@@ -67,7 +72,7 @@ const rooms = {
   rooms: [
     {
       roomId: 1,
-      title: '철수 아파트 모여라',
+      title: '행복이 가득한 창전동',
       hostId: 1,
       hostName: '철수'
     },
@@ -112,7 +117,7 @@ const rooms = {
 
 const room = {
   roomId: 1,
-  title: '철수네 아파트',
+  title: '행복이 가득한 창전동',
   hostId: 1,
   hostName: '철수',
   notice: {
@@ -120,4 +125,10 @@ const room = {
     userName: '영희',
     text: '웰컴 베베'
   }
+}
+
+const dummyUser = {
+  userMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg',
+  userId: 1,
+  username: '아이유'
 }

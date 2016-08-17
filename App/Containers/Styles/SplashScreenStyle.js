@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Colors, ApplicationStyles } from '../../Themes/'
+import { Metrics, Colors, Fonts, ApplicationStyles } from '../../Themes/'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
@@ -26,5 +26,21 @@ export default StyleSheet.create({
     color: Colors.silver,
     fontSize: 30,
     margin: 30
+  },
+  guestButton: {
+    width: 200,
+    height: 50,
+    borderRadius: 5,
+    marginHorizontal: Metrics.section,
+    marginVertical: Metrics.baseMargin,
+    backgroundColor: Colors.snow,
+    justifyContent: 'center'
+  },
+  guestButtonText: {
+    color: Colors.penther,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: Fonts.size.regular,
+    marginVertical: Metrics.baseMargin
   }
 })

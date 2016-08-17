@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { ScrollView, View, ToastAndroid } from 'react-native'
+import { ScrollView, View, ToastAndroid, StatusBar } from 'react-native'
 // import { Images } from '../Themes'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -9,7 +9,8 @@ import Notice from '../Components/Notice'
 import RoomContentList from '../Components/RoomContentList'
 
 // Styles
-import styles from './Styles/HomeScreenStyle'
+import styles from './Styles/RoomMainScreenStyle'
+import { Colors } from '../Themes'
 
 class RoomMainScreen extends React.Component {
 
@@ -22,6 +23,10 @@ class RoomMainScreen extends React.Component {
   componentDidMount () {
     this.props.fetchRoomMain()
     NavigationActions.refresh({title: this.getTitle()})
+  }
+
+  componentWillReceiveProps (nextProps) {
+    // StatusBar.setBackgroundColor(Colors.snow, false)
   }
 
   render () {

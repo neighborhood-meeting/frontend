@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { View, Image, Text } from 'react-native'
+import { View, Image, Text, TouchableOpacity, StatusBar } from 'react-native'
 import { connect } from 'react-redux'
 import { Images } from '../Themes'
 
@@ -15,7 +15,12 @@ class SplashScreen extends React.Component {
   }
 
   componentDidMount () {
-    setTimeout(this.props.toHome, 0)
+    // setTimeout(this.props.toHome, 0)
+    StatusBar.setHidden(true, 'none')
+  }
+
+  componentWillUnmount () {
+    StatusBar.setHidden(false, 'none')
   }
 
   render () {
@@ -28,6 +33,11 @@ class SplashScreen extends React.Component {
         <Text style={styles.text}>
           이거시 스플래시다!!!!!!!!!!!
         </Text>
+        <TouchableOpacity style={styles.guestButton} onPress={this.props.toHome}>
+          <Text style={styles.guestButtonText}>
+            둘러보기
+          </Text>
+        </TouchableOpacity>
       </View>
     )
   }
