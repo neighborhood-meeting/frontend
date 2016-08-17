@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, ListView } from 'react-native'
+import { View, Text, Image, ListView } from 'react-native'
 
 // Styles
 import styles from './Styles/RoomContentListStyle'
@@ -14,13 +14,13 @@ export default class RoomContentList extends React.Component {
     * Usually this should come from Redux mapStateToProps
     *************************************************************/
     const dataObjects = [
-      {title: 'First Title', description: 'First Description'},
-      {title: 'Second Title', description: 'Second Description'},
-      {title: 'Third Title', description: 'Third Description'},
-      {title: 'Fourth Title', description: 'Fourth Description'},
-      {title: 'Fifth Title', description: 'Fifth Description'},
-      {title: 'Sixth Title', description: 'Sixth Description'},
-      {title: 'Seventh Title', description: 'Seventh Description'}
+      {title: '황금 고구마', description: '맛있음 공구하자', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
+      {title: '황금 고구마', description: '맛있음 공구하자', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
+      {title: 'Third Title', description: 'Third Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
+      {title: 'Fourth Title', description: 'Fourth Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
+      {title: 'Fifth Title', description: 'Fifth Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
+      {title: 'Sixth Title', description: 'Sixth Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
+      {title: 'Seventh Title', description: 'Seventh Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'}
     ]
 
     /* ***********************************************************
@@ -51,12 +51,17 @@ export default class RoomContentList extends React.Component {
   _renderRow (rowData) {
     return (
       <View style={styles.row}>
-        <Text style={styles.boldLabel}>
-          {rowData.title}
-        </Text>
-        <Text style={styles.label}>
-          {rowData.description}
-        </Text>
+        <View style={styles.imageBox}>
+          <Image source={{uri: rowData.image}} style={styles.image}/>
+        </View>
+        <View style={styles.textBox}>
+          <Text style={styles.boldLabel}>
+            {rowData.title}
+          </Text>
+          <Text style={styles.label}>
+            {rowData.description}
+          </Text>
+        </View>
       </View>
     )
   }

@@ -34,16 +34,15 @@ class NavigationRouter extends Component {
           leftButtonIconStyle={Styles.leftButton}
           rightButtonTextStyle={Styles.rightButton}>
           <Scene
+            key='splash'
             initial
             hideNavBar
-            key='splash'
             component={SplashScreen} />
-          <Scene
-            key='home'
-            type={ActionConst.RESET}
-            component={HomeScreen}
-            title='지역선택'
-            renderLeftButton={NavItems.editButton} />
+            <Scene
+              key='home'
+              type={ActionConst.RESET}
+              hideNavBar
+              component={HomeScreen} />
           <Scene
             key='usageExamples'
             component={UsageExamplesScreen}

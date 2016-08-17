@@ -5,7 +5,8 @@ export default {
     flex: 1
   },
   navBar: {
-    backgroundColor: Colors.facebook
+    backgroundColor: Colors.orange,
+    height: 70
   },
   title: {
     color: Colors.snow

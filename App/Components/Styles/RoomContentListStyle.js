@@ -8,11 +8,11 @@ export default StyleSheet.create({
     backgroundColor: Colors.transparent
   },
   row: {
-    width: 170,
+    flexDirection: 'row',
     height: 200,
-    justifyContent: 'center',
     alignItems: 'center',
-    margin: Metrics.baseMargin,
+    margin: Metrics.smallMargin,
+    marginHorizontal: Metrics.marginHorizontal,
     backgroundColor: Colors.snow,
     borderRadius: Metrics.smallMargin
   },
@@ -30,7 +30,19 @@ export default StyleSheet.create({
   },
   listContent: {
     justifyContent: 'space-around',
-    flexDirection: 'row',
     flexWrap: 'wrap'
+  },
+  imageBox: {
+    alignItems: 'center',
+    margin: 20
+  },
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    resizeMode: 'cover'
+  },
+  textBox: {
+    flex: 1
   }
 })

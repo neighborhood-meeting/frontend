@@ -11,7 +11,6 @@ ExamplesRegistry.add('Rounded Button', () => {
 export default class RoundedButton extends React.Component {
 
   static propTypes = {
-    navigator: React.PropTypes.object,
     text: React.PropTypes.string,
     onPress: React.PropTypes.func.isRequired,
     children: React.PropTypes.string
