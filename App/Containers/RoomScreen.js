@@ -6,22 +6,35 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
 
 import Notice from '../Components/Notice'
-import RoomContentList from '../Components/RoomContentList'
+import ArticleListView from '../Components/ArticleListView'
 
 // Styles
-import styles from './Styles/RoomMainScreenStyle'
+import styles from './Styles/RoomScreenStyle'
 import { Colors } from '../Themes'
 
-class RoomMainScreen extends React.Component {
+const dummyRoom = {
+  roomId: 1,
+  title: '행복이 가득한 창전동',
+  hostId: 1,
+  hostName: '철수',
+  notice: {
+    userId: 2,
+    userName: '영희',
+    text: '웰컴 베베'
+  }
+}
+
+class RoomScreen extends React.Component {
 
   static propTypes = {
     roomId: PropTypes.number.isRequired,
-    fetchRoomMain: PropTypes.func.isRequired,
-    room: PropTypes.object.isRequired
+    fetchRoom: PropTypes.func.isRequired,
+    room: PropTypes.object.isRequired,
+    toArticle: PropTypes.func.isRequired
   }
 
   componentDidMount () {
-    this.props.fetchRoomMain()
+    this.props.fetchRoom(this.props.roomId, dummyRoom)
     NavigationActions.refresh({title: this.getTitle()})
   }
 
@@ -36,14 +49,15 @@ class RoomMainScreen extends React.Component {
       <View style={styles.mainContainer}>
         <ScrollView>
           <Notice notice={room.notice} />
-          <RoomContentList />
+          <ArticleListView onPress={this.handleRoomPress}/>
         </ScrollView>
       </View>
     )
   }
 
-  handleRoomPress = (room) => {
-    return ToastAndroid.show(`room pressed ${room.title}`, ToastAndroid.SHORT)
+  handleRoomPress = (article) => {
+    ToastAndroid.show(`article pressed ${article.title}`, ToastAndroid.SHORT)
+    this.props.toArticle()
   }
 
   getTitle = () => {
@@ -59,8 +73,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchRoomMain: (roomId) => dispatch(Actions.fetchRoomMain(roomId))
+    fetchRoom: (roomId, dummyRoom) => dispatch(Actions.fetchRoom(roomId, dummyRoom)),
+    toArticle: () => NavigationActions.article()
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RoomMainScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(RoomScreen)

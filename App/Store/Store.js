@@ -22,7 +22,7 @@ const logger = createLogger({
 
 let middleware = []
 const sagaMiddleware = createSagaMiddleware()
-middleware.push(sagaMiddleware)
+// middleware.push(sagaMiddleware)
 middleware.push(thunk)
 
 // Don't ship these
@@ -50,6 +50,9 @@ export default () => {
     // configure persistStore and check reducer version number
     RehydrationServices.updateReducers(store)
   } else {
+    console.log('-----------------------')
+    console.log('inactive')
+    console.log('-----------------------')
     const enhancers = compose(
       applyMiddleware(...middleware),
       Reactotron.storeEnhancer()
@@ -62,7 +65,7 @@ export default () => {
   }
 
   // run sagas
-  sagaMiddleware.run(sagas)
+  // sagaMiddleware.run(sagas)
 
   return store
 }
