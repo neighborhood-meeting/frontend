@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { ScrollView, View, ToastAndroid } from 'react-native'
+import { ScrollView, View } from 'react-native'
 // import { Images } from '../Themes'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -26,13 +26,29 @@ const dummyArticles = [
     articleId: 1,
     name: '공구하자',
     content: '고구마를 처묵처묵',
-    viewCount: 100
+    viewCount: 100,
+    articleMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
   },
   {
     articleId: 2,
     name: '집 봐주실분',
     content: '도둑은 사양한다',
-    viewCount: 200
+    viewCount: 200,
+    articleMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
+  },
+  {
+    articleId: 1,
+    name: '공구하자',
+    content: '고구마를 처묵처묵',
+    viewCount: 100,
+    articleMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
+  },
+  {
+    articleId: 2,
+    name: '집 봐주실분',
+    content: '도둑은 사양한다',
+    viewCount: 200,
+    articleMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
   }
 ]
 
@@ -41,19 +57,15 @@ class RegionScreen extends React.Component {
   static propTypes = {
     regionId: PropTypes.number.isRequired,
     fetchRegion: PropTypes.func.isRequired,
-    region: PropTypes.object.isRequired,
+    fetchArticles: PropTypes.func.isRequired,
     toArticle: PropTypes.func.isRequired,
-    articles: PropTypes.array.isRequired
+    region: PropTypes.object,
+    articles: PropTypes.array
   }
 
   componentDidMount () {
-    console.log(dummyArticles)
     this.props.fetchRegion(this.props.regionId, dummyRegion)
-    NavigationActions.refresh({title: this.getTitle()})
-  }
-
-  componentWillReceiveProps (nextProps) {
-    // StatusBar.setBackgroundColor(Colors.snow, false)
+    this.props.fetchArticles(this.props.regionId, dummyArticles)
   }
 
   render () {
@@ -63,25 +75,23 @@ class RegionScreen extends React.Component {
       <View style={styles.mainContainer}>
         <ScrollView>
           {notice}
-          <ArticleListView articles={articles} onPress={this.handleRegionPress} />
+          <ArticleListView articles={articles} onPress={this.handleArticlePress} />
         </ScrollView>
       </View>
     )
   }
 
-  handleRegionPress = (article) => {
-    ToastAndroid.show(`article pressed ${article.title}`, ToastAndroid.SHORT)
-    this.props.toArticle({articleId: article.articleId})
+  handleArticlePress = (article) => {
+    this.props.toArticle({ articleId: article.articleId, title: article.name })
   }
 
-  getTitle = () => {
-    return this.props.region.title
-  }
 }
 
 const mapStateToProps = (state) => {
   return {
-    region: state.region
+    region: state.region.item,
+    regionId: 1,
+    articles: state.articles.items
   }
 }
 

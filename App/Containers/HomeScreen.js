@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
-import { ScrollView, View, Image, Text } from 'react-native'
-// import { Images } from '../Themes'
+import { View, Image, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
@@ -53,17 +52,11 @@ class HomeScreen extends React.Component {
     usageExamples: PropTypes.func,
     fetchRegions: PropTypes.func,
     regions: PropTypes.array,
-    user: PropTypes.object,
-    fetchUser: PropTypes.func
+    user: PropTypes.object
   }
 
   componentDidMount () {
-    this.props.fetchUser(dummyUser)
-    this.props.fetchRegions(1, dummyRegions)
-  }
-
-  componentWillReceiveProps (nextProps) {
-    // StatusBar.setBackgroundColor(Colors.orange, false)
+    this.props.fetchRegions(this.props.user.userId, dummyRegions)
   }
 
   render () {
@@ -72,43 +65,46 @@ class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View style={styles.profileBox}>
           <Image source={{uri: user.userMainImage}} style={styles.profileImage} />
-          <Text style={styles.profileText}>{user.name}</Text>
+          <Text style={styles.profileText}>
+            {user.name}
+          </Text>
         </View>
-        <ScrollView style={styles.container}>
-          {this.createRegionSimples()}
-        </ScrollView>
+        <View style={styles.regionBox}>
+          <View style={styles.regionList}>
+            {this.createRegionSimples()}
+          </View>
+        </View>
       </View>
     )
   }
 
   createRegionSimples = () => {
     const {regions} = this.props
-    return regions.map((region, i) => {
-      return <RegionSimple key={i} region={region} onPress={() => this.handleRoomPress(region, i)} />
+    return regions.map((region) => {
+      return (
+        <RegionSimple key={region.regionId} region={region} onPress={() => this.handleRegionPress(region)} />
+      )
     })
   }
 
-  handleRoomPress = (region, i) => {
-    if (i === 2) {
-      return this.props.usageExamples()
-    }
-    return this.props.toRegion({regionId: region.regionId})
+  handleRegionPress = (region) => {
+    return this.props.toRegion({ regionId: region.regionId, hideNavBar: false, title: region.name })
   }
+
 }
 
 const mapStateToProps = (state) => {
   return {
-    regions: state.regions.items,
-    user: state.login.item
+    // user: state.login.item,
+    user: dummyUser,
+    regions: state.regions.items
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     toRegion: NavigationActions.region,
-    usageExamples: NavigationActions.usageExamples,
-    fetchRegions: (userId, dummyRegions) => dispatch(Actions.fetchRegions(userId, dummyRegions)),
-    fetchUser: (dummyUser) => dispatch(Actions.fetchUser(dummyUser))
+    fetchRegions: (userId, dummyRegions) => dispatch(Actions.fetchRegions(userId, dummyRegions))
   }
 }
 
