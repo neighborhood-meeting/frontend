@@ -59,10 +59,6 @@ class HomeScreen extends React.Component {
     this.props.fetchRegions(this.props.user.userId, dummyRegions)
   }
 
-  componentWillReceiveProps (nextProps) {
-    // StatusBar.setBackgroundColor(Colors.orange, false)
-  }
-
   render () {
     const { user } = this.props
     return (
@@ -92,8 +88,9 @@ class HomeScreen extends React.Component {
   }
 
   handleRegionPress = (region) => {
-    return this.props.toRegion({regionId: region.regionId})
+    return this.props.toRegion({ regionId: region.regionId, hideNavBar: false, title: region.name })
   }
+
 }
 
 const mapStateToProps = (state) => {

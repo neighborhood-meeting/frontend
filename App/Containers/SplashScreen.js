@@ -8,15 +8,10 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 
 // Styles
 import styles from './Styles/SplashScreenStyle'
-import { Colors } from '../Themes'
 
 class SplashScreen extends React.Component {
   static propTypes = {
     toMain: PropTypes.func.isRequired
-  }
-
-  componentDidMount () {
-    // setTimeout(this.props.toMain, 0)
   }
 
   render () {
@@ -37,6 +32,7 @@ class SplashScreen extends React.Component {
       </View>
     )
   }
+
 }
 
 const mapStateToProps = (state) => {

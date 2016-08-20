@@ -42,11 +42,11 @@ class NavigationRouter extends Component {
     return (
       <Router
         onExitApp={this.onExitApp}>
-        <Scene
+        {/* <Scene
           key='splash'
           initial
           hideNavBar
-          component={SplashScreen} />
+          component={SplashScreen} /> */}
         <Scene key='main' type={ActionConst.RESET} component={NavigationDrawer}>
           <Scene
             key='drawerChildrenWrapper'
@@ -54,27 +54,23 @@ class NavigationRouter extends Component {
             titleStyle={Styles.title}
             leftButtonIconStyle={Styles.leftButton}
             rightButtonTextStyle={Styles.rightButton}>
-            <Scene
-              initial
+            {/* <Scene
+              // initial
               key='home'
               type={ActionConst.RESET}
               hideNavBar
-              component={HomeScreen} />
+              component={HomeScreen} /> */}
             <Scene
-              key='usageExamples'
-              component={UsageExamplesScreen}
-              title='Usage'
-              rightTitle='Example'
-              onRight={() => window.alert('Example Pressed')} />
-            <Scene
+              initial
               key='region'
-              component={RegionScreen}
               title='region'
+              component={RegionScreen}
+              renderLeftButton={NavItems.hamburgerButton}
               renderRightButton={NavItems.homeButton} />
             <Scene
               key='article'
-              component={ArticleScreen}
               title='article'
+              component={ArticleScreen}
               renderRightButton={NavItems.homeButton} />
             <Scene
               key='presentationScreen'
@@ -87,6 +83,12 @@ class NavigationRouter extends Component {
               component={LoginScreen}
               title='Login'
               hideNavBar />
+            <Scene
+              key='usageExamples'
+              component={UsageExamplesScreen}
+              title='Usage'
+              rightTitle='Example'
+              onRight={() => window.alert('Example Pressed')} />
             <Scene key='mapviewExample' component={MapviewExample} title='Mapview Example' />
             <Scene key='apiTesting' component={APITestingScreen} title='API Testing' />
             <Scene key='theme' component={ThemeScreen} title='Theme' />
