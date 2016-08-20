@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Scene, Router, ActionConst } from 'react-native-router-flux'
+import { Scene, Router, ActionConst, BackAndroid } from 'react-native-router-flux'
 import { Alert } from 'react-native'
 import Styles from './Styles/NavigationContainerStyle'
 import NavigationDrawer from './NavigationDrawer'
@@ -32,10 +32,10 @@ class NavigationRouter extends Component {
       '정말 종료 하실 건가요? ㅠ_ ㅠ',
       [
         { text: '취소', onPress: () => {} },
-        { text: '확인', onPress: () => BackAndroid.exitApp() },
+        { text: '확인', onPress: () => BackAndroid.exitApp() }
       ]
-    );
-    return true;
+    )
+    return true
   };
 
   render () {

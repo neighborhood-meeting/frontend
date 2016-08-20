@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { ScrollView, View, ToastAndroid, StatusBar } from 'react-native'
+import { ScrollView, View, ToastAndroid } from 'react-native'
 // import { Images } from '../Themes'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -10,7 +10,6 @@ import ArticleListView from '../Components/ArticleListView'
 
 // Styles
 import styles from './Styles/RoomScreenStyle'
-import { Colors } from '../Themes'
 
 const dummyRoom = {
   roomId: 1,
@@ -49,7 +48,7 @@ class RoomScreen extends React.Component {
       <View style={styles.mainContainer}>
         <ScrollView>
           <Notice notice={room.notice} />
-          <ArticleListView onPress={this.handleRoomPress}/>
+          <ArticleListView onPress={this.handleRoomPress} />
         </ScrollView>
       </View>
     )
@@ -57,7 +56,7 @@ class RoomScreen extends React.Component {
 
   handleRoomPress = (article) => {
     ToastAndroid.show(`article pressed ${article.title}`, ToastAndroid.SHORT)
-    this.props.toArticle()
+    this.props.toArticle({articleId: article.articleId})
   }
 
   getTitle = () => {
@@ -74,7 +73,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchRoom: (roomId, dummyRoom) => dispatch(Actions.fetchRoom(roomId, dummyRoom)),
-    toArticle: () => NavigationActions.article()
+    toArticle: NavigationActions.article
   }
 }
 

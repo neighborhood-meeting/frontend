@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { ScrollView, View, Image, Text, StatusBar } from 'react-native'
+import { ScrollView, View, Image, Text } from 'react-native'
 // import { Images } from '../Themes'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -9,7 +9,6 @@ import RoomInfo from '../Components/RoomInfo'
 
 // Styles
 import styles from './Styles/HomeScreenStyle'
-import { Colors } from '../Themes'
 
 const dummyUser = {
   userMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg',

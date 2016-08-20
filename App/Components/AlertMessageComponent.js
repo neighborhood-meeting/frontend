@@ -8,11 +8,12 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import ExamplesRegistry from '../Services/ExamplesRegistry'
 
 // Example
-ExamplesRegistry.add('Alert Message', () => <View>
-                                              <AlertMessage title='Alert Message with animation' />
-                                              <AlertMessage title='Never see me' show={false} />
-                                            </View>
-)
+ExamplesRegistry.add('Alert Message', () => {
+  <View>
+    <AlertMessage title='Alert Message with animation' />
+    <AlertMessage title='Never see me' show={false} />
+  </View>
+})
 
 export default class AlertMessage extends React.Component {
 

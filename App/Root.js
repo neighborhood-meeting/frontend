@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import { View, StatusBar } from 'react-native'
 import { Provider } from 'react-redux'
-import Actions from './Actions/Creators'
 import DebugSettings from './Config/DebugSettings'
 import NavigationRouter from './Navigation/NavigationRouter'
 // import './Config/PushConfig'
@@ -16,7 +15,7 @@ export default class Root extends React.Component {
   }
 
   componentWillMount () {
-    const {dispatch} = this.props.store
+    // const {dispatch} = this.props.store
     // dispatch(Actions.startup())
   }
 

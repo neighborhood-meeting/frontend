@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { View, Text, Image, ListView, TouchableHighlight, ToastAndroid } from 'react-native'
+import { View, Text, Image, ListView, TouchableHighlight } from 'react-native'
 
 // Styles
 import styles from './Styles/ArticleListViewStyle'
@@ -17,13 +17,13 @@ export default class ArticleListView extends React.Component {
     * Usually this should come from Redux mapStateToProps
     *************************************************************/
     const dataObjects = [
-      {title: '황금 고구마', description: '맛있음 공구하자', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
-      {title: '황금 고구마', description: '맛있음 공구하자', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
-      {title: 'Third Title', description: 'Third Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
-      {title: 'Fourth Title', description: 'Fourth Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
-      {title: 'Fifth Title', description: 'Fifth Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
-      {title: 'Sixth Title', description: 'Sixth Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
-      {title: 'Seventh Title', description: 'Seventh Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'}
+      {articleId: 1, title: '황금 고구마', description: '맛있음 공구하자', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
+      {articleId: 2, title: '황금 고구마', description: '맛있음 공구하자', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
+      {articleId: 3, title: 'Third Title', description: 'Third Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
+      {articleId: 4, title: 'Fourth Title', description: 'Fourth Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
+      {articleId: 5, title: 'Fifth Title', description: 'Fifth Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
+      {articleId: 6, title: 'Sixth Title', description: 'Sixth Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
+      {articleId: 7, title: 'Seventh Title', description: 'Seventh Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'}
     ]
 
     /* ***********************************************************
@@ -56,7 +56,7 @@ export default class ArticleListView extends React.Component {
       <TouchableHighlight onPress={() => this.props.onPress(rowData)}>
         <View style={styles.row}>
           <View style={styles.imageBox}>
-            <Image source={{uri: rowData.image}} style={styles.image}/>
+            <Image source={{uri: rowData.image}} style={styles.image} />
           </View>
           <View style={styles.textBox}>
             <Text style={styles.boldLabel}>

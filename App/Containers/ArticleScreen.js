@@ -1,17 +1,15 @@
 import React, { PropTypes } from 'react'
-import { ScrollView, View, ToastAndroid, StatusBar, Text } from 'react-native'
+import { View, ToastAndroid } from 'react-native'
 // import { Images } from '../Themes'
 import { connect } from 'react-redux'
-import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
 
 import Article from '../Components/Article'
 
 // Styles
 import styles from './Styles/ArticleScreenStyle'
-import { Colors } from '../Themes'
 
-const article = {
+const dummyArticle = {
   articleId: 1,
   name: '고구마 공구 하실 분',
   writer: {
@@ -30,13 +28,17 @@ const article = {
 class ArticleScreen extends React.Component {
 
   static propTypes = {
-    article: PropTypes.object.isRequired
+    articleId: PropTypes.number.isRequired,
+    article: PropTypes.object.isRequired,
+    fetchArticle: PropTypes.func.isRequired
+  }
+
+  static defaultProps = {
+    article: {}
   }
 
   componentDidMount () {
-  }
-
-  componentWillReceiveProps (nextProps) {
+    this.props.fetchArticle(this.props.articleId, dummyArticle)
   }
 
   render () {
@@ -44,7 +46,7 @@ class ArticleScreen extends React.Component {
 
     return (
       <View style={styles.mainContainer}>
-        <Article article={article}/>
+        <Article article={article} />
       </View>
     )
   }
@@ -56,14 +58,13 @@ class ArticleScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    // article: state.article.item
-    article: article
+    article: state.article.item
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchRoomMain: () => dispatch(Actions.fetchRoomMain())
+    fetchArticle: (articleId, dummyArticle) => dispatch(Actions.fetchArticle(articleId, dummyArticle))
   }
 }
 

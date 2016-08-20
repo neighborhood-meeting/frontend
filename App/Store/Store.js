@@ -3,9 +3,9 @@ import { autoRehydrate } from 'redux-persist'
 import createLogger from 'redux-logger'
 import rootReducer from '../Reducers/'
 import Config from '../Config/DebugSettings'
-import createSagaMiddleware from 'redux-saga'
+// import createSagaMiddleware from 'redux-saga'
 import thunk from 'redux-thunk'
-import sagas from '../Sagas/'
+// import sagas from '../Sagas/'
 import R from 'ramda'
 import Reactotron from 'reactotron'
 import RehydrationServices from '../Services/RehydrationServices'
@@ -21,7 +21,7 @@ const logger = createLogger({
 })
 
 let middleware = []
-const sagaMiddleware = createSagaMiddleware()
+// const sagaMiddleware = createSagaMiddleware()
 // middleware.push(sagaMiddleware)
 middleware.push(thunk)
 

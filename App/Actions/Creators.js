@@ -43,6 +43,15 @@ const fetchRoom = (roomId, dummyRoom) => {
   }
 }
 
+const requestArticle = () => ({ type: Types.ARTICLE_REQUEST })
+const receiveArticle = (article) => ({ type: Types.ARTICLE_RECEIVE, article })
+const receiveArticleFailure = () => ({ type: Types.ARTICLE_FAILURE })
+const fetchArticle = (articleId, dummyArticle) => {
+  return (dispatch) => {
+    dispatch(receiveArticle(dummyArticle))
+  }
+}
+
 /**
  Makes available all the action creators we've created.
  */
@@ -65,17 +74,10 @@ export default {
   requestRoom,
   receiveRoom,
   receiveRoomFailure,
-  fetchRoom
-}
+  fetchRoom,
 
-const room = {
-  roomId: 1,
-  title: '행복이 가득한 창전동',
-  hostId: 1,
-  hostName: '철수',
-  notice: {
-    userId: 2,
-    userName: '영희',
-    text: '웰컴 베베'
-  }
+  requestArticle,
+  receiveArticle,
+  receiveArticleFailure,
+  fetchArticle
 }
