@@ -9,7 +9,7 @@ export const INITIAL_STATE = Immutable({
     articleId: null,
     name: null,
     viewCount: 0,
-    contents: null,
+    content: null,
     writer: {},
     category: {},
     room: {}

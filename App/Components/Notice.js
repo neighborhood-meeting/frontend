@@ -5,7 +5,7 @@ import styles from './Styles/NoticeStyle'
 export default class Notice extends React.Component {
 
   static propTypes = {
-    notice: React.PropTypes.object,
+    notice: React.PropTypes.string.isRequired,
     onPress: React.PropTypes.func
   }
 
@@ -15,10 +15,10 @@ export default class Notice extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.boldLabel}>
-          {notice.title}
+          {notice}
         </Text>
         <Text style={styles.label}>
-          {notice.text}
+          {notice}
         </Text>
       </View>
     )

@@ -17,6 +17,9 @@ class SplashScreen extends React.Component {
   componentDidMount () {
     // setTimeout(this.props.toHome, 0)
     StatusBar.setHidden(true, 'none')
+
+    console.log(this.props.aaaa)
+    console.log(this.props.bbbb)
   }
 
   componentWillUnmount () {

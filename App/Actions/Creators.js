@@ -17,29 +17,29 @@ const requestTemperature = (city) => ({ type: Types.TEMPERATURE_REQUEST, city })
 const receiveTemperature = (temperature) => ({ type: Types.TEMPERATURE_RECEIVE, temperature })
 const receiveTemperatureFailure = () => ({ type: Types.TEMPERATURE_FAILURE })
 
-const requestRooms = (userId) => ({ type: Types.ROOMS_REQUEST, userId })
-const receiveRooms = (rooms) => ({ type: Types.ROOMS_RECEIVE, rooms })
-const fetchRooms = (userId, dummyRooms) => {
+const requestRegions = (userId) => ({ type: Types.REGIONS_REQUEST, userId })
+const receiveRegions = (regions) => ({ type: Types.REGIONS_RECEIVE, regions })
+const fetchRegions = (userId, dummyRegions) => {
   return (dispatch) => {
-    // return fetch('rooms.json')
+    // return fetch(`http://regions.json?${userId}`)
     // .then((response) => response.json())
     // .then((responseJson) => {
-    //   dispatch(receiveRooms(responseJson.rooms))
-    //   return responseJson.rooms
+    //   dispatch(receiveRegions(responseJson.regions))
+    //   return responseJson.regions
     // })
     // .catch((error) => {
     //   console.error(error)
     // })
-    dispatch(receiveRooms(dummyRooms))
+    dispatch(receiveRegions(dummyRegions))
   }
 }
 
-const requestRoom = () => ({ type: Types.ROOM_REQUEST })
-const receiveRoom = (room) => ({ type: Types.ROOM_RECEIVE, room })
-const receiveRoomFailure = () => ({ type: Types.ROOM_FAILURE })
-const fetchRoom = (roomId, dummyRoom) => {
+const requestRegion = () => ({ type: Types.REGION_REQUEST })
+const receiveRegion = (region) => ({ type: Types.REGION_RECEIVE, region })
+const receiveRegionFailure = () => ({ type: Types.REGION_FAILURE })
+const fetchRegion = (regionId, dummyRegion) => {
   return (dispatch) => {
-    dispatch(receiveRoom(dummyRoom))
+    dispatch(receiveRegion(dummyRegion))
   }
 }
 
@@ -67,14 +67,14 @@ export default {
   receiveTemperature,
   receiveTemperatureFailure,
 
-  requestRooms,
-  receiveRooms,
-  fetchRooms,
+  requestRegions,
+  receiveRegions,
+  fetchRegions,
 
-  requestRoom,
-  receiveRoom,
-  receiveRoomFailure,
-  fetchRoom,
+  requestRegion,
+  receiveRegion,
+  receiveRegionFailure,
+  fetchRegion,
 
   requestArticle,
   receiveArticle,
