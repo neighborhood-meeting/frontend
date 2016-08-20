@@ -10,8 +10,6 @@ import NavigationRouter from './Navigation/NavigationRouter'
 import styles from './Containers/Styles/RootStyle'
 import { Colors } from './Themes'
 
-console.disableYellowBox = true
-
 export default class Root extends React.Component {
   static propTypes = {
     store: PropTypes.object.isRequired
@@ -19,10 +17,10 @@ export default class Root extends React.Component {
 
   componentWillMount () {
     const {dispatch} = this.props.store
-    dispatch(Actions.startup())
+    // dispatch(Actions.startup())
   }
 
-  renderApp () {
+  renderApp = () => {
     console.disableYellowBox = !DebugSettings.yellowBox
     return (
       <Provider store={this.props.store}>

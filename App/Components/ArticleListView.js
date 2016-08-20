@@ -1,10 +1,13 @@
-import React from 'react'
-import { View, Text, Image, ListView } from 'react-native'
+import React, { PropTypes } from 'react'
+import { View, Text, Image, ListView, TouchableHighlight, ToastAndroid } from 'react-native'
 
 // Styles
-import styles from './Styles/RoomContentListStyle'
+import styles from './Styles/ArticleListViewStyle'
 
-export default class RoomContentList extends React.Component {
+export default class ArticleListView extends React.Component {
+  static propTypes = {
+    onPress: PropTypes.func
+  }
 
   constructor (props) {
     super(props)
@@ -27,7 +30,7 @@ export default class RoomContentList extends React.Component {
     * STEP 2
     * Teach datasource how to detect if rows are different
     * Make this function fast!  Perhaps something like:
-    *   (r1, r2) => r1.id !== r2.id}
+    *   (r1, r2) => r1.id !== r2.id
     *************************************************************/
     const rowHasChanged = (r1, r2) => r1 !== r2
 
@@ -48,21 +51,23 @@ export default class RoomContentList extends React.Component {
   * e.g.
     return <MyCustomCell title={rowData.title} description={rowData.description} />
   *************************************************************/
-  _renderRow (rowData) {
+  _renderRow = (rowData) => {
     return (
-      <View style={styles.row}>
-        <View style={styles.imageBox}>
-          <Image source={{uri: rowData.image}} style={styles.image}/>
+      <TouchableHighlight onPress={() => this.props.onPress(rowData)}>
+        <View style={styles.row}>
+          <View style={styles.imageBox}>
+            <Image source={{uri: rowData.image}} style={styles.image}/>
+          </View>
+          <View style={styles.textBox}>
+            <Text style={styles.boldLabel}>
+              {rowData.title}
+            </Text>
+            <Text style={styles.label}>
+              {rowData.description}
+            </Text>
+          </View>
         </View>
-        <View style={styles.textBox}>
-          <Text style={styles.boldLabel}>
-            {rowData.title}
-          </Text>
-          <Text style={styles.label}>
-            {rowData.description}
-          </Text>
-        </View>
-      </View>
+      </TouchableHighlight>
     )
   }
 
