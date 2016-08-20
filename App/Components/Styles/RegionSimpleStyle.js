@@ -1,14 +1,13 @@
-'use strict'
-
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../Themes/'
+import { Colors, Metrics, Fonts } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
-    height: 150,
+    flex: 1,
+    width: 350,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: Metrics.baseMargin,
+    margin: Metrics.smallMargin,
     backgroundColor: Colors.snow,
     borderRadius: Metrics.smallMargin
   },
@@ -17,11 +16,13 @@ export default StyleSheet.create({
     alignSelf: 'center',
     color: Colors.panther,
     textAlign: 'center',
-    marginBottom: Metrics.smallMargin
+    marginBottom: Metrics.smallMargin,
+    fontSize: Fonts.size.medium
   },
   label: {
     alignSelf: 'center',
     color: Colors.panther,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: Fonts.size.small
   }
 })

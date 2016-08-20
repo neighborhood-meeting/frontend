@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { View, Image, Text, TouchableOpacity, StatusBar } from 'react-native'
+import { View, Image, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { Images } from '../Themes'
 
@@ -8,22 +8,15 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 
 // Styles
 import styles from './Styles/SplashScreenStyle'
+import { Colors } from '../Themes'
 
 class SplashScreen extends React.Component {
   static propTypes = {
-    toHome: PropTypes.func.isRequired
+    toMain: PropTypes.func.isRequired
   }
 
   componentDidMount () {
-    // setTimeout(this.props.toHome, 0)
-    StatusBar.setHidden(true, 'none')
-
-    console.log(this.props.aaaa)
-    console.log(this.props.bbbb)
-  }
-
-  componentWillUnmount () {
-    StatusBar.setHidden(false, 'none')
+    // setTimeout(this.props.toMain, 0)
   }
 
   render () {
@@ -34,9 +27,9 @@ class SplashScreen extends React.Component {
           <Image source={Images.clearLogo} style={styles.logo} />
         </Animatable.View>
         <Text style={styles.text}>
-          이거시 스플래시다!!!!!!!!!!!
+          Famm!!!!
         </Text>
-        <TouchableOpacity style={styles.guestButton} onPress={this.props.toHome}>
+        <TouchableOpacity style={styles.guestButton} onPress={this.props.toMain}>
           <Text style={styles.guestButtonText}>
             둘러보기
           </Text>
@@ -53,7 +46,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toHome: NavigationActions.home
+    toMain: NavigationActions.main
   }
 }
 
