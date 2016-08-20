@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Scene, Router, ActionConst } from 'react-native-router-flux'
+import { Alert } from 'react-native'
 import Styles from './Styles/NavigationContainerStyle'
 import NavigationDrawer from './NavigationDrawer'
 import NavItems from './NavItems'
@@ -17,16 +18,30 @@ import ThemeScreen from '../Containers/ThemeScreen'
 import DeviceInfoScreen from '../Containers/DeviceInfoScreen'
 import SplashScreen from '../Containers/SplashScreen'
 import HomeScreen from '../Containers/HomeScreen'
-import RoomMainScreen from '../Containers/RoomMainScreen'
+import RoomScreen from '../Containers/RoomScreen'
+import ArticleScreen from '../Containers/ArticleScreen'
 
 /* **************************
 * Documentation: https://github.com/aksonov/react-native-router-flux
 ***************************/
 
 class NavigationRouter extends Component {
+  onExitApp = () => {
+    Alert.alert(
+      '종료하기',
+      '정말 종료 하실 건가요? ㅠ_ ㅠ',
+      [
+        { text: '취소', onPress: () => {} },
+        { text: '확인', onPress: () => BackAndroid.exitApp() },
+      ]
+    );
+    return true;
+  };
+
   render () {
     return (
-      <Router>
+      <Router
+        onExitApp={this.onExitApp}>
         <Scene
           key='root'
           navigationBarStyle={Styles.navBar}
@@ -38,11 +53,11 @@ class NavigationRouter extends Component {
             initial
             hideNavBar
             component={SplashScreen} />
-            <Scene
-              key='home'
-              type={ActionConst.RESET}
-              hideNavBar
-              component={HomeScreen} />
+          <Scene
+            key='home'
+            type={ActionConst.RESET}
+            hideNavBar
+            component={HomeScreen} />
           <Scene
             key='usageExamples'
             component={UsageExamplesScreen}
@@ -59,9 +74,14 @@ class NavigationRouter extends Component {
               leftButtonIconStyle={Styles.leftButton}
               rightButtonTextStyle={Styles.rightButton}>
               <Scene
-                key='roomMain'
-                component={RoomMainScreen}
-                title='방 정보'
+                key='room'
+                component={RoomScreen}
+                title='room'
+                renderRightButton={NavItems.homeButton} />
+              <Scene
+                key='article'
+                component={ArticleScreen}
+                title='article'
                 renderRightButton={NavItems.homeButton} />
               <Scene
                 key='presentationScreen'

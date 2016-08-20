@@ -11,20 +11,73 @@ import RoomInfo from '../Components/RoomInfo'
 import styles from './Styles/HomeScreenStyle'
 import { Colors } from '../Themes'
 
+const dummyUser = {
+  userMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg',
+  userId: 1,
+  username: '아이유'
+}
+
+const dummyRooms = {
+  rooms: [
+    {
+      roomId: 1,
+      title: '행복이 가득한 창전동',
+      hostId: 1,
+      hostName: '철수'
+    },
+    {
+      roomId: 2,
+      title: '영희네 동네 주민 모임',
+      hostId: 2,
+      hostName: '영희'
+    },
+    {
+      roomId: 3,
+      title: '민수 때릴 사람',
+      hostId: 3,
+      hostName: '민수'
+    },
+    {
+      roomId: 4,
+      title: '민성 아파트 모여라',
+      hostId: 4,
+      hostName: '민성'
+    },
+    {
+      roomId: 5,
+      title: '혜임네 동네 주민 모임',
+      hostId: 5,
+      hostName: '혜임'
+    },
+    {
+      roomId: 6,
+      title: '현정 때릴 사람',
+      hostId: 6,
+      hostName: '현정'
+    },
+    {
+      roomId: 7,
+      title: '행지 때릴 사람',
+      hostId: 7,
+      hostName: '행지'
+    }
+  ]
+}
+
 class HomeScreen extends React.Component {
 
   static propTypes = {
-    toRoomMain: PropTypes.func,
+    toRoom: PropTypes.func,
     usageExamples: PropTypes.func,
-    fetchRoomList: PropTypes.func,
+    fetchRooms: PropTypes.func,
     rooms: PropTypes.array,
     user: PropTypes.object,
     fetchUser: PropTypes.func
   }
 
   componentDidMount () {
-    this.fetchRooms()
-    this.props.fetchUser()
+    this.props.fetchUser(dummyUser)
+    this.props.fetchRooms(1, dummyRooms)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -57,28 +110,23 @@ class HomeScreen extends React.Component {
     if (i === 2) {
       return this.props.usageExamples()
     }
-    return this.props.toRoomMain({roomId: room.roomId, title: room.title})
+    return this.props.toRoom({roomId: room.roomId, title: room.title})
   }
-
-  fetchRooms = (userId) => {
-    this.props.fetchRoomList(userId)
-  }
-
 }
 
 const mapStateToProps = (state) => {
   return {
-    rooms: state.roomList.rooms,
+    rooms: state.rooms.items,
     user: state.login.item
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toRoomMain: NavigationActions.drawer,
+    toRoom: NavigationActions.drawer,
     usageExamples: NavigationActions.usageExamples,
-    fetchRoomList: (userId) => dispatch(Actions.fetchRoomList(userId)),
-    fetchUser: () => dispatch(Actions.fetchUser())
+    fetchRooms: (userId, dummyRooms) => dispatch(Actions.fetchRooms(userId, dummyRooms)),
+    fetchUser: (dummyUser) => dispatch(Actions.fetchUser(dummyUser))
   }
 }
 

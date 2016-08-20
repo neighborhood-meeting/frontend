@@ -3,7 +3,7 @@ import Types from './Types'
 const attemptLogin = (username, password) => ({ type: Types.LOGIN_ATTEMPT, username, password })
 const loginSuccess = (user) => ({ type: Types.LOGIN_SUCCESS, user })
 const loginFailure = (errorCode) => ({ type: Types.LOGIN_FAILURE, errorCode })
-const fetchUser = () => {
+const fetchUser = (dummyUser) => {
   return (dispatch) => {
     dispatch(loginSuccess(dummyUser))
   }
@@ -17,29 +17,29 @@ const requestTemperature = (city) => ({ type: Types.TEMPERATURE_REQUEST, city })
 const receiveTemperature = (temperature) => ({ type: Types.TEMPERATURE_RECEIVE, temperature })
 const receiveTemperatureFailure = () => ({ type: Types.TEMPERATURE_FAILURE })
 
-const requestRoomList = (userId) => ({ type: Types.ROOM_LIST_REQUEST, userId })
-const receiveRoomList = (rooms) => ({ type: Types.ROOM_LIST_RECEIVE, rooms })
-const fetchRoomList = (userId) => {
+const requestRooms = (userId) => ({ type: Types.ROOMS_REQUEST, userId })
+const receiveRooms = (rooms) => ({ type: Types.ROOMS_RECEIVE, rooms })
+const fetchRooms = (userId, dummyRooms) => {
   return (dispatch) => {
     // return fetch('rooms.json')
     // .then((response) => response.json())
     // .then((responseJson) => {
-    //   dispatch(receiveRoomList(responseJson.rooms))
+    //   dispatch(receiveRooms(responseJson.rooms))
     //   return responseJson.rooms
     // })
     // .catch((error) => {
     //   console.error(error)
     // })
-    dispatch(receiveRoomList(rooms.rooms))
+    dispatch(receiveRooms(dummyRooms))
   }
 }
 
-const requestRoomMain = () => ({ type: Types.ROOM_MAIN_REQUEST })
-const receiveRoomMain = (room) => ({ type: Types.ROOM_MAIN_RECEIVE, room })
-const receiveRoomMainFailure = () => ({ type: Types.ROOM_MAIN_FAILURE })
-const fetchRoomMain = (roomId) => {
+const requestRoom = () => ({ type: Types.ROOM_REQUEST })
+const receiveRoom = (room) => ({ type: Types.ROOM_RECEIVE, room })
+const receiveRoomFailure = () => ({ type: Types.ROOM_FAILURE })
+const fetchRoom = (roomId, dummyRoom) => {
   return (dispatch) => {
-    dispatch(receiveRoomMain(room))
+    dispatch(receiveRoom(dummyRoom))
   }
 }
 
@@ -58,61 +58,14 @@ export default {
   receiveTemperature,
   receiveTemperatureFailure,
 
-  requestRoomList,
-  receiveRoomList,
-  fetchRoomList,
+  requestRooms,
+  receiveRooms,
+  fetchRooms,
 
-  requestRoomMain,
-  receiveRoomMain,
-  receiveRoomMainFailure,
-  fetchRoomMain
-}
-
-const rooms = {
-  rooms: [
-    {
-      roomId: 1,
-      title: '행복이 가득한 창전동',
-      hostId: 1,
-      hostName: '철수'
-    },
-    {
-      roomId: 2,
-      title: '영희네 동네 주민 모임',
-      hostId: 2,
-      hostName: '영희'
-    },
-    {
-      roomId: 3,
-      title: '민수 때릴 사람',
-      hostId: 3,
-      hostName: '민수'
-    },
-    {
-      roomId: 4,
-      title: '민성 아파트 모여라',
-      hostId: 4,
-      hostName: '민성'
-    },
-    {
-      roomId: 5,
-      title: '혜임네 동네 주민 모임',
-      hostId: 5,
-      hostName: '혜임'
-    },
-    {
-      roomId: 6,
-      title: '현정 때릴 사람',
-      hostId: 6,
-      hostName: '현정'
-    },
-    {
-      roomId: 7,
-      title: '행지 때릴 사람',
-      hostId: 7,
-      hostName: '행지'
-    }
-  ]
+  requestRoom,
+  receiveRoom,
+  receiveRoomFailure,
+  fetchRoom
 }
 
 const room = {
@@ -125,10 +78,4 @@ const room = {
     userName: '영희',
     text: '웰컴 베베'
   }
-}
-
-const dummyUser = {
-  userMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg',
-  userId: 1,
-  username: '아이유'
 }
