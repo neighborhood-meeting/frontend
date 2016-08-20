@@ -54,9 +54,11 @@ export default class UsageExamplesScreen extends React.Component {
   }
 
   renderStyle (fontStyle) {
-    return (<Text style={[styles.fontRow, {...Fonts.style[fontStyle]}]} key={fontStyle}>
-              {`This is ${fontStyle} style`}
-            </Text>)
+    return (
+      <Text style={[styles.fontRow, {...Fonts.style[fontStyle]}]} key={fontStyle}>
+        {`This is ${fontStyle} style`}
+      </Text>
+    )
   }
 
   renderStyles () {

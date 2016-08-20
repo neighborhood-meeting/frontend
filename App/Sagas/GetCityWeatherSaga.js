@@ -68,5 +68,6 @@ export default (api) => {
   // often required in some flow control cases.
   return {
     watcher,
-  worker}
+    worker
+  }
 }

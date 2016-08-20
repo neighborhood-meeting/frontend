@@ -16,10 +16,11 @@ export default {
   backButton () {
     return (
       <TouchableOpacity onPress={NavigationActions.pop}>
-        <Icon name='angle-left'
-              size={Metrics.icons.medium}
-              color={Colors.snow}
-              style={styles.navButtonLeft} />
+        <Icon
+          name='angle-left'
+          size={Metrics.icons.medium}
+          color={Colors.snow}
+          style={styles.navButtonLeft} />
       </TouchableOpacity>
     )
   },
@@ -27,10 +28,11 @@ export default {
   hamburgerButton () {
     return (
       <TouchableOpacity onPress={toggleDrawer}>
-        <Icon name='bars'
-              size={Metrics.icons.medium}
-              color={Colors.snow}
-              style={styles.navButtonLeft} />
+        <Icon
+          name='bars'
+          size={Metrics.icons.medium}
+          color={Colors.snow}
+          style={styles.navButtonLeft} />
       </TouchableOpacity>
     )
   },
@@ -38,10 +40,11 @@ export default {
   editButton () {
     return (
       <TouchableOpacity>
-        <Icon name='edit'
-              size={Metrics.icons.medium}
-              color={Colors.snow}
-              style={styles.navButtonLeft} />
+        <Icon
+          name='edit'
+          size={Metrics.icons.medium}
+          color={Colors.snow}
+          style={styles.navButtonLeft} />
       </TouchableOpacity>
     )
   },
@@ -49,10 +52,11 @@ export default {
   homeButton () {
     return (
       <TouchableOpacity onPress={NavigationActions.home} style={{position: 'absolute', right: 0}}>
-        <Icon name='home'
-              size={Metrics.icons.medium}
-              color={Colors.snow}
-              style={styles.navButtonRight} />
+        <Icon
+          name='home'
+          size={Metrics.icons.medium}
+          color={Colors.snow}
+          style={styles.navButtonRight} />
       </TouchableOpacity>
     )
   }
