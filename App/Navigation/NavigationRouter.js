@@ -42,24 +42,24 @@ class NavigationRouter extends Component {
     return (
       <Router
         onExitApp={this.onExitApp}>
-        {/* <Scene
+        <Scene
           key='splash'
           initial
           hideNavBar
-          component={SplashScreen} /> */}
-        <Scene key='main' type={ActionConst.RESET} component={NavigationDrawer}>
+          component={SplashScreen} />
+        <Scene
+          initial
+          key='home'
+          type={ActionConst.RESET}
+          hideNavBar
+          component={HomeScreen} />
+        <Scene key='regionMain' component={NavigationDrawer}>
           <Scene
             key='drawerChildrenWrapper'
             navigationBarStyle={Styles.navBar}
             titleStyle={Styles.title}
             leftButtonIconStyle={Styles.leftButton}
             rightButtonTextStyle={Styles.rightButton}>
-            {/* <Scene
-              // initial
-              key='home'
-              type={ActionConst.RESET}
-              hideNavBar
-              component={HomeScreen} /> */}
             <Scene
               initial
               key='region'

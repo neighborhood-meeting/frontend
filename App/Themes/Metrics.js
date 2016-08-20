@@ -10,10 +10,11 @@ const metrics = {
   baseMargin: 10,
   doubleBaseMargin: 20,
   smallMargin: 5,
+  tinyMargin: 2,
   horizontalLineHeight: 1,
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,
-  navBarHeight: (Platform.OS === 'ios') ? 70 : 70,
+  navBarHeight: (Platform.OS === 'ios') ? 60 : 60,
   buttonRadius: 4,
   icons: {
     tiny: 15,
@@ -23,9 +24,10 @@ const metrics = {
     xl: 60
   },
   images: {
-    small: 20,
+    tiny: 25,
+    small: 30,
     medium: 40,
-    large: 60,
+    large: 55,
     logo: 300
   }
 }
