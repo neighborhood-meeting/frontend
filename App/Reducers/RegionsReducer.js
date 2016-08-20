@@ -17,7 +17,7 @@ const request = (state, action) => state.merge({
 const receive = (state, action) => state.merge({
   fetching: false,
   error: null,
-  items: [...action.rooms.rooms]
+  items: [...action.regions]
 })
 
 // temp failure
@@ -29,9 +29,9 @@ const failure = (state, action) => state.merge({
 
 // map our types to our handlers
 const ACTION_HANDLERS = {
-  [Types.ROOMS_REQUEST]: request,
-  [Types.ROOMS_RECEIVE]: receive,
-  [Types.ROOMS_FAILURE]: failure
+  [Types.REGIONS_REQUEST]: request,
+  [Types.REGIONS_RECEIVE]: receive,
+  [Types.REGIONS_FAILURE]: failure
 }
 
 export default createReducer(INITIAL_STATE, ACTION_HANDLERS)

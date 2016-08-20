@@ -6,7 +6,7 @@ export const INITIAL_STATE = Immutable({
   item: {
     userMainImage: null,
     userId: null,
-    username: null
+    name: null
   },
   username: null,
   errorCode: null,
@@ -23,7 +23,7 @@ const success = (state, action) => {
     attempting: false,
     errorCode: null,
     item: {
-      username: user.username,
+      name: user.name,
       userId: user.userId,
       userMainImage: user.userMainImage
     }

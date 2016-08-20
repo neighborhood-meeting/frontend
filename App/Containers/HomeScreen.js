@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
 
-import RoomInfo from '../Components/RoomInfo'
+import RegionSimple from '../Components/RegionSimple'
 
 // Styles
 import styles from './Styles/HomeScreenStyle'
@@ -13,70 +13,53 @@ import styles from './Styles/HomeScreenStyle'
 const dummyUser = {
   userMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg',
   userId: 1,
-  username: '아이유'
+  name: '아이유'
 }
 
-const dummyRooms = {
-  rooms: [
-    {
-      roomId: 1,
-      title: '행복이 가득한 창전동',
-      hostId: 1,
-      hostName: '철수'
-    },
-    {
-      roomId: 2,
-      title: '영희네 동네 주민 모임',
-      hostId: 2,
-      hostName: '영희'
-    },
-    {
-      roomId: 3,
-      title: '민수 때릴 사람',
-      hostId: 3,
-      hostName: '민수'
-    },
-    {
-      roomId: 4,
-      title: '민성 아파트 모여라',
-      hostId: 4,
-      hostName: '민성'
-    },
-    {
-      roomId: 5,
-      title: '혜임네 동네 주민 모임',
-      hostId: 5,
-      hostName: '혜임'
-    },
-    {
-      roomId: 6,
-      title: '현정 때릴 사람',
-      hostId: 6,
-      hostName: '현정'
-    },
-    {
-      roomId: 7,
-      title: '행지 때릴 사람',
-      hostId: 7,
-      hostName: '행지'
+const dummyRegions = [
+  {
+    regionId: 1,
+    name: '행복이 가득한 창전동',
+    description: '행복이 가득하다',
+    owner: {
+      userId: 1,
+      name: '철수'
     }
-  ]
-}
+  },
+  {
+    regionId: 2,
+    name: '영희네 동네 주민 모임',
+    description: '동네 주민이 가득하다',
+    owner: {
+      userId: 2,
+      name: '영희'
+    }
+  },
+  {
+    regionId: 3,
+    name: '민수 때릴 사람',
+    description: '때릴 사람이 가득하다',
+    owner: {
+      userId: 3,
+      name: '민수'
+    }
+  }
+]
 
 class HomeScreen extends React.Component {
 
   static propTypes = {
-    toRoom: PropTypes.func,
+    toRegion: PropTypes.func,
     usageExamples: PropTypes.func,
-    fetchRooms: PropTypes.func,
-    rooms: PropTypes.array,
+    fetchRegions: PropTypes.func,
+    regions: PropTypes.array,
     user: PropTypes.object,
     fetchUser: PropTypes.func
   }
 
   componentDidMount () {
     this.props.fetchUser(dummyUser)
-    this.props.fetchRooms(1, dummyRooms)
+    this.props.fetchRegions(1, dummyRegions)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -89,42 +72,42 @@ class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View style={styles.profileBox}>
           <Image source={{uri: user.userMainImage}} style={styles.profileImage} />
-          <Text style={styles.profileText}>{user.username}</Text>
+          <Text style={styles.profileText}>{user.name}</Text>
         </View>
         <ScrollView style={styles.container}>
-          {this.createRoomInfos()}
+          {this.createRegionSimples()}
         </ScrollView>
       </View>
     )
   }
 
-  createRoomInfos = () => {
-    const {rooms} = this.props
-    return rooms.map((room, i) => {
-      return <RoomInfo key={i} room={room} onPress={() => this.handleRoomPress(room, i)} />
+  createRegionSimples = () => {
+    const {regions} = this.props
+    return regions.map((region, i) => {
+      return <RegionSimple key={i} region={region} onPress={() => this.handleRoomPress(region, i)} />
     })
   }
 
-  handleRoomPress = (room, i) => {
+  handleRoomPress = (region, i) => {
     if (i === 2) {
       return this.props.usageExamples()
     }
-    return this.props.toRoom({roomId: room.roomId, title: room.title})
+    return this.props.toRegion({regionId: region.regionId})
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    rooms: state.rooms.items,
+    regions: state.regions.items,
     user: state.login.item
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toRoom: NavigationActions.drawer,
+    toRegion: NavigationActions.region,
     usageExamples: NavigationActions.usageExamples,
-    fetchRooms: (userId, dummyRooms) => dispatch(Actions.fetchRooms(userId, dummyRooms)),
+    fetchRegions: (userId, dummyRegions) => dispatch(Actions.fetchRegions(userId, dummyRegions)),
     fetchUser: (dummyUser) => dispatch(Actions.fetchUser(dummyUser))
   }
 }

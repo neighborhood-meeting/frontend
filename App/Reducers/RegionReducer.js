@@ -3,14 +3,14 @@ import Immutable from 'seamless-immutable'
 import { createReducer } from 'reduxsauce'
 
 export const INITIAL_STATE = Immutable({
-  roomId: 0,
-  title: '',
-  hostId: 0,
-  hostName: '',
-  notice: {
-    userId: 0,
-    userName: '',
-    text: ''
+  item: {
+    roomId: null,
+    name: '',
+    owner: {
+      userId: null,
+      name: ''
+    },
+    notice: ''
   },
   fetching: false,
   error: null
@@ -25,7 +25,9 @@ const request = (state, action) => state.merge({
 const receive = (state, action) => state.merge({
   fetching: false,
   error: null,
-  ...action.room
+  item: {
+    ...action.room
+  }
 })
 
 // temp failure
@@ -36,9 +38,9 @@ const failure = (state, action) => state.merge({
 
 // map our types to our handlers
 const ACTION_HANDLERS = {
-  [Types.ROOM_REQUEST]: request,
-  [Types.ROOM_RECEIVE]: receive,
-  [Types.ROOM_FAILURE]: failure
+  [Types.REGION_REQUEST]: request,
+  [Types.REGION_RECEIVE]: receive,
+  [Types.REGION_FAILURE]: failure
 }
 
 export default createReducer(INITIAL_STATE, ACTION_HANDLERS)
