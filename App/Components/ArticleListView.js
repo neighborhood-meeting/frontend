@@ -3,6 +3,8 @@ import { View, Text, Image, ListView, TouchableOpacity } from 'react-native'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
+import { getCagetory } from '../Commons/Categories'
+
 // Styles
 import styles from './Styles/ArticleListViewStyle'
 import { Metrics, Colors } from '../Themes'
@@ -20,22 +22,19 @@ export default class ArticleListView extends React.Component {
   }
 
   renderRow = (rowData) => {
-    const { category, writer } = rowData
+    const { writer } = rowData
     return (
       <TouchableOpacity onPress={() => this.props.onPress(rowData)}>
         <View style={styles.row}>
-          <View style={styles.categoryBlock}>
-            <Icon
-              name='shopping-basket'
-              size={Metrics.icons.tiny}
-              color={Colors.panther} />
-            <Text style={styles.categoryIconText}>{category && category.name}</Text>
-            <Text style={styles.timeText}>{rowData.createdAt}</Text>
-          </View>
+          {this.createCategoryBlock(rowData)}
           <View style={styles.contentBlock}>
             <View style={styles.contentTextBlock}>
-              <Text style={styles.contentTitle}>{rowData.name}</Text>
-              <Text style={styles.content}>{rowData.content}</Text>
+              <Text style={styles.contentTitle}>
+                {rowData.name}
+              </Text>
+              <Text style={styles.content}>
+                {rowData.content}
+              </Text>
             </View>
             <View style={styles.contentImageBlock}>
               <Image source={{uri: rowData.articleMainImage}} style={styles.contentMainImage} />
@@ -43,14 +42,39 @@ export default class ArticleListView extends React.Component {
           </View>
           <View style={styles.bottomBlock}>
             <View style={styles.writerBlock}>
-              <Image source={{uri: rowData.articleMainImage}} style={styles.writerImage} />
-              <Text style={styles.writerText}>{writer && writer.name}</Text>
+              <Image source={{uri: writer.profileUrl}} style={styles.writerImage} />
+              <Text style={styles.writerText}>
+                {writer && writer.name}
+              </Text>
             </View>
-            <Text style={styles.replyText}>댓글 {rowData.commentCount}</Text>
+            <Text style={styles.replyText}>
+              댓글
+              {rowData.commentCount}
+            </Text>
           </View>
         </View>
       </TouchableOpacity>
     )
+  }
+
+  createCategoryBlock = (rowData) => {
+    const { category } = rowData
+    console.log('----------')
+    console.log(category)
+    const categoryType = category && getCagetory(category.type)
+    if (categoryType) {
+      return (
+        <View style={styles.categoryBlock}>
+          <Icon name={categoryType.icon} size={Metrics.icons.tiny} color={Colors.panther} />
+          <Text style={styles.categoryIconText}>
+            {categoryType.name}
+          </Text>
+          <Text style={styles.timeText}>
+            {rowData.createdAt}
+          </Text>
+        </View>
+      )
+    }
   }
 
   noRowData = () => {

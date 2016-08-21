@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import LoginReducer from './LoginReducer'
 import RegionsReducer from './RegionsReducer'
-import RegionReducer from './RegionReducer'
+// import RegionReducer from './RegionReducer'
 import ArticlesReducer from './ArticlesReducer'
 import ArticleReducer from './ArticleReducer'
 import CommentsReducer from './CommentsReducer'
@@ -10,7 +10,7 @@ import CommentsReducer from './CommentsReducer'
 export default combineReducers({
   login: LoginReducer,
   regions: RegionsReducer,
-  region: RegionReducer,
+  // region: RegionReducer,
   articles: ArticlesReducer,
   article: ArticleReducer,
   comments: CommentsReducer

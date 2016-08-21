@@ -12,11 +12,11 @@ export default class RegionSimple extends React.Component {
     const {region, onPress} = this.props
     return (
       <TouchableOpacity style={styles.container} onPress={onPress}>
-        <Text style={styles.boldLabel}>
+        <Text style={styles.regionTitle}>
           {region.name}
         </Text>
-        <Text style={styles.label}>
-          호스트 ? {region.owner.name}
+        <Text style={styles.noticeText}>
+          {region.notice}
         </Text>
       </TouchableOpacity>
     )

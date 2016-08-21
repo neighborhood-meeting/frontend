@@ -11,16 +11,6 @@ import ArticleListView from '../Components/ArticleListView'
 // Styles
 import styles from './Styles/RegionScreenStyle'
 
-const dummyRegion = {
-  regionId: 1,
-  name: '행복이 가득한 창전동',
-  owner: {
-    userId: 1,
-    name: '철수'
-  },
-  notice: '웰컴 베베'
-}
-
 const dummyArticles = [
   {
     articleId: 1,
@@ -31,12 +21,12 @@ const dummyArticles = [
     writer: {
       userId: 1,
       name: '쿠키즈',
-      userMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
+      profileUrl: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
     },
     commentCount: 8,
     category: {
       categoryId: 1,
-      name: '공구해요'
+      type: 'HELLO'
     },
     createdAt: '2016-08-21 06:27'
   },
@@ -49,12 +39,12 @@ const dummyArticles = [
     writer: {
       userId: 1,
       name: '쿠키즈',
-      userMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
+      profileUrl: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
     },
     commentCount: 8,
     category: {
       categoryId: 1,
-      name: '공구해요'
+      type: 'FREE'
     },
     createdAt: '2016-08-21 06:27'
   },
@@ -67,12 +57,12 @@ const dummyArticles = [
     writer: {
       userId: 1,
       name: '쿠키즈',
-      userMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
+      profileUrl: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
     },
     commentCount: 8,
     category: {
       categoryId: 1,
-      name: '공구해요'
+      type: 'SHOPPING'
     },
     createdAt: '2016-08-21 06:27'
   },
@@ -85,12 +75,12 @@ const dummyArticles = [
     writer: {
       userId: 1,
       name: '쿠키즈',
-      userMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
+      profileUrl: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
     },
     commentCount: 8,
     category: {
       categoryId: 1,
-      name: '공구해요'
+      type: 'LIGHTNING'
     },
     createdAt: '2016-08-21 06:27'
   },
@@ -103,12 +93,12 @@ const dummyArticles = [
     writer: {
       userId: 1,
       name: '쿠키즈',
-      userMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
+      profileUrl: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
     },
     commentCount: 8,
     category: {
       categoryId: 1,
-      name: '공구해요'
+      type: 'HELP'
     },
     createdAt: '2016-08-21 06:27'
   },
@@ -121,12 +111,12 @@ const dummyArticles = [
     writer: {
       userId: 1,
       name: '쿠키즈',
-      userMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
+      profileUrl: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
     },
     commentCount: 8,
     category: {
       categoryId: 1,
-      name: '공구해요'
+      type: 'HELLO'
     },
     createdAt: '2016-08-21 06:27'
   }
@@ -135,16 +125,13 @@ const dummyArticles = [
 class RegionScreen extends React.Component {
 
   static propTypes = {
-    regionId: PropTypes.number.isRequired,
-    fetchRegion: PropTypes.func.isRequired,
+    region: PropTypes.object.isRequired,
     fetchArticles: PropTypes.func.isRequired,
     toArticle: PropTypes.func.isRequired,
-    region: PropTypes.object,
     articles: PropTypes.array
   }
 
   componentDidMount () {
-    this.props.fetchRegion(this.props.regionId, dummyRegion)
     this.props.fetchArticles(this.props.regionId, dummyArticles)
   }
 
@@ -152,7 +139,7 @@ class RegionScreen extends React.Component {
     const {region, articles} = this.props
     const notice = region.notice && (<Notice notice={region.notice} />)
     return (
-    <View style={styles.mainContainer}>
+      <View style={styles.mainContainer}>
         {notice}
         <View style={styles.articleListBlock}>
           <ArticleListView articles={articles} onPress={this.handleArticlePress} />
@@ -169,15 +156,12 @@ class RegionScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    region: state.region.item,
-    regionId: 1,
     articles: state.articles.items
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchRegion: (regionId, dummyRegion) => dispatch(Actions.fetchRegion(regionId, dummyRegion)),
     fetchArticles: (regionId, dummyArticles) => dispatch(Actions.fetchArticles(regionId, dummyArticles)),
     toArticle: NavigationActions.article
   }

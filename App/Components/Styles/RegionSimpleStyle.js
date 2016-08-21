@@ -11,7 +11,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.snow,
     borderRadius: Metrics.smallMargin
   },
-  boldLabel: {
+  regionTitle: {
     fontWeight: 'bold',
     alignSelf: 'center',
     color: Colors.panther,
@@ -19,7 +19,7 @@ export default StyleSheet.create({
     marginBottom: Metrics.smallMargin,
     fontSize: Fonts.size.medium
   },
-  label: {
+  noticeText: {
     alignSelf: 'center',
     color: Colors.panther,
     textAlign: 'center',
