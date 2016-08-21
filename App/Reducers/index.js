@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
 import LoginReducer from './LoginReducer'
-import WeatherReducer from './WeatherReducer'
 import RegionsReducer from './RegionsReducer'
 import RegionReducer from './RegionReducer'
 import ArticlesReducer from './ArticlesReducer'
@@ -10,7 +9,6 @@ import CommentsReducer from './CommentsReducer'
 // glue all the reducers together into 1 root reducer
 export default combineReducers({
   login: LoginReducer,
-  weather: WeatherReducer,
   regions: RegionsReducer,
   region: RegionReducer,
   articles: ArticlesReducer,

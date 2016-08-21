@@ -1,6 +1,10 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, TouchableOpacity } from 'react-native'
+
+import Icon from 'react-native-vector-icons/FontAwesome'
+
 import styles from './Styles/NoticeStyle'
+import { Metrics, Colors } from '../Themes'
 
 export default class Notice extends React.Component {
 
@@ -14,12 +18,24 @@ export default class Notice extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.boldLabel}>
-          {notice}
-        </Text>
-        <Text style={styles.label}>
-          {notice}
-        </Text>
+        <View style={styles.iconBlock}>
+          <Icon
+            name='bell-o'
+            size={Metrics.icons.small}
+            color={Colors.orange} />
+          <Text style={styles.iconText}>공지</Text>
+        </View>
+        <View style={styles.noticeBlock}>
+          <Text style={styles.noticeText}>
+            {notice}
+          </Text>
+        </View>
+        <TouchableOpacity style={styles.expandButton}>
+          <Icon
+            name='angle-down'
+            size={Metrics.icons.medium}
+            color={Colors.steel} />
+        </TouchableOpacity>
       </View>
     )
   }

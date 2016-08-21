@@ -3,24 +3,36 @@ import { Colors, Metrics } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
-    height: 150,
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: Colors.snow
+  },
+  noticeBlock: {
+    flex: 5,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  iconBlock: {
+    flex: 2,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  expandButton: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    margin: Metrics.baseMargin,
-    marginBottom: Metrics.smallMargin,
-    backgroundColor: Colors.snow,
-    borderRadius: Metrics.smallMargin
+    marginRight: Metrics.baseMargin
   },
-  boldLabel: {
+  iconText: {
     fontWeight: 'bold',
-    alignSelf: 'center',
-    color: Colors.panther,
-    textAlign: 'center',
-    marginBottom: Metrics.smallMargin
+    color: Colors.orange,
+    marginLeft: Metrics.smallMargin
   },
-  label: {
+  noticeText: {
     alignSelf: 'center',
-    color: Colors.panther,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: Colors.panther
   }
 })

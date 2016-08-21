@@ -103,7 +103,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toRegion: NavigationActions.region,
+    toRegion: NavigationActions.regionMain,
     fetchRegions: (userId, dummyRegions) => dispatch(Actions.fetchRegions(userId, dummyRegions))
   }
 }
