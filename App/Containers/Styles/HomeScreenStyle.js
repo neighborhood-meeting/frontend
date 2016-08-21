@@ -31,7 +31,7 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   regionList: {
-    height: 250,
+    height: 300,
     alignItems: 'center',
     justifyContent: 'space-around'
   }

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { View, Text, Image, ListView, TouchableOpacity } from 'react-native'
+import moment from 'moment'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
@@ -37,7 +38,7 @@ export default class ArticleListView extends React.Component {
               </Text>
             </View>
             <View style={styles.contentImageBlock}>
-              <Image source={{uri: rowData.articleMainImage}} style={styles.contentMainImage} />
+              <Image source={{uri: rowData.articleMainImageUrl}} style={styles.contentMainImage} />
             </View>
           </View>
           <View style={styles.bottomBlock}>
@@ -59,8 +60,6 @@ export default class ArticleListView extends React.Component {
 
   createCategoryBlock = (rowData) => {
     const { category } = rowData
-    console.log('----------')
-    console.log(category)
     const categoryType = category && getCagetory(category.type)
     if (categoryType) {
       return (
@@ -70,7 +69,7 @@ export default class ArticleListView extends React.Component {
             {categoryType.name}
           </Text>
           <Text style={styles.timeText}>
-            {rowData.createdAt}
+            {moment(rowData.createdAt).format('MM-DD')}
           </Text>
         </View>
       )

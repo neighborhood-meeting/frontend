@@ -9,27 +9,6 @@ import RegionSimple from '../Components/RegionSimple'
 // Styles
 import styles from './Styles/HomeScreenStyle'
 
-// const dummyRegions = [
-//   {
-//     regionId: 1,
-//     name: '행복이 가득한 창전동',
-//     description: '행복이 가득하다',
-//     notice: '낙성대 공지'
-//   },
-//   {
-//     regionId: 2,
-//     name: '영희네 동네 주민 모임',
-//     description: '동네 주민이 가득하다',
-//     notice: '낙성대 공지'
-//   },
-//   {
-//     regionId: 3,
-//     name: '민수 때릴 사람',
-//     description: '때릴 사람이 가득하다',
-//     notice: '낙성대 공지'
-//   }
-// ]
-
 class HomeScreen extends React.Component {
 
   static propTypes = {

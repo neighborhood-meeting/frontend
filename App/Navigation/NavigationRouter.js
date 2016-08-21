@@ -53,6 +53,7 @@ class NavigationRouter extends Component {
               renderLeftButton={NavItems.hamburgerButton}
               renderRightButton={NavItems.homeButton} />
             <Scene
+              // initial
               key='article'
               title='article'
               component={ArticleScreen}
