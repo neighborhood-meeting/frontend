@@ -9,54 +9,38 @@ import RegionSimple from '../Components/RegionSimple'
 // Styles
 import styles from './Styles/HomeScreenStyle'
 
-const dummyUser = {
-  userMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg',
-  userId: 1,
-  name: '아이유'
-}
-
-const dummyRegions = [
-  {
-    regionId: 1,
-    name: '행복이 가득한 창전동',
-    description: '행복이 가득하다',
-    owner: {
-      userId: 1,
-      name: '철수'
-    }
-  },
-  {
-    regionId: 2,
-    name: '영희네 동네 주민 모임',
-    description: '동네 주민이 가득하다',
-    owner: {
-      userId: 2,
-      name: '영희'
-    }
-  },
-  {
-    regionId: 3,
-    name: '민수 때릴 사람',
-    description: '때릴 사람이 가득하다',
-    owner: {
-      userId: 3,
-      name: '민수'
-    }
-  }
-]
+// const dummyRegions = [
+//   {
+//     regionId: 1,
+//     name: '행복이 가득한 창전동',
+//     description: '행복이 가득하다',
+//     notice: '낙성대 공지'
+//   },
+//   {
+//     regionId: 2,
+//     name: '영희네 동네 주민 모임',
+//     description: '동네 주민이 가득하다',
+//     notice: '낙성대 공지'
+//   },
+//   {
+//     regionId: 3,
+//     name: '민수 때릴 사람',
+//     description: '때릴 사람이 가득하다',
+//     notice: '낙성대 공지'
+//   }
+// ]
 
 class HomeScreen extends React.Component {
 
   static propTypes = {
     toRegion: PropTypes.func,
-    usageExamples: PropTypes.func,
     fetchRegions: PropTypes.func,
     regions: PropTypes.array,
     user: PropTypes.object
   }
 
   componentDidMount () {
-    this.props.fetchRegions(this.props.user.userId, dummyRegions)
+    this.props.fetchRegions(this.props.user.userId)
   }
 
   render () {
@@ -64,7 +48,7 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.profileBox}>
-          <Image source={{uri: user.userMainImage}} style={styles.profileImage} />
+          <Image source={{uri: user.profileUrl}} style={styles.profileImage} />
           <Text style={styles.profileText}>
             {user.name}
           </Text>
@@ -88,15 +72,14 @@ class HomeScreen extends React.Component {
   }
 
   handleRegionPress = (region) => {
-    return this.props.toRegion({ regionId: region.regionId, hideNavBar: false, title: region.name })
+    return this.props.toRegion({ region: region, hideNavBar: false, title: region.name })
   }
 
 }
 
 const mapStateToProps = (state) => {
   return {
-    // user: state.login.item,
-    user: dummyUser,
+    user: state.login.item,
     regions: state.regions.items
   }
 }
@@ -104,7 +87,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     toRegion: NavigationActions.regionMain,
-    fetchRegions: (userId, dummyRegions) => dispatch(Actions.fetchRegions(userId, dummyRegions))
+    fetchRegions: (userId) => dispatch(Actions.fetchRegions(userId))
   }
 }
 
