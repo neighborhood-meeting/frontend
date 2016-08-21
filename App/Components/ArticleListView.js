@@ -19,7 +19,7 @@ export default class ArticleListView extends React.Component {
     this.ds = new ListView.DataSource({rowHasChanged})
   }
 
-  _renderRow = (rowData) => {
+  renderRow = (rowData) => {
     const { category, writer } = rowData
     return (
       <TouchableOpacity onPress={() => this.props.onPress(rowData)}>
@@ -34,12 +34,8 @@ export default class ArticleListView extends React.Component {
           </View>
           <View style={styles.contentBlock}>
             <View style={styles.contentTextBlock}>
-              <Text style={styles.boldLabel}>
-                {rowData.name}
-              </Text>
-              <Text style={styles.label}>
-                {rowData.content}
-              </Text>
+              <Text style={styles.contentTitle}>{rowData.name}</Text>
+              <Text style={styles.content}>{rowData.content}</Text>
             </View>
             <View style={styles.contentImageBlock}>
               <Image source={{uri: rowData.articleMainImage}} style={styles.contentMainImage} />
@@ -57,28 +53,8 @@ export default class ArticleListView extends React.Component {
     )
   }
 
-  /* ***********************************************************
-  * STEP 4
-  * If your datasource is driven by Redux, you'll need to
-  * reset it when new data arrives.
-  * DO NOT! place `cloneWithRows` inside of render, since render
-  * is called very often, and should remain fast!  Just replace
-  * state's datasource on newProps.
-  *
-  * e.g.
-    componentWillReceiveProps (newProps) {
-      if (newProps.someData) {
-        this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(newProps.someData)
-        })
-      }
-    }
-  *************************************************************/
-
-  // Used for friendly AlertMessage
-  // returns true if the dataSource is empty
-  _noRowData = () => {
-    return this.state.dataSource.getRowCount() === 0
+  noRowData = () => {
+    return this.ds.dataSource.getRowCount() === 0
   }
 
   render () {
@@ -88,7 +64,7 @@ export default class ArticleListView extends React.Component {
         <ListView
           contentContainerStyle={styles.listContent}
           dataSource={this.ds.cloneWithRows(articles)}
-          renderRow={this._renderRow}
+          renderRow={this.renderRow}
           enableEmptySections />
       </View>
     )

@@ -6,7 +6,11 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.transparent
   },
-
+  listContent: {
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+    marginTop: Metrics.smallMargin
+  },
   row: {
     paddingVertical: 10,
     paddingHorizontal: 20,
@@ -21,7 +25,6 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   contentBlock: {
-    flex: 2.5,
     flexDirection: 'row',
     alignItems: 'stretch',
     justifyContent: 'flex-end',
@@ -47,12 +50,12 @@ export default StyleSheet.create({
   contentTextBlock: {
     flex: 1
   },
-  boldLabel: {
+  contentTitle: {
     fontWeight: 'bold',
     color: Colors.orange,
     marginTop: Metrics.tinyMargin
   },
-  label: {
+  content: {
     color: Colors.panther,
     marginTop: Metrics.tinyMargin
   },
@@ -80,17 +83,10 @@ export default StyleSheet.create({
     fontSize: Fonts.size.small,
     marginLeft: Metrics.smallMargin
   },
-
   replyText: {
     alignSelf: 'center',
     fontSize: Fonts.size.small,
     textAlign: 'right',
     textDecorationLine: 'underline'
-  },
-
-  listContent: {
-    justifyContent: 'space-around',
-    flexWrap: 'wrap',
-    marginTop: Metrics.smallMargin
   }
 })

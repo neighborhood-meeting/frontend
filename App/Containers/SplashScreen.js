@@ -11,7 +11,7 @@ import styles from './Styles/SplashScreenStyle'
 
 class SplashScreen extends React.Component {
   static propTypes = {
-    toMain: PropTypes.func.isRequired
+    toHome: PropTypes.func.isRequired
   }
 
   render () {
@@ -24,7 +24,7 @@ class SplashScreen extends React.Component {
         <Text style={styles.text}>
           Famm!!!!
         </Text>
-        <TouchableOpacity style={styles.guestButton} onPress={this.props.toMain}>
+        <TouchableOpacity style={styles.guestButton} onPress={this.props.toHome}>
           <Text style={styles.guestButtonText}>
             둘러보기
           </Text>
@@ -42,7 +42,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toMain: NavigationActions.main
+    toHome: NavigationActions.home
   }
 }
 

@@ -25,7 +25,7 @@ const dummyArticles = [
   {
     articleId: 1,
     name: '황금고구마, 1kg 3500, 4명',
-    content: '쿠팡에서 5kg 황금고구마 같이 나눠서 사요!',
+    content: '쿠팡에서 5kg 황금고구마 같이 나눠서 사요! 쿠팡에서 5kg 황금고구마 같이 나눠서 사요! 쿠팡에서 5kg 황금고구마 같이 나눠서 사요!',
     viewCount: 100,
     articleMainImage: 'http://cfile21.uf.tistory.com/image/215F5E3F562081A80A1896',
     writer: {

@@ -1,11 +1,8 @@
 export default {
   container: {
     flex: 1,
-    padding: 20,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  logo: {
-    alignSelf: 'center'
+    paddingVertical: 100,
+    paddingLeft: 50,
+    justifyContent: 'space-around'
   }
 }
