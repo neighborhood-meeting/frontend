@@ -3,35 +3,28 @@ import Types from './Types'
 const attemptLogin = (username, password) => ({ type: Types.LOGIN_ATTEMPT, username, password })
 const loginSuccess = (user) => ({ type: Types.LOGIN_SUCCESS, user })
 const loginFailure = (errorCode) => ({ type: Types.LOGIN_FAILURE, errorCode })
+const logout = () => ({ type: Types.LOGOUT })
 const fetchUser = (dummyUser) => {
   return (dispatch) => {
     dispatch(loginSuccess(dummyUser))
   }
 }
 
-const logout = () => ({ type: Types.LOGOUT })
-
-const startup = () => ({ type: Types.STARTUP })
-
-const requestTemperature = (city) => ({ type: Types.TEMPERATURE_REQUEST, city })
-const receiveTemperature = (temperature) => ({ type: Types.TEMPERATURE_RECEIVE, temperature })
-const receiveTemperatureFailure = () => ({ type: Types.TEMPERATURE_FAILURE })
-
 const requestRegions = (userId) => ({ type: Types.REGIONS_REQUEST, userId })
 const receiveRegions = (regions) => ({ type: Types.REGIONS_RECEIVE, regions })
 const receiveRegionsFailure = (regions) => ({ type: Types.REGIONS_FAILURE, regions })
 const fetchRegions = (userId, dummyRegions) => {
   return (dispatch) => {
-    // return fetch(`http://regions.json?${userId}`)
-    // .then((response) => response.json())
-    // .then((responseJson) => {
-    //   dispatch(receiveRegions(responseJson.regions))
-    //   return responseJson.regions
-    // })
-    // .catch((error) => {
-    //   console.error(error)
-    // })
-    dispatch(receiveRegions(dummyRegions))
+    return fetch(`http://facebook.github.io/react-native/movies.json`)
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(receiveRegions(dummyRegions))
+      // return responseJson.region
+      return dummyRegions
+    })
+    .catch((error) => {
+      console.error(error)
+    })
   }
 }
 
@@ -116,11 +109,6 @@ export default {
   loginFailure,
   logout,
   fetchUser,
-
-  startup,
-  requestTemperature,
-  receiveTemperature,
-  receiveTemperatureFailure,
 
   requestRegions,
   receiveRegions,
