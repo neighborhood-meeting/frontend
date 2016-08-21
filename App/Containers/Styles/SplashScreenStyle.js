@@ -15,7 +15,7 @@ export default StyleSheet.create({
     resizeMode: 'contain'
   },
   backgroundImage: {
-    backgroundColor: Colors.facebook,
+    backgroundColor: Colors.orange,
     position: 'absolute',
     top: 0,
     left: 0,

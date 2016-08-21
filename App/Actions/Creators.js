@@ -3,43 +3,80 @@ import Types from './Types'
 const attemptLogin = (username, password) => ({ type: Types.LOGIN_ATTEMPT, username, password })
 const loginSuccess = (user) => ({ type: Types.LOGIN_SUCCESS, user })
 const loginFailure = (errorCode) => ({ type: Types.LOGIN_FAILURE, errorCode })
-const fetchUser = (dummyUser) => {
-  return (dispatch) => {
-    dispatch(loginSuccess(dummyUser))
-  }
-}
-
 const logout = () => ({ type: Types.LOGOUT })
-
-const startup = () => ({ type: Types.STARTUP })
-
-const requestTemperature = (city) => ({ type: Types.TEMPERATURE_REQUEST, city })
-const receiveTemperature = (temperature) => ({ type: Types.TEMPERATURE_RECEIVE, temperature })
-const receiveTemperatureFailure = () => ({ type: Types.TEMPERATURE_FAILURE })
-
-const requestRooms = (userId) => ({ type: Types.ROOMS_REQUEST, userId })
-const receiveRooms = (rooms) => ({ type: Types.ROOMS_RECEIVE, rooms })
-const fetchRooms = (userId, dummyRooms) => {
+const fetchUser = (email, password) => {
   return (dispatch) => {
-    // return fetch('rooms.json')
-    // .then((response) => response.json())
-    // .then((responseJson) => {
-    //   dispatch(receiveRooms(responseJson.rooms))
-    //   return responseJson.rooms
-    // })
-    // .catch((error) => {
-    //   console.error(error)
-    // })
-    dispatch(receiveRooms(dummyRooms))
+    return fetch('http://52.78.120.152/api/v1/users/signIn', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      responseJson.profileUrl = 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
+      dispatch(loginSuccess(responseJson))
+      return responseJson
+    })
+    .catch((error) => {
+      console.error(error)
+    })
   }
 }
 
-const requestRoom = () => ({ type: Types.ROOM_REQUEST })
-const receiveRoom = (room) => ({ type: Types.ROOM_RECEIVE, room })
-const receiveRoomFailure = () => ({ type: Types.ROOM_FAILURE })
-const fetchRoom = (roomId, dummyRoom) => {
+const requestRegions = (userId) => ({ type: Types.REGIONS_REQUEST, userId })
+const receiveRegions = (regions) => ({ type: Types.REGIONS_RECEIVE, regions })
+const receiveRegionsFailure = (regions) => ({ type: Types.REGIONS_FAILURE, regions })
+const fetchRegions = (userId) => {
   return (dispatch) => {
-    dispatch(receiveRoom(dummyRoom))
+    return fetch(`http://52.78.120.152/api/v1/regions?userId=${userId}`)
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(receiveRegions(responseJson))
+      return responseJson
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
+}
+
+const requestRegion = () => ({ type: Types.REGION_REQUEST })
+const receiveRegion = (region) => ({ type: Types.REGION_RECEIVE, region })
+const receiveRegionFailure = () => ({ type: Types.REGION_FAILURE })
+const fetchRegion = (regionId, dummyRegion) => {
+  return (dispatch) => {
+    return fetch('http://facebook.github.io/react-native/movies.json')
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(receiveRegion(dummyRegion))
+      return dummyRegion
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
+}
+
+const requestArticles = () => ({ type: Types.ARTICLES_REQUEST })
+const receiveArticles = (articles) => ({ type: Types.ARTICLES_RECEIVE, articles })
+const receiveArticlesFailure = () => ({ type: Types.ARTICLES_FAILURE })
+const fetchArticles = (regionId, dummyArticles) => {
+  return (dispatch) => {
+    return fetch('http://facebook.github.io/react-native/movies.json')
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(receiveArticles(dummyArticles))
+      return dummyArticles
+    })
+    .catch((error) => {
+      console.error(error)
+    })
   }
 }
 
@@ -48,7 +85,32 @@ const receiveArticle = (article) => ({ type: Types.ARTICLE_RECEIVE, article })
 const receiveArticleFailure = () => ({ type: Types.ARTICLE_FAILURE })
 const fetchArticle = (articleId, dummyArticle) => {
   return (dispatch) => {
-    dispatch(receiveArticle(dummyArticle))
+    return fetch('http://facebook.github.io/react-native/movies.json')
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(receiveArticle(dummyArticle))
+      return dummyArticle
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
+}
+
+const requestComments = () => ({ type: Types.COMMENTS_REQUEST })
+const receiveComments = (comments) => ({ type: Types.COMMENTS_RECEIVE, comments })
+const receiveCommentsFailure = () => ({ type: Types.COMMENTS_FAILURE })
+const fetchComments = (articleId, dummyComments) => {
+  return (dispatch) => {
+    return fetch('http://facebook.github.io/react-native/movies.json')
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(receiveComments(dummyComments))
+      return dummyComments
+    })
+    .catch((error) => {
+      console.error(error)
+    })
   }
 }
 
@@ -62,22 +124,28 @@ export default {
   logout,
   fetchUser,
 
-  startup,
-  requestTemperature,
-  receiveTemperature,
-  receiveTemperatureFailure,
+  requestRegions,
+  receiveRegions,
+  receiveRegionsFailure,
+  fetchRegions,
 
-  requestRooms,
-  receiveRooms,
-  fetchRooms,
+  requestRegion,
+  receiveRegion,
+  receiveRegionFailure,
+  fetchRegion,
 
-  requestRoom,
-  receiveRoom,
-  receiveRoomFailure,
-  fetchRoom,
+  requestArticles,
+  receiveArticles,
+  receiveArticlesFailure,
+  fetchArticles,
 
   requestArticle,
   receiveArticle,
   receiveArticleFailure,
-  fetchArticle
+  fetchArticle,
+
+  requestComments,
+  receiveComments,
+  receiveCommentsFailure,
+  fetchComments
 }

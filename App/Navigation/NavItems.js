@@ -7,7 +7,7 @@ import { Colors, Metrics } from '../Themes'
 
 const toggleDrawer = () => {
   NavigationActions.refresh({
-    key: 'drawer',
+    key: 'regionMain',
     open: value => !value
   })
 }
@@ -37,21 +37,9 @@ export default {
     )
   },
 
-  editButton () {
-    return (
-      <TouchableOpacity>
-        <Icon
-          name='edit'
-          size={Metrics.icons.medium}
-          color={Colors.snow}
-          style={styles.navButtonLeft} />
-      </TouchableOpacity>
-    )
-  },
-
   homeButton () {
     return (
-      <TouchableOpacity onPress={NavigationActions.home} style={{position: 'absolute', right: 0}}>
+      <TouchableOpacity onPress={NavigationActions.home}>
         <Icon
           name='home'
           size={Metrics.icons.medium}

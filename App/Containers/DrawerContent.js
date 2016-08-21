@@ -1,61 +1,59 @@
-import React, { Component } from 'react'
-import { ScrollView, Image, View } from 'react-native'
-import styles from './Styles/DrawerContentStyle'
-import { Images } from '../Themes'
+import React, { PropTypes } from 'react'
+import { View } from 'react-native'
 import DrawerButton from '../Components/DrawerButton'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
-class DrawerContent extends Component {
+import { categories } from '../Commons/Categories'
+
+import styles from './Styles/DrawerContentStyle'
+
+class DrawerContent extends React.Component {
+  static contextTypes = {
+    drawer: PropTypes.object
+  }
+
+  static propTypes = {
+    categories: PropTypes.array
+  }
+
+  static defaultProps = {
+    categories: categories
+  }
 
   toggleDrawer () {
     this.context.drawer.toggle()
   }
 
-  handlePressComponents = () => {
+  handlePressMyArticles = () => {
     this.toggleDrawer()
-    NavigationActions.componentExamples()
+    NavigationActions.home()
   }
 
-  handlePressUsage = () => {
+  handlePressCategory = (type) => {
     this.toggleDrawer()
-    NavigationActions.usageExamples()
-  }
-
-  handlePressAPI = () => {
-    this.toggleDrawer()
-    NavigationActions.apiTesting()
-  }
-
-  handlePressTheme = () => {
-    this.toggleDrawer()
-    NavigationActions.theme()
-  }
-
-  handlePressDevice = () => {
-    this.toggleDrawer()
-    NavigationActions.deviceInfo()
+    NavigationActions.refresh({ categoryType: type })
   }
 
   render () {
     return (
       <View style={styles.container}>
-        <ScrollView>
-          <Image source={Images.logo} style={styles.logo} />
-          <DrawerButton text='글쓰기' onPress={this.handlePressComponents} />
-          <DrawerButton text='내가 쓴 글' onPress={this.handlePressUsage} />
-          <DrawerButton text='채팅방' onPress={this.handlePressAPI} />
-        </ScrollView>
+        <DrawerButton text='내가 쓴 글' onPress={this.handlePressMyArticles} />
+        <DrawerButton text='카테고리별 보기' />
+        {this.createCategoryButtons()}
       </View>
     )
   }
 
-}
+  createCategoryButtons = () => {
+    return categories.map((category) => (
+      <DrawerButton
+        key={category.type}
+        text={category.name}
+        icon={category.icon}
+        onPress={() => this.handlePressCategory(category.type)} />
+    ))
+  }
 
-DrawerContent.propTypes = {
-}
-
-DrawerContent.contextTypes = {
-  drawer: React.PropTypes.object
 }
 
 export default DrawerContent

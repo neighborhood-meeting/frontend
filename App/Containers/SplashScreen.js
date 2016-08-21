@@ -1,26 +1,19 @@
 import React, { PropTypes } from 'react'
-import { View, Image, Text, TouchableOpacity, StatusBar } from 'react-native'
+import { View, Image, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { Images } from '../Themes'
 
 import * as Animatable from 'react-native-animatable'
 import { Actions as NavigationActions } from 'react-native-router-flux'
+import Actions from '../Actions/Creators'
 
 // Styles
 import styles from './Styles/SplashScreenStyle'
 
 class SplashScreen extends React.Component {
   static propTypes = {
-    toHome: PropTypes.func.isRequired
-  }
-
-  componentDidMount () {
-    // setTimeout(this.props.toHome, 0)
-    StatusBar.setHidden(true, 'none')
-  }
-
-  componentWillUnmount () {
-    StatusBar.setHidden(false, 'none')
+    toHome: PropTypes.func.isRequired,
+    fetchUser: PropTypes.func
   }
 
   render () {
@@ -31,16 +24,23 @@ class SplashScreen extends React.Component {
           <Image source={Images.clearLogo} style={styles.logo} />
         </Animatable.View>
         <Text style={styles.text}>
-          이거시 스플래시다!!!!!!!!!!!
+          Famm!!!!
         </Text>
-        <TouchableOpacity style={styles.guestButton} onPress={this.props.toHome}>
+        <TouchableOpacity style={styles.guestButton} onPress={this.handlePressLogin}>
           <Text style={styles.guestButtonText}>
-            둘러보기
+            로그인
           </Text>
         </TouchableOpacity>
       </View>
     )
   }
+
+  handlePressLogin = () => {
+    const { toHome, fetchUser } = this.props
+    fetchUser('ekdxhrl0096@daum.net', '1234')
+      .then(() => toHome())
+  }
+
 }
 
 const mapStateToProps = (state) => {
@@ -50,7 +50,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toHome: NavigationActions.home
+    toHome: NavigationActions.home,
+    fetchUser: (email, password) => dispatch(Actions.fetchUser(email, password))
   }
 }
 

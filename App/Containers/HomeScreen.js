@@ -1,86 +1,46 @@
 import React, { PropTypes } from 'react'
-import { ScrollView, View, Image, Text } from 'react-native'
-// import { Images } from '../Themes'
+import { View, Image, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
 
-import RoomInfo from '../Components/RoomInfo'
+import RegionSimple from '../Components/RegionSimple'
 
 // Styles
 import styles from './Styles/HomeScreenStyle'
 
-const dummyUser = {
-  userMainImage: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg',
-  userId: 1,
-  username: '아이유'
-}
-
-const dummyRooms = {
-  rooms: [
-    {
-      roomId: 1,
-      title: '행복이 가득한 창전동',
-      hostId: 1,
-      hostName: '철수'
-    },
-    {
-      roomId: 2,
-      title: '영희네 동네 주민 모임',
-      hostId: 2,
-      hostName: '영희'
-    },
-    {
-      roomId: 3,
-      title: '민수 때릴 사람',
-      hostId: 3,
-      hostName: '민수'
-    },
-    {
-      roomId: 4,
-      title: '민성 아파트 모여라',
-      hostId: 4,
-      hostName: '민성'
-    },
-    {
-      roomId: 5,
-      title: '혜임네 동네 주민 모임',
-      hostId: 5,
-      hostName: '혜임'
-    },
-    {
-      roomId: 6,
-      title: '현정 때릴 사람',
-      hostId: 6,
-      hostName: '현정'
-    },
-    {
-      roomId: 7,
-      title: '행지 때릴 사람',
-      hostId: 7,
-      hostName: '행지'
-    }
-  ]
-}
+// const dummyRegions = [
+//   {
+//     regionId: 1,
+//     name: '행복이 가득한 창전동',
+//     description: '행복이 가득하다',
+//     notice: '낙성대 공지'
+//   },
+//   {
+//     regionId: 2,
+//     name: '영희네 동네 주민 모임',
+//     description: '동네 주민이 가득하다',
+//     notice: '낙성대 공지'
+//   },
+//   {
+//     regionId: 3,
+//     name: '민수 때릴 사람',
+//     description: '때릴 사람이 가득하다',
+//     notice: '낙성대 공지'
+//   }
+// ]
 
 class HomeScreen extends React.Component {
 
   static propTypes = {
-    toRoom: PropTypes.func,
-    usageExamples: PropTypes.func,
-    fetchRooms: PropTypes.func,
-    rooms: PropTypes.array,
-    user: PropTypes.object,
-    fetchUser: PropTypes.func
+    toRegion: PropTypes.func,
+    fetchRegions: PropTypes.func,
+    regions: PropTypes.array,
+    user: PropTypes.object
   }
 
   componentDidMount () {
-    this.props.fetchUser(dummyUser)
-    this.props.fetchRooms(1, dummyRooms)
-  }
-
-  componentWillReceiveProps (nextProps) {
-    // StatusBar.setBackgroundColor(Colors.orange, false)
+    this.props.fetchRegions(this.props.user.userId)
   }
 
   render () {
@@ -88,44 +48,46 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.profileBox}>
-          <Image source={{uri: user.userMainImage}} style={styles.profileImage} />
-          <Text style={styles.profileText}>{user.username}</Text>
+          <Image source={{uri: user.profileUrl}} style={styles.profileImage} />
+          <Text style={styles.profileText}>
+            {user.name}
+          </Text>
         </View>
-        <ScrollView style={styles.container}>
-          {this.createRoomInfos()}
-        </ScrollView>
+        <View style={styles.regionBox}>
+          <View style={styles.regionList}>
+            {this.createRegionSimples()}
+          </View>
+        </View>
       </View>
     )
   }
 
-  createRoomInfos = () => {
-    const {rooms} = this.props
-    return rooms.map((room, i) => {
-      return <RoomInfo key={i} room={room} onPress={() => this.handleRoomPress(room, i)} />
+  createRegionSimples = () => {
+    const {regions} = this.props
+    return regions.map((region) => {
+      return (
+        <RegionSimple key={region.regionId} region={region} onPress={() => this.handleRegionPress(region)} />
+      )
     })
   }
 
-  handleRoomPress = (room, i) => {
-    if (i === 2) {
-      return this.props.usageExamples()
-    }
-    return this.props.toRoom({roomId: room.roomId, title: room.title})
+  handleRegionPress = (region) => {
+    return this.props.toRegion({ region: region, hideNavBar: false, title: region.name })
   }
+
 }
 
 const mapStateToProps = (state) => {
   return {
-    rooms: state.rooms.items,
-    user: state.login.item
+    user: state.login.item,
+    regions: state.regions.items
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toRoom: NavigationActions.drawer,
-    usageExamples: NavigationActions.usageExamples,
-    fetchRooms: (userId, dummyRooms) => dispatch(Actions.fetchRooms(userId, dummyRooms)),
-    fetchUser: (dummyUser) => dispatch(Actions.fetchUser(dummyUser))
+    toRegion: NavigationActions.regionMain,
+    fetchRegions: (userId) => dispatch(Actions.fetchRegions(userId))
   }
 }
 

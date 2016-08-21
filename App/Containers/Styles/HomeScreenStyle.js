@@ -8,7 +8,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.background
   },
   profileBox: {
-    height: 300,
+    height: 250,
     backgroundColor: Colors.orange,
     alignItems: 'center',
     justifyContent: 'center'
@@ -26,7 +26,13 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: Colors.snow
   },
-  centered: {
-    alignItems: 'center'
+  regionBox: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  regionList: {
+    height: 250,
+    alignItems: 'center',
+    justifyContent: 'space-around'
   }
 })

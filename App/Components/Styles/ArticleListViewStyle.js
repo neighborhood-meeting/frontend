@@ -1,48 +1,92 @@
 import { StyleSheet } from 'react-native'
-import { ApplicationStyles, Metrics, Colors } from '../../Themes/'
+import { Metrics, Colors, Fonts } from '../../Themes/'
 
 export default StyleSheet.create({
-  ...ApplicationStyles.screen,
   container: {
     flex: 1,
     backgroundColor: Colors.transparent
   },
-  row: {
-    flexDirection: 'row',
-    height: 200,
-    alignItems: 'center',
-    margin: Metrics.smallMargin,
-    marginHorizontal: Metrics.marginHorizontal,
-    backgroundColor: Colors.snow,
-    borderRadius: Metrics.smallMargin
-  },
-  boldLabel: {
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    color: Colors.panther,
-    textAlign: 'center',
-    marginBottom: Metrics.smallMargin
-  },
-  label: {
-    alignSelf: 'center',
-    color: Colors.panther,
-    textAlign: 'center'
-  },
   listContent: {
     justifyContent: 'space-around',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    marginTop: Metrics.smallMargin
   },
-  imageBox: {
-    alignItems: 'center',
-    margin: 20
+  row: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    alignItems: 'stretch',
+    backgroundColor: Colors.snow,
+    marginVertical: Metrics.smallMargin
   },
-  image: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+
+  categoryBlock: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  contentBlock: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    justifyContent: 'flex-end',
+    marginTop: Metrics.smallMargin
+  },
+  bottomBlock: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    justifyContent: 'flex-end',
+    marginTop: Metrics.tinyMargin
+  },
+
+  categoryIconText: {
+    color: Colors.panther,
+    marginLeft: Metrics.smallMargin
+  },
+  timeText: {
+    fontSize: Fonts.size.tiny,
+    marginLeft: Metrics.smallMargin
+  },
+
+  contentTextBlock: {
+    flex: 1
+  },
+  contentTitle: {
+    fontWeight: 'bold',
+    color: Colors.orange,
+    marginTop: Metrics.tinyMargin
+  },
+  content: {
+    color: Colors.panther,
+    marginTop: Metrics.tinyMargin
+  },
+
+  contentImageBlock: {
+    alignItems: 'center'
+  },
+  contentMainImage: {
+    width: Metrics.images.large,
+    height: Metrics.images.large,
     resizeMode: 'cover'
   },
-  textBox: {
-    flex: 1
+
+  writerBlock: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  writerImage: {
+    width: Metrics.images.tiny,
+    height: Metrics.images.tiny,
+    borderRadius: Metrics.images.tiny / 2
+  },
+  writerText: {
+    fontSize: Fonts.size.small,
+    marginLeft: Metrics.smallMargin
+  },
+  replyText: {
+    alignSelf: 'center',
+    fontSize: Fonts.size.small,
+    textAlign: 'right',
+    textDecorationLine: 'underline'
   }
 })

@@ -4,11 +4,13 @@ import { createReducer } from 'reduxsauce'
 
 export const INITIAL_STATE = Immutable({
   item: {
-    userMainImage: null,
     userId: null,
-    username: null
+    email: null,
+    name: null,
+    sex: null,
+    birthDate: null,
+    profileUrl: null
   },
-  username: null,
   errorCode: null,
   attempting: false
 })
@@ -18,15 +20,10 @@ const attempt = (state, action) => state.merge({ attempting: true })
 
 // successful logins
 const success = (state, action) => {
-  const user = action.user
   return state.merge({
     attempting: false,
     errorCode: null,
-    item: {
-      username: user.username,
-      userId: user.userId,
-      userMainImage: user.userMainImage
-    }
+    item: {...action.user}
   })
 }
 

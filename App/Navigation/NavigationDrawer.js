@@ -5,10 +5,6 @@ import DrawerContent from '../Containers/DrawerContent'
 import { connect } from 'react-redux'
 import Styles from './Styles/NavigationDrawerStyle'
 
-/* *******************
-* Documentation: https://github.com/root-two/react-native-drawer
-********************/
-
 class NavigationDrawer extends Component {
   static propTypes = {
     navigationState: PropTypes.object,
@@ -18,7 +14,6 @@ class NavigationDrawer extends Component {
   render () {
     const state = this.props.navigationState
     const children = state.children
-    console.log(children)
     return (
       <Drawer
         ref='navigation'

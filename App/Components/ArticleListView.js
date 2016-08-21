@@ -1,104 +1,95 @@
 import React, { PropTypes } from 'react'
-import { View, Text, Image, ListView, TouchableHighlight } from 'react-native'
+import { View, Text, Image, ListView, TouchableOpacity } from 'react-native'
+
+import Icon from 'react-native-vector-icons/FontAwesome'
+
+import { getCagetory } from '../Commons/Categories'
 
 // Styles
 import styles from './Styles/ArticleListViewStyle'
+import { Metrics, Colors } from '../Themes'
 
 export default class ArticleListView extends React.Component {
   static propTypes = {
+    articles: PropTypes.array.isRequired,
     onPress: PropTypes.func
   }
 
   constructor (props) {
     super(props)
-    /* ***********************************************************
-    * STEP 1
-    * This is an array of objects with the properties you desire
-    * Usually this should come from Redux mapStateToProps
-    *************************************************************/
-    const dataObjects = [
-      {articleId: 1, title: '황금 고구마', description: '맛있음 공구하자', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
-      {articleId: 2, title: '황금 고구마', description: '맛있음 공구하자', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
-      {articleId: 3, title: 'Third Title', description: 'Third Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
-      {articleId: 4, title: 'Fourth Title', description: 'Fourth Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
-      {articleId: 5, title: 'Fifth Title', description: 'Fifth Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
-      {articleId: 6, title: 'Sixth Title', description: 'Sixth Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'},
-      {articleId: 7, title: 'Seventh Title', description: 'Seventh Description', image: 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'}
-    ]
-
-    /* ***********************************************************
-    * STEP 2
-    * Teach datasource how to detect if rows are different
-    * Make this function fast!  Perhaps something like:
-    *   (r1, r2) => r1.id !== r2.id
-    *************************************************************/
     const rowHasChanged = (r1, r2) => r1 !== r2
-
-    // DataSource configured
-    const ds = new ListView.DataSource({rowHasChanged})
-
-    // Datasource is always in state
-    this.state = {
-      dataSource: ds.cloneWithRows(dataObjects)
-    }
+    this.ds = new ListView.DataSource({rowHasChanged})
   }
 
-  /* ***********************************************************
-  * STEP 3
-  * `_renderRow` function -How each cell/row should be rendered
-  * It's our best practice to place a single component here:
-  *
-  * e.g.
-    return <MyCustomCell title={rowData.title} description={rowData.description} />
-  *************************************************************/
-  _renderRow = (rowData) => {
+  renderRow = (rowData) => {
+    const { writer } = rowData
     return (
-      <TouchableHighlight onPress={() => this.props.onPress(rowData)}>
+      <TouchableOpacity onPress={() => this.props.onPress(rowData)}>
         <View style={styles.row}>
-          <View style={styles.imageBox}>
-            <Image source={{uri: rowData.image}} style={styles.image} />
+          {this.createCategoryBlock(rowData)}
+          <View style={styles.contentBlock}>
+            <View style={styles.contentTextBlock}>
+              <Text style={styles.contentTitle}>
+                {rowData.name}
+              </Text>
+              <Text style={styles.content}>
+                {rowData.content}
+              </Text>
+            </View>
+            <View style={styles.contentImageBlock}>
+              <Image source={{uri: rowData.articleMainImage}} style={styles.contentMainImage} />
+            </View>
           </View>
-          <View style={styles.textBox}>
-            <Text style={styles.boldLabel}>
-              {rowData.title}
-            </Text>
-            <Text style={styles.label}>
-              {rowData.description}
+          <View style={styles.bottomBlock}>
+            <View style={styles.writerBlock}>
+              <Image source={{uri: writer.profileUrl}} style={styles.writerImage} />
+              <Text style={styles.writerText}>
+                {writer && writer.name}
+              </Text>
+            </View>
+            <Text style={styles.replyText}>
+              댓글
+              {rowData.commentCount}
             </Text>
           </View>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     )
   }
 
-  /* ***********************************************************
-  * STEP 4
-  * If your datasource is driven by Redux, you'll need to
-  * reset it when new data arrives.
-  * DO NOT! place `cloneWithRows` inside of render, since render
-  * is called very often, and should remain fast!  Just replace
-  * state's datasource on newProps.
-  *
-  * e.g.
-    componentWillReceiveProps (newProps) {
-      if (newProps.someData) {
-        this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(newProps.someData)
-        })
-      }
+  createCategoryBlock = (rowData) => {
+    const { category } = rowData
+    console.log('----------')
+    console.log(category)
+    const categoryType = category && getCagetory(category.type)
+    if (categoryType) {
+      return (
+        <View style={styles.categoryBlock}>
+          <Icon name={categoryType.icon} size={Metrics.icons.tiny} color={Colors.panther} />
+          <Text style={styles.categoryIconText}>
+            {categoryType.name}
+          </Text>
+          <Text style={styles.timeText}>
+            {rowData.createdAt}
+          </Text>
+        </View>
+      )
     }
-  *************************************************************/
+  }
 
-  // Used for friendly AlertMessage
-  // returns true if the dataSource is empty
-  _noRowData () {
-    return this.state.dataSource.getRowCount() === 0
+  noRowData = () => {
+    return this.ds.dataSource.getRowCount() === 0
   }
 
   render () {
+    let { articles } = this.props
     return (
       <View style={styles.container}>
-        <ListView contentContainerStyle={styles.listContent} dataSource={this.state.dataSource} renderRow={this._renderRow} />
+        <ListView
+          contentContainerStyle={styles.listContent}
+          dataSource={this.ds.cloneWithRows(articles)}
+          renderRow={this.renderRow}
+          enableEmptySections />
       </View>
     )
   }
