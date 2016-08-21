@@ -26,11 +26,18 @@ class SplashScreen extends React.Component {
         <Text style={styles.text}>
           Famm!!!!
         </Text>
-        <TouchableOpacity style={styles.guestButton} onPress={this.handlePressLogin}>
+        <TouchableOpacity style={styles.guestButton} onPress={this.handlePressSignup}>
+          <Text style={styles.guestButtonText}>
+            회원가입
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.guestButton} onPress={this.handlePressSignin}>
           <Text style={styles.guestButtonText}>
             로그인
           </Text>
         </TouchableOpacity>
+
       </View>
     )
   }
@@ -39,6 +46,16 @@ class SplashScreen extends React.Component {
     const { toHome, fetchUser } = this.props
     fetchUser('ekdxhrl0096@daum.net', '1234')
       .then(() => toHome())
+  }
+
+  handlePressSignup = () => {
+    const { toSignup, fetchUser } = this.props
+    toSignup({ onRight: () => NavigationActions.regionSelect() })
+  }
+
+  handlePressSignin = () => {
+    const { toSignin, fetchUser } = this.props
+    toSignin()
   }
 
 }
@@ -51,8 +68,20 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     toHome: NavigationActions.home,
+    toSignup: NavigationActions.signup,
+    toSignin: NavigationActions.signin,
     fetchUser: (email, password) => dispatch(Actions.fetchUser(email, password))
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen)
+
+
+
+
+
+
+
+
+
+
