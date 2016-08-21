@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
-import { Scene, Router, ActionConst } from 'react-native-router-flux'
+import { Scene, Router, ActionConst, Actions as NavigationActions } from 'react-native-router-flux'
 import { Alert, BackAndroid } from 'react-native'
 import Styles from './Styles/NavigationContainerStyle'
 import NavigationDrawer from './NavigationDrawer'
 import NavItems from './NavItems'
 
-import LoginScreen from '../Containers/LoginScreen'
+
 import SplashScreen from '../Containers/SplashScreen'
 import HomeScreen from '../Containers/HomeScreen'
 import RegionScreen from '../Containers/RegionScreen'
 import ArticleScreen from '../Containers/ArticleScreen'
+import SignupScreen from '../Containers/SignupScreen'
+import SigninScreen from '../Containers/SigninScreen'
+import RegionSelectScreen from '../Containers/RegionSelectScreen'
+
 
 class NavigationRouter extends Component {
   onExitApp = () => {
@@ -28,42 +32,67 @@ class NavigationRouter extends Component {
     return (
       <Router
         onExitApp={this.onExitApp}>
-        <Scene
-          key='splash'
-          initial
-          hideNavBar
-          component={SplashScreen} />
-        <Scene
-          key='home'
-          type={ActionConst.RESET}
-          hideNavBar
-          component={HomeScreen} />
-        <Scene key='regionMain' component={NavigationDrawer}>
+        <Scene key='root'               
+                navigationBarStyle={Styles.navBar}
+                titleStyle={Styles.title}
+                leftButtonIconStyle={Styles.leftButton}
+                backButtonTextStyle={Styles.backButton}
+                rightButtonTextStyle={Styles.rightButton}>
           <Scene
-            key='drawerChildrenWrapper'
-            navigationBarStyle={Styles.navBar}
-            titleStyle={Styles.title}
-            leftButtonIconStyle={Styles.leftButton}
-            rightButtonTextStyle={Styles.rightButton}>
-            <Scene
-              initial
-              key='region'
-              title='region'
-              component={RegionScreen}
-              renderLeftButton={NavItems.hamburgerButton}
-              renderRightButton={NavItems.homeButton} />
-            <Scene
-              key='article'
-              title='article'
-              component={ArticleScreen}
-              renderRightButton={NavItems.homeButton} />
-            <Scene
-              key='login'
-              component={LoginScreen}
-              title='Login'
-              hideNavBar />
+            key='splash'
+            initial
+            hideNavBar
+            component={SplashScreen} />
+          <Scene
+            key='home'
+            type={ActionConst.RESET}
+            hideNavBar
+            component={HomeScreen} />
+          <Scene
+            key='signup'
+            hideNavBar={false}
+            backTitle='취소'
+            title='사용자 정보 입력'
+            rightTitle='다음'
+            hideBackImage
+            component={SignupScreen} />
+          <Scene
+            key='signin'
+            hideNavBar={false}
+            backTitle='취소'
+            title='로그인'
+            hideBackImage
+            component={SigninScreen} />
+          <Scene
+            key='regionSelect'
+            hideNavBar={false}
+            backTitle='취소'
+            title='지역선택'
+            rightTitle='다음'
+            hideBackImage
+            onRight={()=>{NavigationActions.home()}}
+            component={RegionSelectScreen} />
+
+          <Scene key='regionMain' component={NavigationDrawer}>
+            <Scene key='drawerChildrenWrapper'>
+              <Scene
+                initial
+                key='region'
+                title='region'
+                component={RegionScreen}
+                renderLeftButton={NavItems.hamburgerButton}
+                renderRightButton={NavItems.homeButton} />
+              <Scene
+                key='article'
+                title='article'
+                component={ArticleScreen}
+                renderRightButton={NavItems.homeButton} />
+              
+            </Scene>
           </Scene>
         </Scene>
+
+
       </Router>
     )
   }
