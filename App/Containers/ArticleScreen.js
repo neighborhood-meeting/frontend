@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { View, ScrollView } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
 // import { Images } from '../Themes'
 import { connect } from 'react-redux'
 import Actions from '../Actions/Creators'
@@ -52,6 +52,10 @@ class ArticleScreen extends React.Component {
     comments: PropTypes.array
   }
 
+  static defaultProps = {
+    article: {}
+  }
+
   componentDidMount () {
     const { article, fetchComments } = this.props
     article && fetchComments(article.articleId)
@@ -63,6 +67,9 @@ class ArticleScreen extends React.Component {
       <View style={styles.mainContainer}>
         <ScrollView>
           <Article article={article} />
+          <TouchableOpacity style={styles.commentCheckButton} onPress={this.handleCommentPress}>
+            <Text style={styles.commentCheckText}>댓글확인</Text>
+          </TouchableOpacity>
           {this.createComments()}
         </ScrollView>
       </View>
@@ -75,6 +82,10 @@ class ArticleScreen extends React.Component {
         <Comment key={comment.commentId} comment={comment} />
       )
     })
+  }
+
+  handleCommentPress = () => {
+    window.alert('comment')
   }
 
 }

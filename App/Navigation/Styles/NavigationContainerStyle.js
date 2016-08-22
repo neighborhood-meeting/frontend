@@ -1,4 +1,4 @@
-import { Colors } from '../../Themes/'
+import { Colors, Metrics } from '../../Themes/'
 
 export default {
   container: {
@@ -6,7 +6,7 @@ export default {
   },
   navBar: {
     backgroundColor: Colors.orange,
-    height: 80
+    height: Metrics.navBarHeight
   },
   title: {
     color: Colors.snow

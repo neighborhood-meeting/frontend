@@ -1,12 +1,10 @@
 import React, { PropTypes } from 'react'
-import { View, StatusBar } from 'react-native'
+import { View, StatusBar, StyleSheet } from 'react-native'
 import { Provider } from 'react-redux'
 import DebugSettings from './Config/DebugSettings'
 import NavigationRouter from './Navigation/NavigationRouter'
 // import './Config/PushConfig'
 
-// Styles
-import styles from './Containers/Styles/RootStyle'
 import { Colors } from './Themes'
 
 export default class Root extends React.Component {
@@ -23,7 +21,7 @@ export default class Root extends React.Component {
     console.disableYellowBox = !DebugSettings.yellowBox
     return (
       <Provider store={this.props.store}>
-        <View style={styles.applicationView}>
+        <View style={styles.container}>
           <StatusBar backgroundColor={Colors.bloodOrange} barStyle='light-content' />
           <NavigationRouter />
         </View>
@@ -35,3 +33,9 @@ export default class Root extends React.Component {
     return this.renderApp()
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+})

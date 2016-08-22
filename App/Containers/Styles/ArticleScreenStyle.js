@@ -1,14 +1,21 @@
 import { StyleSheet } from 'react-native'
-import { Metrics, ApplicationStyles } from '../../Themes/'
+import { Colors, Fonts, ApplicationStyles } from '../../Themes/'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
-  logo: {
-    height: Metrics.images.logo,
-    width: Metrics.images.logo,
-    resizeMode: 'contain'
+  commentCheckButton: {
+    alignSelf: 'flex-end',
+    justifyContent: 'center',
+    marginTop: 15,
+    marginRight: 16,
+    backgroundColor: Colors.textLittle,
+    width: 89,
+    height: 29,
+    borderRadius: 10
   },
-  centered: {
-    alignItems: 'center'
+  commentCheckText: {
+    ...Fonts.style.normal,
+    color: Colors.snow,
+    textAlign: 'center'
   }
 })

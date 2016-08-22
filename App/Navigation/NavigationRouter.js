@@ -70,8 +70,8 @@ class NavigationRouter extends Component {
             hideBackImage
             onRight={() => { NavigationActions.home() }}
             component={RegionSelectScreen} />
-          <Scene key='regionDrawer' component={NavigationDrawer}>
-            <Scene key='drawerChildrenWrapper'
+          <Scene key='drawer' component={NavigationDrawer} open={false}>
+            <Scene key='wrapper'
               navigationBarStyle={Styles.navBar}
               titleStyle={Styles.title}
               leftButtonIconStyle={Styles.leftButton}

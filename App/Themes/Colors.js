@@ -1,5 +1,5 @@
 const colors = {
-  background: '#611d1d1d',
+  background: '#e5e5e5',
   clear: 'rgba(0,0,0,0)',
   facebook: '#3b5998',
   transparent: 'rgba(0,0,0,0)',
@@ -21,7 +21,11 @@ const colors = {
   orange: '#ff7300',
   green: '#04f7b5',
   blue: '#0b35fd',
-  line: '#bbb'
+  line: '#d2d2d2',
+  text: '#2f2f2f',
+  textSmall: '#585858',
+  textLittle: '#8d8d8d',
+  textTime: '#bfbfbf'
 }
 
 export default colors
