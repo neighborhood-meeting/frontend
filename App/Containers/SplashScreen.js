@@ -32,7 +32,7 @@ class SplashScreen extends React.Component {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.guestButton} onPress={this.handlePressSignin}>
+        <TouchableOpacity style={styles.guestButton} onPress={this.handlePressLogin}>
           <Text style={styles.guestButtonText}>
             로그인
           </Text>

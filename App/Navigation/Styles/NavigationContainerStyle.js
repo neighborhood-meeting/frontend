@@ -6,7 +6,7 @@ export default {
   },
   navBar: {
     backgroundColor: Colors.orange,
-    height: 60
+    height: 80
   },
   title: {
     color: Colors.snow

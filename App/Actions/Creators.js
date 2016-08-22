@@ -72,7 +72,7 @@ const receiveArticles = (articles) => ({ type: Types.ARTICLES_RECEIVE, articles 
 const receiveArticlesFailure = () => ({ type: Types.ARTICLES_FAILURE })
 const fetchArticles = (regionId) => {
   return (dispatch) => {
-    return fetch(`http://52.78.120.152/api/articles?regionId=${regionId}`)
+    return fetch(`http://52.78.120.152/api/v1/articles?regionId=${regionId}`)
     .then((response) => response.json())
     .then((responseJson) => {
       dispatch(receiveArticles(responseJson))
@@ -80,6 +80,7 @@ const fetchArticles = (regionId) => {
     })
     .catch((error) => {
       console.error(error)
+      window.alert('글 정보를 불러 올 수 없습니다')
       return []
     })
   }

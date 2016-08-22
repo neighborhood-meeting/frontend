@@ -33,7 +33,7 @@ export default class ArticleListView extends React.Component {
               <Text style={styles.contentTitle}>
                 {rowData.name}
               </Text>
-              <Text style={styles.content}>
+              <Text style={styles.content} numberOfLines={2}>
                 {rowData.content}
               </Text>
             </View>
