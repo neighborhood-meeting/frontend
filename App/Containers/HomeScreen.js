@@ -65,7 +65,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toRegion: NavigationActions.regionMain,
+    toRegion: NavigationActions.drawer,
     fetchRegions: (userId) => dispatch(Actions.fetchRegions(userId))
   }
 }

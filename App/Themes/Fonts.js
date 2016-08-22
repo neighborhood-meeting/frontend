@@ -1,3 +1,5 @@
+import Colors from './Colors'
+
 const type = {
   base: 'HelveticaNeue',
   bold: 'HelveticaNeue-Bold',
@@ -12,44 +14,68 @@ const size = {
   h5: 20,
   h6: 19,
   input: 18,
-  regular: 17,
-  medium: 14,
+  regular: 14,
+  medium: 13,
   small: 12,
+  little: 11,
   tiny: 8.5
 }
 
 const style = {
   h1: {
     fontFamily: type.base,
-    fontSize: size.h1
+    fontSize: size.h1,
+    color: Colors.text
   },
   h2: {
     fontWeight: 'bold',
-    fontSize: size.h2
+    fontSize: size.h2,
+    color: Colors.text
   },
   h3: {
     fontFamily: type.emphasis,
-    fontSize: size.h3
+    fontSize: size.h3,
+    color: Colors.text
   },
   h4: {
     fontFamily: type.base,
-    fontSize: size.h4
+    fontSize: size.h4,
+    color: Colors.text
   },
   h5: {
     fontFamily: type.base,
-    fontSize: size.h5
+    fontSize: size.h5,
+    color: Colors.text
   },
   h6: {
     fontFamily: type.emphasis,
-    fontSize: size.h6
+    fontSize: size.h6,
+    color: Colors.text
   },
   normal: {
     fontFamily: type.base,
-    fontSize: size.regular
+    fontSize: size.medium,
+    color: Colors.text
+  },
+  small: {
+    fontFamily: type.base,
+    fontSize: size.small,
+    color: Colors.textSmall
+  },
+  little: {
+    fontFamily: type.base,
+    fontSize: size.little,
+    color: Colors.textLittle
+  },
+  time: {
+    fontFamily: type.base,
+    fontSize: size.little,
+    color: Colors.time
   },
   description: {
     fontFamily: type.base,
-    fontSize: size.medium
+    fontSize: size.medium,
+    color: Colors.text
   }
 }
 
