@@ -1,26 +1,63 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../Themes/'
+import { Colors, Metrics, Fonts } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
-    height: 150,
+    flex: 1,
+    backgroundColor: Colors.transparent,
+    borderBottomColor: Colors.line,
+    borderBottomWidth: StyleSheet.hairlineWidth
+  },
+  titleBlock: {
+    height: 70,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 25,
+    borderBottomColor: Colors.line,
+    borderBottomWidth: StyleSheet.hairlineWidth
+  },
+  contentBlock: {
+    padding: 25,
+    alignItems: 'stretch'
+  },
+  contentText: {
+
+  },
+  articleMainImage: {
+
+  },
+  writerBlock: {
+    flex: 5,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  replyBlock: {
+    flex: 1,
+    flexDirection: 'row',
+    height: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    margin: Metrics.baseMargin,
-    marginBottom: Metrics.smallMargin,
-    backgroundColor: Colors.snow,
-    borderRadius: Metrics.smallMargin
+    borderColor: Colors.line,
+    borderWidth: 1,
+    borderRadius: 15
   },
-  boldLabel: {
+  writerImage: {
+    width: Metrics.images.medium,
+    height: Metrics.images.medium,
+    borderRadius: Metrics.images.medium / 2
+  },
+  writerName: {
     fontWeight: 'bold',
-    alignSelf: 'center',
     color: Colors.panther,
-    textAlign: 'center',
-    marginBottom: Metrics.smallMargin
+    marginLeft: Metrics.baseMargin
   },
-  label: {
+  timeText: {
+    fontSize: Fonts.size.tiny,
+    marginLeft: Metrics.smallMargin
+  },
+  replyText: {
+    borderColor: Colors.line,
     alignSelf: 'center',
-    color: Colors.panther,
     textAlign: 'center'
   }
 })

@@ -6,7 +6,9 @@ export default StyleSheet.create({
     height: 50,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Colors.snow
+    backgroundColor: Colors.snow,
+    borderBottomColor: Colors.line,
+    borderBottomWidth: StyleSheet.hairlineWidth
   },
   noticeBlock: {
     flex: 5,

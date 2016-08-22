@@ -5,7 +5,6 @@ import Styles from './Styles/NavigationContainerStyle'
 import NavigationDrawer from './NavigationDrawer'
 import NavItems from './NavItems'
 
-
 import SplashScreen from '../Containers/SplashScreen'
 import HomeScreen from '../Containers/HomeScreen'
 import RegionScreen from '../Containers/RegionScreen'
@@ -13,7 +12,6 @@ import ArticleScreen from '../Containers/ArticleScreen'
 import SignupScreen from '../Containers/SignupScreen'
 import SigninScreen from '../Containers/SigninScreen'
 import RegionSelectScreen from '../Containers/RegionSelectScreen'
-
 
 class NavigationRouter extends Component {
   onExitApp = () => {
@@ -30,14 +28,14 @@ class NavigationRouter extends Component {
 
   render () {
     return (
-      <Router
-        onExitApp={this.onExitApp}>
-        <Scene key='root'               
-                navigationBarStyle={Styles.navBar}
-                titleStyle={Styles.title}
-                leftButtonIconStyle={Styles.leftButton}
-                backButtonTextStyle={Styles.backButton}
-                rightButtonTextStyle={Styles.rightButton}>
+      <Router onExitApp={this.onExitApp}>
+        <Scene
+          key='root'
+          navigationBarStyle={Styles.navBar}
+          titleStyle={Styles.title}
+          leftButtonIconStyle={Styles.leftButton}
+          backButtonTextStyle={Styles.backButton}
+          rightButtonTextStyle={Styles.rightButton}>
           <Scene
             key='splash'
             initial
@@ -70,29 +68,23 @@ class NavigationRouter extends Component {
             title='지역선택'
             rightTitle='다음'
             hideBackImage
-            onRight={()=>{NavigationActions.home()}}
+            onRight={() => { NavigationActions.home() }}
             component={RegionSelectScreen} />
-
           <Scene key='regionMain' component={NavigationDrawer}>
             <Scene key='drawerChildrenWrapper'>
               <Scene
                 initial
                 key='region'
-                title='region'
                 component={RegionScreen}
                 renderLeftButton={NavItems.hamburgerButton}
                 renderRightButton={NavItems.homeButton} />
               <Scene
                 key='article'
-                title='article'
                 component={ArticleScreen}
                 renderRightButton={NavItems.homeButton} />
-              
             </Scene>
           </Scene>
         </Scene>
-
-
       </Router>
     )
   }

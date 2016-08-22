@@ -20,7 +20,8 @@ const colors = {
   drawer: 'rgba(30, 30, 29, 0.95)',
   orange: '#ff7300',
   green: '#04f7b5',
-  blue: '#0b35fd'
+  blue: '#0b35fd',
+  line: '#bbb'
 }
 
 export default colors

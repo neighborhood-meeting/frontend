@@ -1,8 +1,8 @@
 export default {
   container: {
     flex: 1,
-    paddingVertical: 100,
-    paddingLeft: 50,
+    paddingVertical: 120,
+    paddingLeft: 40,
     justifyContent: 'space-around'
   }
 }

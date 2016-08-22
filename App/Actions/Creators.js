@@ -19,12 +19,13 @@ const fetchUser = (email, password) => {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      responseJson.profileUrl = 'http://image.news1.kr/system/photos/2016/5/24/1945387/article.jpg'
       dispatch(loginSuccess(responseJson))
       return responseJson
     })
     .catch((error) => {
       console.error(error)
+      window.alert('유저 정보를 불러 올 수 없습니다')
+      return {}
     })
   }
 }
@@ -42,6 +43,8 @@ const fetchRegions = (userId) => {
     })
     .catch((error) => {
       console.error(error)
+      window.alert('지역 정보를 불러 올 수 없습니다')
+      return []
     })
   }
 }
@@ -59,6 +62,7 @@ const fetchRegion = (regionId, dummyRegion) => {
     })
     .catch((error) => {
       console.error(error)
+      return {}
     })
   }
 }
@@ -66,16 +70,17 @@ const fetchRegion = (regionId, dummyRegion) => {
 const requestArticles = () => ({ type: Types.ARTICLES_REQUEST })
 const receiveArticles = (articles) => ({ type: Types.ARTICLES_RECEIVE, articles })
 const receiveArticlesFailure = () => ({ type: Types.ARTICLES_FAILURE })
-const fetchArticles = (regionId, dummyArticles) => {
+const fetchArticles = (regionId) => {
   return (dispatch) => {
-    return fetch('http://facebook.github.io/react-native/movies.json')
+    return fetch(`http://52.78.120.152/api/articles?regionId=${regionId}`)
     .then((response) => response.json())
     .then((responseJson) => {
-      dispatch(receiveArticles(dummyArticles))
-      return dummyArticles
+      dispatch(receiveArticles(responseJson))
+      return responseJson
     })
     .catch((error) => {
       console.error(error)
+      return []
     })
   }
 }
@@ -93,6 +98,7 @@ const fetchArticle = (articleId, dummyArticle) => {
     })
     .catch((error) => {
       console.error(error)
+      return {}
     })
   }
 }
@@ -100,16 +106,18 @@ const fetchArticle = (articleId, dummyArticle) => {
 const requestComments = () => ({ type: Types.COMMENTS_REQUEST })
 const receiveComments = (comments) => ({ type: Types.COMMENTS_RECEIVE, comments })
 const receiveCommentsFailure = () => ({ type: Types.COMMENTS_FAILURE })
-const fetchComments = (articleId, dummyComments) => {
+const fetchComments = (articleId) => {
   return (dispatch) => {
-    return fetch('http://facebook.github.io/react-native/movies.json')
+    return fetch(`http://52.78.120.152/api/v1/comments?articleId=${articleId}`)
     .then((response) => response.json())
     .then((responseJson) => {
-      dispatch(receiveComments(dummyComments))
-      return dummyComments
+      dispatch(receiveComments(responseJson))
+      return responseJson
     })
     .catch((error) => {
       console.error(error)
+      window.alert('댓글 정보를 불러 올 수 없습니다')
+      return []
     })
   }
 }
