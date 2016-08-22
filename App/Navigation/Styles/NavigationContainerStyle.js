@@ -16,5 +16,8 @@ export default {
   },
   rightButton: {
     color: Colors.snow
+  },
+  backButton: {
+    color: Colors.snow
   }
 }
