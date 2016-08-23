@@ -7,7 +7,8 @@ const images = {
   background: require('../Images/BG.png'),
   icon_join: require('../Images/icon_join.png'),
   icon_rp: require('../Images/icon_rp.png'),
-  icon_share: require('../Images/icon_share.png')
+  icon_share: require('../Images/icon_share.png'),
+  icon_del: require('../Images/icon_del.png')
 }
 
 export default images

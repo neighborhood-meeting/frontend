@@ -11,5 +11,11 @@ export default StyleSheet.create({
     marginRight: Metrics.baseMargin,
     backgroundColor: Colors.transparent,
     width: Metrics.icons.medium
+  },
+  navDelButton: {
+    marginLeft: Metrics.baseMargin + Metrics.smallMargin,
+    backgroundColor: Colors.transparent,
+    width: Metrics.icons.small,
+    height: Metrics.icons.small
   }
 })

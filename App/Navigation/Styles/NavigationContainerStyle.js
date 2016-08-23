@@ -8,8 +8,15 @@ export default {
     backgroundColor: Colors.orange,
     height: Metrics.navBarHeight
   },
+  whiteNavBar: {
+    backgroundColor: Colors.snow,
+    height: Metrics.navBarHeight
+  },
   title: {
     color: Colors.snow
+  },
+  orangeTitle: {
+    color: Colors.orange
   },
   leftButton: {
     tintColor: Colors.snow

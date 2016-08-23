@@ -1,9 +1,9 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
+import { Image, TouchableOpacity } from 'react-native'
 import styles from './Styles/NavItemsStyle'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Colors, Metrics } from '../Themes'
+import { Colors, Metrics, Images } from '../Themes'
 
 const toggleDrawer = () => {
   NavigationActions.refresh({
@@ -21,6 +21,14 @@ export default {
           size={Metrics.icons.medium}
           color={Colors.snow}
           style={styles.navButtonLeft} />
+      </TouchableOpacity>
+    )
+  },
+
+  delButton () {
+    return (
+      <TouchableOpacity onPress={NavigationActions.pop}>
+        <Image source={Images.icon_del} style={styles.navDelButton} />
       </TouchableOpacity>
     )
   },
