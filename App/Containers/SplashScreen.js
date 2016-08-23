@@ -21,28 +21,29 @@ class SplashScreen extends React.Component {
   render () {
     return (
       <View style={styles.splash}>
-        <View style={styles.backgroundImage} />
-        <Animatable.View animation='jello' iterationCount='infinite'>
-          <Image source={Images.clearLogo} style={styles.logo} />
-        </Animatable.View>
-        <Text style={styles.text}>
-          Famm!!!!
-        </Text>
-        <TouchableOpacity style={styles.guestButton} onPress={this.handlePressSignup}>
-          <Text style={styles.guestButtonText}>
-            회원가입
+        <View style={styles.backgroundImage}>
+          <Animatable.View animation='jello' iterationCount='infinite'>
+            <Image source={Images.clearLogo} style={styles.logo} />
+          </Animatable.View>
+          <Text style={styles.text}>
+            Famm!!!!
           </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.guestButton} onPress={this.handlePressSignin}>
-          <Text style={styles.guestButtonText}>
-            로그인
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.guestButton} onPress={this.handlePressLogin}>
-          <Text style={styles.guestButtonText}>
-            둘러보기
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.guestButton} onPress={this.handlePressSignup}>
+            <Text style={styles.guestButtonText}>
+              회원가입
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.guestButton} onPress={this.handlePressSignin}>
+            <Text style={styles.guestButtonText}>
+              로그인
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.guestButton} onPress={this.handlePressLogin}>
+            <Text style={styles.guestButtonText}>
+              둘러보기
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }

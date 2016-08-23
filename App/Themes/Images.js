@@ -8,7 +8,8 @@ const images = {
   icon_join: require('../Images/icon_join.png'),
   icon_rp: require('../Images/icon_rp.png'),
   icon_share: require('../Images/icon_share.png'),
-  icon_del: require('../Images/icon_del.png')
+  icon_del: require('../Images/icon_del.png'),
+  splash: require('../Images/splash.png')
 }
 
 export default images
