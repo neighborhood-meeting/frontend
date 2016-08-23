@@ -28,11 +28,11 @@ export default StyleSheet.create({
   },
   regionBox: {
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: 50
   },
   regionList: {
     height: 300,
-    alignItems: 'center',
-    justifyContent: 'space-around'
+    alignItems: 'center'
   }
 })

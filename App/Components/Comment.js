@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import styles from './Styles/CommentStyle'
 
 export default class Comment extends React.Component {
@@ -10,14 +10,21 @@ export default class Comment extends React.Component {
 
   render () {
     const { comment } = this.props
+    const { writer = {} } = comment
 
     return (
       <View style={styles.container}>
-        <Text style={styles.boldLabel}>
-          {comment.content}
-        </Text>
-        <Text style={styles.label}>
-          {comment.writer && comment.writer.name}
+        <Image source={{uri: writer.profileUrl}} style={styles.writerImage} />
+        <Text style={styles.commentText}>
+          <Text style={styles.commentWriter}>
+            {writer.name}
+          </Text>
+          <Text>
+            {' : '}
+          </Text>
+          <Text style={styles.commentContents}>
+            {comment.contents}
+          </Text>
         </Text>
       </View>
     )

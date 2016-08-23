@@ -9,20 +9,21 @@ import styles from './Styles/ArticleStyle'
 export default class Article extends React.Component {
 
   static propTypes = {
-    article: PropTypes.object
+    article: PropTypes.object.isRequired,
+    onCommentPress: PropTypes.func.isRequired
   }
 
   render () {
-    const { article } = this.props
+    const { article, onCommentPress } = this.props
 
     return (
       <View style={styles.container}>
-        <ArticleTitle article={article} />
+        <ArticleTitle article={article} onCommentPress={onCommentPress} />
         <View style={styles.contentBlock}>
-          <Text style={styles.contentText}>{article.content}</Text>
+          <Text style={styles.contentText}>{article.contents}</Text>
           <Image source={{uri: article.articleMainImageUrl}} style={styles.articleMainImage} resizeMode='contain' />
         </View>
-        <ArticleBottom article={article}/>
+        <ArticleBottom article={article} onCommentPress={onCommentPress} />
       </View>
     )
   }

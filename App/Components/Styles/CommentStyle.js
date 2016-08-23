@@ -1,26 +1,33 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../Themes/'
+import { Colors, Fonts, Metrics } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
-    height: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: Metrics.baseMargin,
-    marginBottom: Metrics.smallMargin,
-    backgroundColor: Colors.snow,
-    borderRadius: Metrics.smallMargin
+    flexDirection: 'row',
+    paddingTop: 10,
+    paddingBottom: 5,
+    paddingHorizontal: 20,
+    backgroundColor: Colors.snow
   },
-  boldLabel: {
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    color: Colors.panther,
-    textAlign: 'center',
-    marginBottom: Metrics.smallMargin
+  writerImage: {
+    width: Metrics.icons.medium,
+    height: Metrics.icons.medium,
+    borderRadius: Metrics.icons.medium / 2,
+    borderColor: Colors.orange,
+    borderWidth: 1
   },
-  label: {
-    alignSelf: 'center',
-    color: Colors.panther,
-    textAlign: 'center'
+  commentText: {
+    flex: 1,
+    marginLeft: 9,
+    paddingTop: 8,
+    ...Fonts.style.small,
+    lineHeight: 22
+  },
+  commentWriter: {
+    fontWeight: '800'
+  },
+  timeText: {
+    ...Fonts.style.time,
+    marginLeft: 6
   }
 })

@@ -8,11 +8,12 @@ import styles from './Styles/ArticleTitleStyle'
 export default class ArticleTitle extends React.Component {
 
   static propTypes = {
-    article: PropTypes.object.isRequired
+    article: PropTypes.object.isRequired,
+    onCommentPress: PropTypes.func.isRequired
   }
 
   render () {
-    const { article } = this.props
+    const { article, onCommentPress } = this.props
     const { writer = {} } = article
 
     return (
@@ -26,16 +27,12 @@ export default class ArticleTitle extends React.Component {
             {moment(article.createdAt).format('MM-DD')}
           </Text>
         </View>
-        <TouchableOpacity style={styles.commentBlock} onPress={this.handleCommentPress}>
+        <TouchableOpacity style={styles.commentBlock} onPress={onCommentPress}>
           <Text style={styles.commentText}>
             댓글 {article.commentCount}
           </Text>
         </TouchableOpacity>
       </View>
     )
-  }
-
-  handleCommentPress = () => {
-    window.alert('comment')
   }
 }

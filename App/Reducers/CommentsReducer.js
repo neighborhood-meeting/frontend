@@ -17,7 +17,7 @@ const request = (state, action) => state.merge({
 const receive = (state, action) => state.merge({
   fetching: false,
   error: null,
-  items: [...action.comments]
+  items: action.comments
 })
 
 // temp failure

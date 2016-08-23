@@ -3,8 +3,8 @@ import { Colors, Metrics, Fonts } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
-    width: 350,
-    height: 100,
+    width: 300,
+    height: 70,
     justifyContent: 'center',
     alignItems: 'center',
     margin: Metrics.smallMargin,

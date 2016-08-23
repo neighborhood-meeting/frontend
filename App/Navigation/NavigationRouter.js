@@ -9,6 +9,7 @@ import SplashScreen from '../Containers/SplashScreen'
 import HomeScreen from '../Containers/HomeScreen'
 import RegionScreen from '../Containers/RegionScreen'
 import ArticleScreen from '../Containers/ArticleScreen'
+import CommentScreen from '../Containers/CommentScreen'
 import SignupScreen from '../Containers/SignupScreen'
 import SigninScreen from '../Containers/SigninScreen'
 import RegionSelectScreen from '../Containers/RegionSelectScreen'
@@ -87,6 +88,13 @@ class NavigationRouter extends Component {
                 key='article'
                 component={ArticleScreen}
                 renderRightButton={NavItems.homeButton} />
+              <Scene
+                key='comment'
+                title='댓글'
+                navigationBarStyle={Styles.whiteNavBar}
+                titleStyle={Styles.orangeTitle}
+                component={CommentScreen}
+                renderBackButton={NavItems.delButton} />
             </Scene>
           </Scene>
         </Scene>

@@ -27,6 +27,7 @@
     "ramda": "^0.22.1",
     "react": "~15.2.1",
     "react-native": "^0.31.0",
+    "react-native-action-button": "^1.0.0",
     "react-native-animatable": "^0.6.0",
     "react-native-device-info": "^0.9.3",
     "react-native-drawer": "^2.2.6",
@@ -84,7 +85,7 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "if [ -d 'ignite-base' ]; then cd ignite-base; fi; npm run lint"
+      "pre-commit": "npm run lint"
     }
   }
 }

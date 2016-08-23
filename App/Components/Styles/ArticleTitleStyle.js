@@ -14,7 +14,7 @@ export default StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth
   },
   writerBlock: {
-    flex: 5,
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center'
   },
