@@ -1,12 +1,15 @@
 import React, { PropTypes } from 'react'
-import { View, Text, TextInput, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, ScrollView, TouchableOpacity, Keyboard, LayoutAnimation } from 'react-native'
 import { connect } from 'react-redux'
+import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
 
+import dismissKeyboard from 'dismissKeyboard'
 import Comment from '../Components/Comment'
 
 // Styles
 import styles from './Styles/CommentScreenStyle'
+import { Colors } from '../Themes'
 
 class CommentScreen extends React.Component {
 
@@ -14,7 +17,8 @@ class CommentScreen extends React.Component {
     article: PropTypes.object.isRequired,
     fetchComments: PropTypes.func.isRequired,
     postComment: PropTypes.func.isRequired,
-    comments: PropTypes.array
+    comments: PropTypes.array,
+    user: PropTypes.object.isRequired
   }
 
   static defaultProps = {
@@ -32,7 +36,6 @@ class CommentScreen extends React.Component {
   }
 
   render () {
-    const {article} = this.props
     const { inputText } = this.state
     return (
       <View style={styles.mainContainer}>
@@ -40,10 +43,12 @@ class CommentScreen extends React.Component {
           <TextInput
             style={styles.textInput}
             onChangeText={this.handleChangeText}
+            onSubmitEditing={this.handleRegisterPress}
             value={inputText}
             keyboardType='default'
             returnKeyType='go'
             placeholder='댓글을 입력해주세요 :)'
+            placeholderTextColor={Colors.placeholder}
             underlineColorAndroid='transparent' />
           <TouchableOpacity style={styles.registerButton} onPress={this.handleRegisterPress}>
             <Text style={styles.registerButtonText}>
@@ -62,7 +67,7 @@ class CommentScreen extends React.Component {
   createComments = () => {
     return this.props.comments.map((comment) => {
       return (
-        <Comment key={comment.commentId} comment={comment} />
+        <Comment key={comment.commentId} comment={comment} onPress={this.handleCommentPress} />
       )
     })
   }
@@ -78,26 +83,34 @@ class CommentScreen extends React.Component {
   }
 
   handleRegisterPress = () => {
-    const { article, postComment } = this.props
-    const { text } = this.state.inputText
-    if (!text) {
+    const { user, article, postComment, fetchComments } = this.props
+    const { inputText } = this.state
+    if (!inputText) {
       window.alert('댓글 내용을 입력해주세요.')
       return;
     }
-    postComment(article.articleId, text)
+    postComment(user.userId, article.articleId, inputText)
+      .then(() => {
+        this.setState({
+          inputText: ''
+        })
+        fetchComments(article.articleId)
+        dismissKeyboard()
+      })
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    comments: state.comments.items
+    comments: state.comments.items,
+    user: state.login.item
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchComments: (articleId) => dispatch(Actions.fetchComments(articleId)),
-    postComment: (articleId, comment) => dispatch(Actions.postComment(articleId, comment))
+    postComment: (userId, articleId, contents) => dispatch(Actions.postComment(userId, articleId, contents))
   }
 }
 

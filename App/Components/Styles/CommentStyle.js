@@ -4,7 +4,6 @@ import { Colors, Fonts, Metrics } from '../../Themes/'
 export default StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'center',
     paddingTop: 10,
     paddingBottom: 5,
     paddingHorizontal: 20,
@@ -18,25 +17,17 @@ export default StyleSheet.create({
     borderWidth: 1
   },
   commentText: {
-    ...Fonts.style.normarl
+    flex: 1,
+    marginLeft: 9,
+    paddingTop: 8,
+    ...Fonts.style.small,
+    lineHeight: 22
   },
   commentWriter: {
-    fontWeight: 'bold'
+    fontWeight: '800'
   },
   timeText: {
     ...Fonts.style.time,
     marginLeft: 6
-  },
-  boldLabel: {
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    color: Colors.panther,
-    textAlign: 'center',
-    marginBottom: Metrics.smallMargin
-  },
-  label: {
-    alignSelf: 'center',
-    color: Colors.panther,
-    textAlign: 'center'
   }
 })

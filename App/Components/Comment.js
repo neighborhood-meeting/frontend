@@ -17,10 +17,13 @@ export default class Comment extends React.Component {
         <Image source={{uri: writer.profileUrl}} style={styles.writerImage} />
         <Text style={styles.commentText}>
           <Text style={styles.commentWriter}>
-            {writer.name} :
+            {writer.name}
           </Text>
           <Text>
-            {comment.content}
+            {' : '}
+          </Text>
+          <Text style={styles.commentContents}>
+            {comment.contents}
           </Text>
         </Text>
       </View>

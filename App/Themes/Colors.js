@@ -25,7 +25,8 @@ const colors = {
   text: '#2f2f2f',
   textSmall: '#585858',
   textLittle: '#8d8d8d',
-  textTime: '#bfbfbf'
+  textTime: '#bfbfbf',
+  placeholder: '#cacaca'
 }
 
 export default colors

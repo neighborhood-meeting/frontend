@@ -123,24 +123,25 @@ const fetchComments = (articleId) => {
   }
 }
 
-const postComment = (articleId, comment) => {
+const postComment = (userId, articleId, contents) => {
   return (dispatch) => {
-    return fetch('http://52.78.120.152/api/v1/comment', {
+    return fetch('http://52.78.120.152/api/v1/comments', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        userId: userId,
         articleId: articleId,
-        comment: comment
+        contents: contents
       })
     })
-    .then((response) => response.json())
-    .then((responseJson) => {
+    // .then((response) => response.json())
+    // .then((responseJson) => {
       // dispatch(addComment(responseJson))
-      return responseJson
-    })
+      // return responseJson
+    // })
     .catch((error) => {
       console.error(error)
       window.alert('댓글 등록에 실패했습니다')

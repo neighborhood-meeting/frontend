@@ -22,7 +22,7 @@ export default StyleSheet.create({
     height: 29,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 20,
     backgroundColor: Colors.orange
   },
   registerButtonText: {

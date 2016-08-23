@@ -55,7 +55,7 @@ export default StyleSheet.create({
     color: Colors.orange,
     marginTop: Metrics.tinyMargin
   },
-  content: {
+  contents: {
     color: Colors.panther,
     marginTop: Metrics.tinyMargin
   },
