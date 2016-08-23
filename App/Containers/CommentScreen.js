@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
-import { View, Text, TextInput, ScrollView, TouchableOpacity, Keyboard, LayoutAnimation } from 'react-native'
+import { View, Text, TextInput, ScrollView, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
 
 import dismissKeyboard from 'dismissKeyboard'
@@ -87,7 +86,7 @@ class CommentScreen extends React.Component {
     const { inputText } = this.state
     if (!inputText) {
       window.alert('댓글 내용을 입력해주세요.')
-      return;
+      return
     }
     postComment(user.userId, article.articleId, inputText)
       .then(() => {

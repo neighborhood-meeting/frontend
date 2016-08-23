@@ -29,7 +29,7 @@ export default StyleSheet.create({
   },
   guestButton: {
     width: 200,
-    height: 50,
+    height: 40,
     borderRadius: 5,
     marginHorizontal: Metrics.section,
     marginVertical: Metrics.baseMargin,

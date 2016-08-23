@@ -13,6 +13,8 @@ import styles from './Styles/SplashScreenStyle'
 class SplashScreen extends React.Component {
   static propTypes = {
     toHome: PropTypes.func.isRequired,
+    toSignup: PropTypes.func.isRequired,
+    toSignin: PropTypes.func.isRequired,
     fetchUser: PropTypes.func
   }
 
@@ -31,13 +33,16 @@ class SplashScreen extends React.Component {
             회원가입
           </Text>
         </TouchableOpacity>
-
-        <TouchableOpacity style={styles.guestButton} onPress={this.handlePressLogin}>
+        <TouchableOpacity style={styles.guestButton} onPress={this.handlePressSignin}>
           <Text style={styles.guestButtonText}>
             로그인
           </Text>
         </TouchableOpacity>
-
+        <TouchableOpacity style={styles.guestButton} onPress={this.handlePressLogin}>
+          <Text style={styles.guestButtonText}>
+            둘러보기
+          </Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -49,12 +54,12 @@ class SplashScreen extends React.Component {
   }
 
   handlePressSignup = () => {
-    const { toSignup, fetchUser } = this.props
+    const { toSignup } = this.props
     toSignup({ onRight: () => NavigationActions.regionSelect() })
   }
 
   handlePressSignin = () => {
-    const { toSignin, fetchUser } = this.props
+    const { toSignin } = this.props
     toSignin()
   }
 

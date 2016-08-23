@@ -18,12 +18,12 @@ export default class Article extends React.Component {
 
     return (
       <View style={styles.container}>
-        <ArticleTitle article={article} onCommentPress={onCommentPress}/>
+        <ArticleTitle article={article} onCommentPress={onCommentPress} />
         <View style={styles.contentBlock}>
           <Text style={styles.contentText}>{article.contents}</Text>
           <Image source={{uri: article.articleMainImageUrl}} style={styles.articleMainImage} resizeMode='contain' />
         </View>
-        <ArticleBottom article={article} onCommentPress={onCommentPress}/>
+        <ArticleBottom article={article} onCommentPress={onCommentPress} />
       </View>
     )
   }

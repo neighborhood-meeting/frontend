@@ -26,7 +26,7 @@ class DrawerContent extends React.Component {
 
   handlePressMyArticles = () => {
     this.toggleDrawer()
-    NavigationActions.home()
+    NavigationActions.refresh()
   }
 
   handlePressCategory = (type) => {
@@ -38,7 +38,7 @@ class DrawerContent extends React.Component {
     return (
       <View style={styles.container}>
         <DrawerButton text='내가 쓴 글' onPress={this.handlePressMyArticles} />
-        <DrawerButton text='카테고리별 보기' />
+        <DrawerButton text='카테고리별 보기' onPress={this.handlePressCategory} />
         {this.createCategoryButtons()}
       </View>
     )
