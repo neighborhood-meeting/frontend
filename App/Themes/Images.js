@@ -1,15 +1,23 @@
 // leave off @2x/@3x
 const images = {
-  logo: require('../Images/ir.png'),
-  clearLogo: require('../Images/top_logo.png'),
-  ignite: require('../Images/ignite_logo.png'),
-  tile_bg: require('../Images/tile_bg.png'),
-  background: require('../Images/BG.png'),
+  bg_image: require('../Images/bg_image.png'),
+  logo: require('../Images/logo.png'),
+  alarm_icon: require('../Images/alarm_icon.png'),
   icon_join: require('../Images/icon_join.png'),
   icon_rp: require('../Images/icon_rp.png'),
   icon_share: require('../Images/icon_share.png'),
+  icon_prev: require('../Images/icon_prev.png'),
   icon_del: require('../Images/icon_del.png'),
-  splash: require('../Images/splash.png')
+  icon_menu: require('../Images/icon_menu.png'),
+  icon_home: require('../Images/icon_home.png'),
+  icon_below: require('../Images/icon_below.png'),
+  icon_buy: require('../Images/icon_buy.png'),
+  icon_free: require('../Images/icon_free.png'),
+  icon_hello: require('../Images/icon_hello.png'),
+  icon_light: require('../Images/icon_light.png'),
+  icon_qt: require('../Images/icon_qt.png'),
+  icon_search: require('../Images/icon_search.png'),
+  icon_cam: require('../Images/icon_cam.png')
 }
 
 export default images

@@ -9,6 +9,7 @@ import SplashScreen from '../Containers/SplashScreen'
 import HomeScreen from '../Containers/HomeScreen'
 import RegionScreen from '../Containers/RegionScreen'
 import ArticleScreen from '../Containers/ArticleScreen'
+import NewArticleScreen from '../Containers/NewArticleScreen'
 import CommentScreen from '../Containers/CommentScreen'
 import SignupScreen from '../Containers/SignupScreen'
 import SigninScreen from '../Containers/SigninScreen'
@@ -87,7 +88,15 @@ class NavigationRouter extends Component {
               <Scene
                 key='article'
                 component={ArticleScreen}
+                renderBackButton={NavItems.backButton}
                 renderRightButton={NavItems.homeButton} />
+              <Scene
+                key='newArticle'
+                title='새 글 작성'
+                component={NewArticleScreen}
+                navigationBarStyle={Styles.whiteNavBar}
+                titleStyle={Styles.orangeTitle}
+                renderBackButton={NavItems.delButton} />
               <Scene
                 key='comment'
                 title='댓글'

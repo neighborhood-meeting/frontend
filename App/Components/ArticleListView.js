@@ -2,13 +2,10 @@ import React, { PropTypes } from 'react'
 import { View, Text, Image, ListView, TouchableOpacity } from 'react-native'
 import moment from 'moment'
 
-import Icon from 'react-native-vector-icons/FontAwesome'
-
 import { getCagetory } from '../Commons/Categories'
 
 // Styles
 import styles from './Styles/ArticleListViewStyle'
-import { Metrics, Colors } from '../Themes'
 
 export default class ArticleListView extends React.Component {
   static propTypes = {
@@ -22,24 +19,22 @@ export default class ArticleListView extends React.Component {
     this.ds = new ListView.DataSource({rowHasChanged})
   }
 
-  renderRow = (rowData) => {
-    const { writer } = rowData
+  renderRow = (article) => {
+    const { writer } = article
     return (
-      <TouchableOpacity onPress={() => this.props.onPress(rowData)}>
+      <TouchableOpacity onPress={() => this.props.onPress(article)}>
         <View style={styles.row}>
-          {this.createCategoryBlock(rowData)}
+          {this.createCategoryBlock(article)}
           <View style={styles.contentBlock}>
             <View style={styles.contentTextBlock}>
               <Text style={styles.contentTitle}>
-                {rowData.name}
+                {article.title}
               </Text>
-              <Text style={styles.contents} numberOfLines={2}>
-                {rowData.contents}
+              <Text style={styles.contents} numberOfLines={1}>
+                {article.contents}
               </Text>
             </View>
-            <View style={styles.contentImageBlock}>
-              <Image source={{uri: rowData.articleMainImageUrl}} style={styles.contentMainImage} />
-            </View>
+            <Image source={{uri: article.articleMainImageUrl}} style={styles.contentMainImage} />
           </View>
           <View style={styles.bottomBlock}>
             <View style={styles.writerBlock}>
@@ -49,8 +44,7 @@ export default class ArticleListView extends React.Component {
               </Text>
             </View>
             <Text style={styles.replyText}>
-              댓글
-              {rowData.commentCount}
+              댓글 {article.commentCount}
             </Text>
           </View>
         </View>
@@ -58,18 +52,18 @@ export default class ArticleListView extends React.Component {
     )
   }
 
-  createCategoryBlock = (rowData) => {
-    const { category } = rowData
+  createCategoryBlock = (article) => {
+    const { category } = article
     const categoryType = category && getCagetory(category.type)
     if (categoryType) {
       return (
         <View style={styles.categoryBlock}>
-          <Icon name={categoryType.icon} size={Metrics.icons.tiny} color={Colors.panther} />
+          <Image source={categoryType.image} style={styles.categoryIcon} />
           <Text style={styles.categoryIconText}>
             {categoryType.name}
           </Text>
           <Text style={styles.timeText}>
-            {moment(rowData.createdAt).format('MM-DD')}
+            {moment(article.createdAt).format('MM-DD')}
           </Text>
         </View>
       )

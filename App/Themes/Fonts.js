@@ -1,9 +1,8 @@
 import Colors from './Colors'
 
 const type = {
-  base: 'HelveticaNeue',
-  bold: 'HelveticaNeue-Bold',
-  emphasis: 'HelveticaNeue-Italic'
+  base: 'NanumBarunGothic',
+  bold: 'NanumSquareB'
 }
 
 const size = {
@@ -33,7 +32,7 @@ const style = {
     color: Colors.text
   },
   h3: {
-    fontFamily: type.emphasis,
+    fontFamily: type.bold,
     fontSize: size.h3,
     color: Colors.text
   },
@@ -50,6 +49,11 @@ const style = {
   h6: {
     fontFamily: type.emphasis,
     fontSize: size.h6,
+    color: Colors.text
+  },
+  title: {
+    fontFamily: type.bold,
+    fontSize: size.regular,
     color: Colors.text
   },
   normal: {
