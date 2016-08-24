@@ -12,4 +12,4 @@ class RNBase extends React.Component {
   }
 }
 
-AppRegistry.registerComponent('Neighbuddy', () => RNBase)
+AppRegistry.registerComponent('Fam', () => RNBase)
