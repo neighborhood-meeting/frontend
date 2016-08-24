@@ -1,19 +1,18 @@
 import React, { PropTypes } from 'react'
-import { View } from 'react-native'
+import { View, Image } from 'react-native'
 // import { Images } from '../Themes'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
 
 import RegisterButton from 'react-native-action-button'
-import Icon from 'react-native-vector-icons/FontAwesome'
 
 import Notice from '../Components/Notice'
 import ArticleListView from '../Components/ArticleListView'
 import { categories } from '../Commons/Categories'
 // Styles
 import styles from './Styles/RegionScreenStyle'
-import { Colors, Metrics } from '../Themes'
+import { Colors } from '../Themes'
 
 class RegionScreen extends React.Component {
 
@@ -21,7 +20,8 @@ class RegionScreen extends React.Component {
     region: PropTypes.object.isRequired,
     fetchArticles: PropTypes.func.isRequired,
     toArticle: PropTypes.func.isRequired,
-    articles: PropTypes.array
+    articles: PropTypes.array,
+    toNewArticle: PropTypes.func.isRequired
   }
 
   componentDidMount () {
@@ -31,10 +31,9 @@ class RegionScreen extends React.Component {
 
   render () {
     const {region, articles} = this.props
-    const notice = region.notice && (<Notice notice={region.notice} />)
     return (
       <View style={styles.mainContainer}>
-        {notice}
+        <Notice notice={region.notice} />
         <View style={styles.articleListBlock}>
           <ArticleListView articles={articles} onPress={this.handleArticlePress} />
         </View>
@@ -44,6 +43,7 @@ class RegionScreen extends React.Component {
   }
 
   createRegisterButton = () => {
+    const { toNewArticle, region } = this.props
     const items = categories.map((category) => {
       return (
         <RegisterButton.Item
@@ -52,11 +52,8 @@ class RegionScreen extends React.Component {
           titleBgColor={Colors.transparent}
           titleColor={Colors.snow}
           title={category.name}
-          onPress={() => window.alert(category.type)}>
-          <Icon
-            name={category.icon}
-            color={Colors.text}
-            size={Metrics.icons.medium} />
+          onPress={() => toNewArticle({ category: category, region: region })}>
+          <Image source={category.image} style={styles.categoryIcon} />
         </RegisterButton.Item>
       )
     })
@@ -72,7 +69,7 @@ class RegionScreen extends React.Component {
   }
 
   handleArticlePress = (article) => {
-    this.props.toArticle({ article: article, title: article.name })
+    this.props.toArticle({ article: article, title: article.title })
   }
 
 }
@@ -86,7 +83,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchArticles: (regionId) => dispatch(Actions.fetchArticles(regionId)),
-    toArticle: NavigationActions.article
+    toArticle: NavigationActions.article,
+    toNewArticle: NavigationActions.newArticle
   }
 }
 

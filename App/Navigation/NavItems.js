@@ -2,8 +2,7 @@ import React from 'react'
 import { Image, TouchableOpacity } from 'react-native'
 import styles from './Styles/NavItemsStyle'
 import { Actions as NavigationActions } from 'react-native-router-flux'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import { Colors, Metrics, Images } from '../Themes'
+import { Images } from '../Themes'
 
 const toggleDrawer = () => {
   NavigationActions.refresh({
@@ -16,11 +15,7 @@ export default {
   backButton () {
     return (
       <TouchableOpacity onPress={NavigationActions.pop}>
-        <Icon
-          name='angle-left'
-          size={Metrics.icons.medium}
-          color={Colors.snow}
-          style={styles.navButtonLeft} />
+        <Image source={Images.icon_prev} style={styles.navPrevButton} />
       </TouchableOpacity>
     )
   },
@@ -36,7 +31,7 @@ export default {
   hamburgerButton () {
     return (
       <TouchableOpacity onPress={toggleDrawer}>
-        <Image source={Images.icon_menu} style={styles.navHamburgerButton} />
+        <Image source={Images.icon_menu} style={styles.navMenuButton} />
       </TouchableOpacity>
     )
   },

@@ -8,65 +8,63 @@ export default StyleSheet.create({
   },
   listContent: {
     justifyContent: 'space-around',
-    flexWrap: 'wrap',
-    marginTop: Metrics.smallMargin
+    flexWrap: 'wrap'
   },
   row: {
     paddingVertical: 10,
     paddingHorizontal: 20,
-    alignItems: 'stretch',
     backgroundColor: Colors.snow,
-    marginVertical: Metrics.smallMargin
+    marginTop: Metrics.mediumMargin
   },
 
   categoryBlock: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center'
   },
   contentBlock: {
+    flex: 1,
     flexDirection: 'row',
-    alignItems: 'stretch',
-    justifyContent: 'flex-end',
     marginTop: Metrics.smallMargin
   },
   bottomBlock: {
-    flex: 1,
     flexDirection: 'row',
-    alignItems: 'stretch',
-    justifyContent: 'flex-end',
-    marginTop: Metrics.tinyMargin
+    alignItems: 'center',
+    marginTop: Metrics.smallMargin
   },
 
+  categoryIcon: {
+    width: Metrics.icons.tiny,
+    height: Metrics.icons.tiny,
+    tintColor: Colors.text,
+    resizeMode: 'contain'
+  },
   categoryIconText: {
-    color: Colors.panther,
-    marginLeft: Metrics.smallMargin
+    ...Fonts.style.normal,
+    fontSize: Fonts.size.regular,
+    marginLeft: Metrics.tinyMargin
   },
   timeText: {
-    fontSize: Fonts.size.tiny,
-    marginLeft: Metrics.smallMargin
+    ...Fonts.style.time,
+    marginLeft: Metrics.tinyMargin * 2
   },
 
   contentTextBlock: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'center'
   },
   contentTitle: {
-    fontWeight: 'bold',
-    color: Colors.orange,
-    marginTop: Metrics.tinyMargin
+    ...Fonts.style.normal,
+    color: Colors.orange
   },
   contents: {
-    color: Colors.panther,
-    marginTop: Metrics.tinyMargin
-  },
-
-  contentImageBlock: {
-    alignItems: 'center'
+    ...Fonts.style.normal,
+    marginTop: 3
   },
   contentMainImage: {
     width: Metrics.images.large,
     height: Metrics.images.large,
-    resizeMode: 'cover'
+    resizeMode: 'cover',
+    marginLeft: Metrics.baseMargin
   },
 
   writerBlock: {
@@ -75,18 +73,16 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   writerImage: {
-    width: Metrics.images.tiny,
-    height: Metrics.images.tiny,
-    borderRadius: Metrics.images.tiny / 2
+    width: Metrics.images.little,
+    height: Metrics.images.little,
+    borderRadius: Metrics.images.little / 2
   },
   writerText: {
-    fontSize: Fonts.size.small,
+    ...Fonts.style.little,
     marginLeft: Metrics.smallMargin
   },
   replyText: {
-    alignSelf: 'center',
-    fontSize: Fonts.size.small,
-    textAlign: 'right',
+    ...Fonts.style.little,
     textDecorationLine: 'underline'
   }
 })

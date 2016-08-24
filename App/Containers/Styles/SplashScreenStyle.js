@@ -10,22 +10,18 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   logo: {
-    height: 200,
-    width: 200,
-    resizeMode: 'contain'
+    width: 161,
+    height: 59,
+    resizeMode: 'contain',
+    marginTop: 150,
+    marginBottom: 50
   },
   backgroundImage: {
     flex: 1,
     width: Metrics.screenWidth,
     height: Metrics.screenHeight,
-    backgroundColor: Colors.orange,
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  text: {
-    color: Colors.silver,
-    fontSize: 30,
-    margin: 30
   },
   guestButton: {
     width: 200,
@@ -34,7 +30,9 @@ export default StyleSheet.create({
     marginHorizontal: Metrics.section,
     marginVertical: Metrics.baseMargin,
     backgroundColor: Colors.snow,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderColor: Colors.line,
+    borderWidth: 1
   },
   guestButtonText: {
     color: Colors.penther,

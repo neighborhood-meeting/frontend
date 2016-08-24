@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import { View, Image, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import { Images } from '../Themes'
 
 import * as Animatable from 'react-native-animatable'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -9,6 +8,7 @@ import Actions from '../Actions/Creators'
 
 // Styles
 import styles from './Styles/SplashScreenStyle'
+import { Images } from '../Themes'
 
 class SplashScreen extends React.Component {
   static propTypes = {
@@ -21,13 +21,11 @@ class SplashScreen extends React.Component {
   render () {
     return (
       <View style={styles.splash}>
-        <View style={styles.backgroundImage}>
+        <Image source={Images.bg_image} style={styles.backgroundImage}>
           <Animatable.View animation='jello' iterationCount='infinite'>
             <Image source={Images.clearLogo} style={styles.logo} />
           </Animatable.View>
-          <Text style={styles.text}>
-            Famm!!!!
-          </Text>
+          <Image source={Images.logo} style={styles.logo} />
           <TouchableOpacity style={styles.guestButton} onPress={this.handlePressSignup}>
             <Text style={styles.guestButtonText}>
               회원가입
@@ -43,7 +41,7 @@ class SplashScreen extends React.Component {
               둘러보기
             </Text>
           </TouchableOpacity>
-        </View>
+        </Image>
       </View>
     )
   }

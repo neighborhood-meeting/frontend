@@ -1,38 +1,41 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../Themes/'
+import { Colors, Fonts, Metrics } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
-    height: 50,
+    height: 43,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.snow,
+    paddingHorizontal: Metrics.doubleBaseMargin,
     borderBottomColor: Colors.line,
     borderBottomWidth: StyleSheet.hairlineWidth
   },
   noticeBlock: {
-    flex: 5,
+    flex: 1,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginLeft: Metrics.regularMargin
   },
   iconBlock: {
-    flex: 2,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
   },
   expandButton: {
-    flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: Metrics.baseMargin
+    alignItems: 'center'
+  },
+  noticeIcon: {
+    width: Metrics.icons.tiny,
+    height: Metrics.icons.tiny
   },
   iconText: {
-    fontWeight: 'bold',
+    ...Fonts.style.normal,
     color: Colors.orange,
     marginLeft: Metrics.smallMargin
   },
-  noticeText: {
+  noticeContents: {
     alignSelf: 'center',
     textAlign: 'center',
     color: Colors.panther
