@@ -17,5 +17,17 @@ export default StyleSheet.create({
     backgroundColor: Colors.transparent,
     width: Metrics.icons.small,
     height: Metrics.icons.small
+  },
+  navHamburgerButton: {
+    marginLeft: Metrics.baseMargin + Metrics.smallMargin,
+    backgroundColor: Colors.transparent,
+    width: Metrics.icons.small,
+    height: Metrics.icons.small
+  },
+  navHomeButton: {
+    marginRight: Metrics.baseMargin + Metrics.smallMargin,
+    backgroundColor: Colors.transparent,
+    width: Metrics.icons.small,
+    height: Metrics.icons.small
   }
 })

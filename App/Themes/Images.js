@@ -9,6 +9,8 @@ const images = {
   icon_rp: require('../Images/icon_rp.png'),
   icon_share: require('../Images/icon_share.png'),
   icon_del: require('../Images/icon_del.png'),
+  icon_menu: require('../Images/icon_menu.png'),
+  icon_home: require('../Images/icon_home.png'),
   splash: require('../Images/splash.png')
 }
 

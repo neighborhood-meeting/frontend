@@ -36,11 +36,7 @@ export default {
   hamburgerButton () {
     return (
       <TouchableOpacity onPress={toggleDrawer}>
-        <Icon
-          name='bars'
-          size={Metrics.icons.medium}
-          color={Colors.snow}
-          style={styles.navButtonLeft} />
+        <Image source={Images.icon_menu} style={styles.navHamburgerButton} />
       </TouchableOpacity>
     )
   },
@@ -48,11 +44,7 @@ export default {
   homeButton () {
     return (
       <TouchableOpacity onPress={NavigationActions.home}>
-        <Icon
-          name='home'
-          size={Metrics.icons.medium}
-          color={Colors.snow}
-          style={styles.navButtonRight} />
+        <Image source={Images.icon_home} style={styles.navHomeButton} />
       </TouchableOpacity>
     )
   }
