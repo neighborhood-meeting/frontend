@@ -1,8 +1,7 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Fonts, Metrics, ApplicationStyles } from '../../Themes/'
+import { Colors, Fonts, Metrics } from '../../Themes/'
 
 export default StyleSheet.create({
-  ...ApplicationStyles.screen,
   splash: {
     flex: 1,
     backgroundColor: Colors.transparent,
@@ -12,14 +11,14 @@ export default StyleSheet.create({
     flex: 1,
     width: Metrics.screenWidth,
     height: Metrics.screenHeight,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: 'center'
   },
   logo: {
     width: 161,
     height: 59,
     resizeMode: 'contain',
-    marginBottom: 80
+    marginTop: 230,
+    marginBottom: 30
   },
   guestButton: {
     width: 200,

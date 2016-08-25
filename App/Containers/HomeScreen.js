@@ -5,6 +5,7 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
 
 import RegionSimple from '../Components/RegionSimple'
+import RegionTitle from '../Components/RegionTitle'
 
 // Styles
 import styles from './Styles/HomeScreenStyle'
@@ -51,7 +52,11 @@ class HomeScreen extends React.Component {
   }
 
   handleRegionPress = (region) => {
-    return this.props.toRegion({ region: region, hideNavBar: false, title: region.name })
+    return this.props.toRegion({
+      region: region,
+      hideNavBar: false,
+      renderTitle: () => (<RegionTitle title={region.name} />)
+    })
   }
 
 }
