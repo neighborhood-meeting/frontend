@@ -51,6 +51,10 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>NanumBarunGothic.ttf</string>
+		<string>NanumBarunGothicBold.ttf</string>
+		<string>NanumSquareB.ttf</string>
+		<string>NanumSquareR.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>Evillcons.ttf</string>
 		<string>FontAwesome.ttf</string>
