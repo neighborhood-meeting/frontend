@@ -69,7 +69,7 @@ class RegionScreen extends React.Component {
   }
 
   handleArticlePress = (article) => {
-    this.props.toArticle({ article: article, title: article.title })
+    this.props.toArticle({ article: article })
   }
 
 }

@@ -30,6 +30,10 @@
 		15B28F9A1D6DB0A300681D31 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15B28F921D6DB0A300681D31 /* MaterialIcons.ttf */; };
 		15B28F9B1D6DB0A300681D31 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15B28F931D6DB0A300681D31 /* Octicons.ttf */; };
 		15B28F9C1D6DB0A300681D31 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15B28F941D6DB0A300681D31 /* Zocial.ttf */; };
+		15B28FAB1D6E759800681D31 /* NanumBarunGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15B28FA71D6E759800681D31 /* NanumBarunGothic.ttf */; };
+		15B28FAC1D6E759800681D31 /* NanumBarunGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15B28FA81D6E759800681D31 /* NanumBarunGothicBold.ttf */; };
+		15B28FAD1D6E759800681D31 /* NanumSquareB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15B28FA91D6E759800681D31 /* NanumSquareB.ttf */; };
+		15B28FAE1D6E759800681D31 /* NanumSquareR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15B28FAA1D6E759800681D31 /* NanumSquareR.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +145,10 @@
 		15B28F921D6DB0A300681D31 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		15B28F931D6DB0A300681D31 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		15B28F941D6DB0A300681D31 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
+		15B28FA71D6E759800681D31 /* NanumBarunGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumBarunGothic.ttf; path = ../../../android/app/src/main/assets/fonts/NanumBarunGothic.ttf; sourceTree = "<group>"; };
+		15B28FA81D6E759800681D31 /* NanumBarunGothicBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumBarunGothicBold.ttf; path = ../../../android/app/src/main/assets/fonts/NanumBarunGothicBold.ttf; sourceTree = "<group>"; };
+		15B28FA91D6E759800681D31 /* NanumSquareB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareB.ttf; path = ../../../android/app/src/main/assets/fonts/NanumSquareB.ttf; sourceTree = "<group>"; };
+		15B28FAA1D6E759800681D31 /* NanumSquareR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareR.ttf; path = ../../../android/app/src/main/assets/fonts/NanumSquareR.ttf; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -280,6 +288,10 @@
 				15B28F921D6DB0A300681D31 /* MaterialIcons.ttf */,
 				15B28F931D6DB0A300681D31 /* Octicons.ttf */,
 				15B28F941D6DB0A300681D31 /* Zocial.ttf */,
+				15B28FA71D6E759800681D31 /* NanumBarunGothic.ttf */,
+				15B28FA81D6E759800681D31 /* NanumBarunGothicBold.ttf */,
+				15B28FA91D6E759800681D31 /* NanumSquareB.ttf */,
+				15B28FAA1D6E759800681D31 /* NanumSquareR.ttf */,
 			);
 			name = Fonts;
 			path = "../node_modules/react-native-vector-icons/Fonts";
@@ -542,13 +554,17 @@
 			files = (
 				15B28F9A1D6DB0A300681D31 /* MaterialIcons.ttf in Resources */,
 				15B28F9B1D6DB0A300681D31 /* Octicons.ttf in Resources */,
+				15B28FAD1D6E759800681D31 /* NanumSquareB.ttf in Resources */,
 				15B28F9C1D6DB0A300681D31 /* Zocial.ttf in Resources */,
+				15B28FAB1D6E759800681D31 /* NanumBarunGothic.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				15B28F971D6DB0A300681D31 /* FontAwesome.ttf in Resources */,
+				15B28FAC1D6E759800681D31 /* NanumBarunGothicBold.ttf in Resources */,
 				15B28F961D6DB0A300681D31 /* EvilIcons.ttf in Resources */,
 				15B28F991D6DB0A300681D31 /* Ionicons.ttf in Resources */,
 				15B28F981D6DB0A300681D31 /* Foundation.ttf in Resources */,
 				15B28F951D6DB0A300681D31 /* Entypo.ttf in Resources */,
+				15B28FAE1D6E759800681D31 /* NanumSquareR.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

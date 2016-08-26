@@ -19,6 +19,8 @@ const fetchUser = (email, password) => {
     })
     .then((response) => response.json())
     .then((responseJson) => {
+      console.log('-------------user-------')
+      console.log(responseJson)
       dispatch(loginSuccess(responseJson))
       return responseJson
     })
@@ -38,6 +40,8 @@ const fetchRegions = (userId) => {
     return fetch(`http://52.78.120.152/api/v1/regions?userId=${userId}`)
     .then((response) => response.json())
     .then((responseJson) => {
+      console.log('-------------region-------')
+      console.log(responseJson)
       dispatch(receiveRegions(responseJson))
       return responseJson
     })
@@ -72,9 +76,11 @@ const receiveArticles = (articles) => ({ type: Types.ARTICLES_RECEIVE, articles 
 const receiveArticlesFailure = () => ({ type: Types.ARTICLES_FAILURE })
 const fetchArticles = (regionId) => {
   return (dispatch) => {
-    return fetch(`http://52.78.120.152/api/v1/articles?regionId=${regionId}`)
+    return fetch(`http://52.78.120.152/api/v1/articles/regions/${regionId}`)
     .then((response) => response.json())
     .then((responseJson) => {
+      console.log('-------------articles-------')
+      console.log(responseJson)
       dispatch(receiveArticles(responseJson))
       return responseJson
     })
@@ -99,6 +105,34 @@ const fetchArticle = (articleId, dummyArticle) => {
     })
     .catch((error) => {
       console.error(error)
+      return {}
+    })
+  }
+}
+
+const postArticle = (data) => {
+  return (dispatch) => {
+    let formData = new FormData()
+    formData.append('title', data.articleTitle)
+    formData.append('contents', data.articleContents)
+    formData.append('categoryType', data.categoryType)
+    formData.append('writerId', data.userId)
+    formData.append('regionId', data.regionId)
+    formData.append('articleMainImage', {
+      uri: data.mainImage.uri,
+      name: data.mainImage.fileName,
+      type: data.mainImage.type
+    })
+
+    console.log('asdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+    console.log(formData)
+    return fetch('http://52.78.120.152/api/v1/articles', {
+      method: 'POST',
+      body: formData
+    })
+    .catch((error) => {
+      console.error(error)
+      window.alert('글 등록에 실패했습니다')
       return {}
     })
   }
@@ -174,6 +208,7 @@ export default {
   receiveArticles,
   receiveArticlesFailure,
   fetchArticles,
+  postArticle,
 
   requestArticle,
   receiveArticle,

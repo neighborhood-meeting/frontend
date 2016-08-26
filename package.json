@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "npm install && node node_modules/react-native/local-cli/cli.js start",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "standard --verbose | snazzy",
     "lintdiff": "git diff --name-only --cached --relative | grep '\\.js$' | xargs standard | snazzy",
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean",
@@ -32,6 +32,7 @@
     "react-native-device-info": "^0.9.3",
     "react-native-drawer": "^2.2.6",
     "react-native-i18n": "0.0.8",
+    "react-native-image-picker": "^0.21.5",
     "react-native-router-flux": "^3.35.0",
     "react-native-vector-icons": "^2.0.2",
     "react-redux": "^4.4.2",

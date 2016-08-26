@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react'
-import { View, Text, Image, TextInput, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TextInput, ScrollView, TouchableOpacity, Platform } from 'react-native'
 import { connect } from 'react-redux'
+import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
+import ImagePicker from 'react-native-image-picker'
 
 import dismissKeyboard from 'dismissKeyboard'
 
@@ -15,7 +17,8 @@ class NewArticleScreen extends React.Component {
     user: PropTypes.object.isRequired,
     region: PropTypes.object.isRequired,
     category: PropTypes.object.isRequired,
-    postArticle: PropTypes.func.isRequired
+    postArticle: PropTypes.func.isRequired,
+    fetchArticles: PropTypes.func.isRequired
   }
 
   static defaultProps = {
@@ -27,12 +30,13 @@ class NewArticleScreen extends React.Component {
   state = {
     articleTitle: '',
     articleContents: '',
-    contentsHeight: 35
+    contentsHeight: 35,
+    mainImage: {}
   }
 
   render () {
     const { category } = this.props
-    const { articleTitle, articleContents, contentsHeight } = this.state
+    const { articleTitle, articleContents, contentsHeight, mainImage } = this.state
 
     return (
       <View style={styles.mainContainer}>
@@ -68,10 +72,12 @@ class NewArticleScreen extends React.Component {
               underlineColorAndroid='transparent' />
           </View>
           <View style={styles.imageBlock}>
-            <View style={styles.imageAddButton} />
+            <Image source={{ uri: mainImage.uri, isStatic: true }} style={styles.imageAddButton} />
           </View>
           <View style={styles.bottomBlock}>
-            <Image source={Images.icon_cam} style={styles.cameraIcon} />
+            <TouchableOpacity onPress={this.handleImagePickPress}>
+              <Image source={Images.icon_cam} style={styles.cameraIcon} />
+            </TouchableOpacity>
             <TouchableOpacity
               style={styles.registerButtonBlock}
               onPress={this.handleRegisterPress}>
@@ -81,6 +87,34 @@ class NewArticleScreen extends React.Component {
         </ScrollView>
       </View>
     )
+  }
+
+  handleImagePickPress = () => {
+    var options = {
+      title: '사진 선택',
+      storageOptions: {
+        skipBackup: true,
+        path: 'images'
+      }
+    }
+
+    ImagePicker.showImagePicker(options, (response) => {
+      if (response.didCancel) {
+        console.log('User cancelled image picker')
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error)
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton)
+      } else {
+        this.setState({
+          mainImage: {
+            uri: Platform.OS === 'ios' ? response.uri.replace('file://', '') : response.uri,
+            fileName: response.fileName,
+            type: response.type
+          }
+        })
+      }
+    })
   }
 
   handleChangeText = (target, text) => {
@@ -100,18 +134,32 @@ class NewArticleScreen extends React.Component {
   }
 
   handleRegisterPress = () => {
-    const { user, region, postArticle } = this.props
-    const { inputText } = this.state
-    if (!inputText) {
-      window.alert('댓글 내용을 입력해주세요.')
+    const { user, region, category, postArticle, fetchArticles } = this.props
+    const { articleTitle, articleContents, mainImage } = this.state
+    if (!articleTitle) {
+      window.alert('제목을 입력해주세요.')
       return
     }
-    postArticle(user.userId, region.regionId, inputText)
-      .then(() => {
-        this.setState({
-          inputText: ''
-        })
+    if (!articleContents) {
+      window.alert('내용을 입력해주세요.')
+      return
+    }
+    const data = {
+      userId: user.userId,
+      regionId: region.regionId,
+      categoryType: category.type,
+      articleTitle,
+      articleContents,
+      mainImage
+    }
+    postArticle(data)
+      .then((result) => {
+        console.log('---------------------------')
+        console.log(region.regionId)
+        console.log(result)
         dismissKeyboard()
+        NavigationActions.pop()
+        fetchArticles(region.regionId)
       })
   }
 }
@@ -124,7 +172,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    postArticle: (article) => dispatch(Actions.postArticle(article))
+    postArticle: (article) => dispatch(Actions.postArticle(article)),
+    fetchArticles: (regionId) => dispatch(Actions.fetchArticles(regionId))
   }
 }
 

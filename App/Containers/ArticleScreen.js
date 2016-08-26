@@ -38,7 +38,11 @@ class ArticleScreen extends React.Component {
 
   handleCommentPress = () => {
     const { article, toComment } = this.props
-    toComment({ article: article, title: `댓글 ${article.commentCount}` })
+    toComment({
+      article: article,
+      title: `댓글 ${article.commentCount}`,
+      renderTitle: null
+    })
   }
 
 }
