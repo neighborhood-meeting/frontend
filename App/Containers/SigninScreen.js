@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
-import { View, TextInput, TouchableOpacity, Text } from 'react-native'
+import { View, TextInput, TouchableOpacity, Text, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
 import styles from './Styles/SigninScreenStyle'
+import { Images } from '../Themes'
 
 class SigninScreen extends React.Component {
-
   static propTypes = {
     toHome: PropTypes.func.isRequired,
     fetchUser: PropTypes.func
@@ -22,25 +22,32 @@ class SigninScreen extends React.Component {
 
   render () {
     return (
-      <View style={styles.mainContainer}>
-        <View style={styles.loginImage} />
-        <View style={styles.input}>
-          <TextInput
-            style={{ height: 50, borderColor: 'gray', borderWidth: 1 }}
-            onChangeText={(id) => { this.setState({ id: id }) }}
-            placeholder='아이디' />
-          <TextInput
-            style={{height: 50, borderColor: 'gray', borderWidth: 1}}
-            onChangeText={(pwd) => { this.setState({ pwd: pwd }) }}
-            placeholder='비밀번호' />
-        </View>
-        <View style={styles.login}>
-          <TouchableOpacity style={styles.guestButton} onPress={this.handlePressHome}>
-            <Text style={styles.guestButtonText}>
-              로그인
-            </Text>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.Signin}>
+        <Image source={Images.bg_image} style={styles.backgroundImage}>
+          <View style={styles.logo_container}>
+            <Image source={Images.logo} style={styles.logo} />
+          </View>
+          <View style={styles.signin_container}>
+            <View style={{ width: 278, height: 56, borderColor: 'gray', borderWidth: 1, borderRadius: 28 }}>
+              <TextInput
+                style={{borderWidth: 10, borderColor: 'transparent'}}
+                onChangeText={(id) => { this.setState({ id: id }) }}
+                placeholder='ID' />
+            </View>
+            <View style={{ marginTop: 10, width: 278, height: 56, borderColor: 'gray', borderWidth: 1, borderRadius: 28 }}>
+              <TextInput
+                style={{borderWidth: 10, borderColor: 'transparent'}}
+                onChangeText={(pwd) => { this.setState({ pwd: pwd }) }}
+                placeholder='password' />
+            </View>
+            <TouchableOpacity style={{marginTop: 36}} onPress={this.handlePressHome}>
+              <Text style={styles.guestButtonText}>
+                LogIn
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+        </Image>
       </View>
     )
   }
