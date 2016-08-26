@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { View, Image, Text } from 'react-native'
+import { View, Image, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
@@ -9,6 +9,7 @@ import RegionTitle from '../Components/RegionTitle'
 
 // Styles
 import styles from './Styles/HomeScreenStyle'
+import { Images } from '../Themes'
 
 class HomeScreen extends React.Component {
 
@@ -27,15 +28,27 @@ class HomeScreen extends React.Component {
     const { user } = this.props
     return (
       <View style={styles.container}>
-        <View style={styles.profileBox}>
-          <Image source={{uri: user.profileUrl}} style={styles.profileImage} />
-          <Text style={styles.profileText}>
-            {user.name}
-          </Text>
+        <View style={styles.topBlock}>
+          <Image source={Images.bg_graphic} style={styles.backgroundImage} />
         </View>
-        <View style={styles.regionBox}>
-          <View style={styles.regionList}>
-            {this.createRegionSimples()}
+        <Image source={Images.logo} style={styles.logo} />
+        <View style={styles.profileImageBlock}>
+          <Image source={{ uri: user.profileUrl }} style={styles.profileImage} />
+          <TouchableOpacity style={styles.cameraButton}>
+            <Image source={Images.icon_cam} style={styles.cameraIcon} />
+          </TouchableOpacity>
+        </View>
+        <Text style={styles.profileText}>
+          {user.name}
+        </Text>
+        <View style={styles.bottomBlockWrapper}>
+        <TouchableOpacity style={styles.editButton}>
+          <Text style={styles.editText}>편집</Text>
+        </TouchableOpacity>
+          <View style={styles.regionBlock}>
+            <View style={styles.regionList}>
+              {this.createRegionSimples()}
+            </View>
           </View>
         </View>
       </View>

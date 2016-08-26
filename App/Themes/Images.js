@@ -21,7 +21,8 @@ const images = {
   icon_search: require('../Images/icon_search.png'),
   icon_cam: require('../Images/icon_cam.png'),
   bg2_image: require('../Images/bg2_image.png'),
-  bt_big_o: require('../Images/bt_big_o.png')
+  bt_big_o: require('../Images/bt_big_o.png'),
+  bg_graphic: require('../Images/bg_graphic.png')
 }
 
 export default images
