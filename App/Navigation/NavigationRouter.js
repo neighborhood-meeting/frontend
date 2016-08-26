@@ -58,12 +58,13 @@ class NavigationRouter extends Component {
             hideNavBar
             component={AgreementScreen} />
           <Scene
+            initial
             key='signup'
             hideNavBar={false}
             backTitle='취소'
             title='회원 가입'
             rightTitle='다음'
-            onRight={this.handlePressComplete}
+            onRight={() => {}}
             hideBackImage
             component={SignupScreen} />
           <Scene
