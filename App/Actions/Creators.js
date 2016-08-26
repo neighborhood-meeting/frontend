@@ -118,6 +118,7 @@ const postArticle = (data) => {
     formData.append('categoryType', data.categoryType)
     formData.append('writerId', data.userId)
     formData.append('regionId', data.regionId)
+    formData.append('articleMainImage', { uri: data.uri, name: 'image.jpg', type: 'image/jpg' })
 
     console.log('asdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     console.log(formData)

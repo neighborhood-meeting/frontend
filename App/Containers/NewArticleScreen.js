@@ -123,7 +123,8 @@ class NewArticleScreen extends React.Component {
 
         console.log(source)
         this.setState({
-          avatarSource: source
+          avatarSource: source,
+          uri: response.uri
         })
       }
     })
@@ -147,7 +148,7 @@ class NewArticleScreen extends React.Component {
 
   handleRegisterPress = () => {
     const { user, region, category, postArticle, fetchArticles } = this.props
-    const { articleTitle, articleContents } = this.state
+    const { articleTitle, articleContents, uri } = this.state
     if (!articleTitle) {
       window.alert('제목을 입력해주세요.')
       return
@@ -161,7 +162,8 @@ class NewArticleScreen extends React.Component {
       regionId: region.regionId,
       categoryType: category.type,
       articleTitle,
-      articleContents
+      articleContents,
+      uri
     }
     postArticle(data)
       .then((result) => {
