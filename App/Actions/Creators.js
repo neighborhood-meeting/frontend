@@ -40,9 +40,6 @@ const registerUser = (user) => {
     formData.append('password', user.pwd)
     formData.append('sex', user.sex)
     formData.append('birthDate', '890101')
-    formData.append('profileImage', {
-      filename: 'aaa.jpg'
-    })
 
     console.log('회원가입 전송')
     console.log(formData)
@@ -181,12 +178,16 @@ const postArticle = (data) => {
 
 const joinArticle = (data) => {
   return (dispatch) => {
-    return fetch('http://127.0.0.1:8080/api/v1/regions/join', {
+    return fetch('http://52.78.120.152/api/v1/articles/participate', {
       method: 'POST',
-      body: {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
         userId: data.userId,
         articleId: data.articleId
-      }
+      })
     })
   }
 }

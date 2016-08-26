@@ -21,7 +21,7 @@ export default StyleSheet.create({
     paddingBottom: 15
   },
   selection_container: {
-
+    marginTop: 10
   },
   contents_container: {
     flex: 2,

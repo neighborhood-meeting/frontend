@@ -24,6 +24,7 @@ const images = {
   bt_big_o: require('../Images/bt_big_o.png'),
   bg_graphic: require('../Images/bg_graphic.png'),
   noagree: require('../Images/noagree.png'),
-  agree: require('../Images/agree.png')
+  agree: require('../Images/agree.png'),
+  join: require('../Images/join.png')
 }
 export default images

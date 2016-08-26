@@ -23,12 +23,25 @@ class ArticleScreen extends React.Component {
     article: {}
   }
 
+  state = {
+    isParticipated: false
+  }
+
+  componentDidMount () {
+    this.fetchParticipated()
+  }
+
   render () {
     const { article } = this.props
+    const { isParticipated } = this.state
     return (
       <View style={styles.mainContainer}>
         <ScrollView>
-          <Article article={article} onCommentPress={this.handleCommentPress} onPressJoin={this.handlePressJoin} />
+          <Article
+            article={article}
+            isParticipated={isParticipated}
+            onCommentPress={this.handleCommentPress}
+            onPressJoin={this.handlePressJoin} />
           <TouchableOpacity style={styles.commentCheckButton} onPress={this.handleCommentPress}>
             <Text style={styles.commentCheckText}>
               댓글확인
@@ -55,16 +68,29 @@ class ArticleScreen extends React.Component {
       articleId: article.articleId
     }
     joinArticle(data)
-      .then((result) => {
-        console.log(result)
+      .then(() => this.fetchParticipated())
+      .catch((error) => {
+        console.log(error)
       })
   }
+
+  fetchParticipated = () => {
+    const { user, article } = this.props
+    fetch(`http://52.78.120.152/api/v1/articles/isParticipated?userId=${user.userId}&articleId=${article.articleId}`)
+      .then((response) => response.text())
+      .then((data) => {
+        this.setState({
+          isParticipated: data === 'true'
+        })
+      })
+  }
+
 }
 
 const mapStateToProps = (state) => {
   return {
     comments: state.comments.items,
-    user: state.login.user
+    user: state.login.item
   }
 }
 

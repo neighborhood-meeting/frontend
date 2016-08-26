@@ -91,13 +91,15 @@ class NewArticleScreen extends React.Component {
 
   handleImagePickPress = () => {
     var options = {
-      title: '사진 선택',
+      title: '메인 사진 등록',
+      takePhotoButtonTitle: '사진 찍기',
+      chooseFromLibraryButtonTitle: '갤러리에서 가져오기',
+      cancelButtonTitle: '취소',
       storageOptions: {
         skipBackup: true,
         path: 'images'
       }
     }
-
     ImagePicker.showImagePicker(options, (response) => {
       if (response.didCancel) {
         console.log('User cancelled image picker')
@@ -154,9 +156,6 @@ class NewArticleScreen extends React.Component {
     }
     postArticle(data)
       .then((result) => {
-        console.log('---------------------------')
-        console.log(region.regionId)
-        console.log(result)
         window.alert('저장 되었습니다')
         dismissKeyboard()
         NavigationActions.pop()
