@@ -26,7 +26,7 @@ class SplashScreen extends React.Component {
             <Image source={Images.clearLogo} style={styles.logo} />
           </Animatable.View>
           <Image source={Images.logo} style={styles.logo} />
-          <TouchableOpacity style={styles.guestButton} onPress={this.handlePressSignup}>
+          <TouchableOpacity style={styles.guestButton} onPress={this.handlePressAgreement}>
             <Text style={styles.guestButtonText}>
               회원가입
             </Text>
@@ -52,9 +52,9 @@ class SplashScreen extends React.Component {
       .then(() => toHome())
   }
 
-  handlePressSignup = () => {
-    const { toSignup } = this.props
-    toSignup({ onRight: () => NavigationActions.regionSelect() })
+  handlePressAgreement = () => {
+    const { toAgreement } = this.props
+    toAgreement({ onRight: () => NavigationActions.regionSelect() })
   }
 
   handlePressSignin = () => {
@@ -72,6 +72,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     toHome: NavigationActions.home,
+    toAgreement: NavigationActions.agreement,
     toSignup: NavigationActions.signup,
     toSignin: NavigationActions.signin,
     fetchUser: (email, password) => dispatch(Actions.fetchUser(email, password))

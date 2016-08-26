@@ -11,6 +11,7 @@ import RegionScreen from '../Containers/RegionScreen'
 import ArticleScreen from '../Containers/ArticleScreen'
 import NewArticleScreen from '../Containers/NewArticleScreen'
 import CommentScreen from '../Containers/CommentScreen'
+import AgreementScreen from '../Containers/AgreementScreen'
 import SignupScreen from '../Containers/SignupScreen'
 import SigninScreen from '../Containers/SigninScreen'
 import RegionSelectScreen from '../Containers/RegionSelectScreen'
@@ -26,6 +27,10 @@ class NavigationRouter extends Component {
       ]
     )
     return true
+  };
+
+  handlePressComplete= () => {
+    NavigationActions.regionSelect()
   };
 
   render () {
@@ -49,11 +54,16 @@ class NavigationRouter extends Component {
             hideNavBar
             component={HomeScreen} />
           <Scene
+            key='agreement'
+            hideNavBar
+            component={AgreementScreen} />
+          <Scene
             key='signup'
             hideNavBar={false}
             backTitle='취소'
-            title='사용자 정보 입력'
+            title='회원 가입'
             rightTitle='다음'
+            onRight={this.handlePressComplete}
             hideBackImage
             component={SignupScreen} />
           <Scene
