@@ -22,7 +22,7 @@ class NavigationDrawer extends Component {
         open={state.open}
         onOpen={() => NavigationActions.refresh({key: state.key, open: true})}
         onClose={() => NavigationActions.refresh({key: state.key, open: false})}
-        content={<DrawerContent region={this.props.region}/>}
+        content={<DrawerContent region={this.props.region} />}
         styles={Styles}
         tapToClose
         openDrawerOffset={0.35}

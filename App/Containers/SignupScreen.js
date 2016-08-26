@@ -24,6 +24,10 @@ class SignupScreen extends React.Component {
     }
   }
 
+  componentDidMount () {
+    NavigationActions.refresh({ onRight: () => this.handlePressComplete() })
+  }
+
   render () {
     return (
       <View>
@@ -74,10 +78,17 @@ class SignupScreen extends React.Component {
     })
   }
 
-  handlePressHome = () => {
-    const { toHome, fetchUser } = this.props
-    fetchUser(this.state.id, this.state.pwd)
-      .then(() => toHome())
+  handlePressComplete = () => {
+    const { toRegionSelect, registerUser } = this.props
+    const { id, name, pwd, sex } = this.state
+    const user = {
+      id,
+      name,
+      pwd,
+      sex
+    }
+    registerUser(user)
+      .then((user) => toRegionSelect())
   }
 
 }
@@ -89,8 +100,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toHome: NavigationActions.home,
-    fetchUser: (email, password) => dispatch(Actions.fetchUser(email, password))
+    toRegionSelect: NavigationActions.regionSelect,
+    registerUser: (email, name, password, sex) => dispatch(Actions.registerUser(email, name, password, sex))
   }
 }
 

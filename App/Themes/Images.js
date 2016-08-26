@@ -22,7 +22,8 @@ const images = {
   icon_cam: require('../Images/icon_cam.png'),
   bg2_image: require('../Images/bg2_image.png'),
   bt_big_o: require('../Images/bt_big_o.png'),
-  bg_graphic: require('../Images/bg_graphic.png')
+  bg_graphic: require('../Images/bg_graphic.png'),
+  noagree: require('../Images/noagree.png'),
+  agree: require('../Images/agree.png')
 }
-
 export default images

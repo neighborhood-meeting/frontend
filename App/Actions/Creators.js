@@ -32,6 +32,42 @@ const fetchUser = (email, password) => {
   }
 }
 
+const registerUser = (user) => {
+  return (dispatch) => {
+    let formData = new FormData()
+    formData.append('email', user.id)
+    formData.append('name', user.name)
+    formData.append('password', user.pwd)
+    formData.append('sex', user.sex)
+    formData.append('birthDate', '890101')
+    formData.append('profileImage', {
+      filename: 'aaa.jpg'
+    })
+
+    console.log('회원가입 전송')
+    console.log(formData)
+    return fetch('http://52.78.120.152/api/v1/users/signUp', {
+      method: 'POST',
+      body: formData
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log('-------------user-------')
+      console.log(responseJson)
+      user.token = responseJson.token
+      console.log(user)
+
+      dispatch(loginSuccess(user))
+      return user
+    })
+    .catch((error) => {
+      console.error(error)
+      window.alert('유저 등록에 실패했습니다')
+      return {}
+    })
+  }
+}
+
 const requestRegions = (userId) => ({ type: Types.REGIONS_REQUEST, userId })
 const receiveRegions = (regions) => ({ type: Types.REGIONS_RECEIVE, regions })
 const receiveRegionsFailure = (regions) => ({ type: Types.REGIONS_FAILURE, regions })
@@ -215,6 +251,7 @@ export default {
   receiveRegions,
   receiveRegionsFailure,
   fetchRegions,
+  registerUser,
 
   requestRegion,
   receiveRegion,

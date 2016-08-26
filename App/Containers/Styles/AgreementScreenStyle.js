@@ -16,7 +16,9 @@ export default StyleSheet.create({
     flexDirection: 'row'
   },
   guide_container: {
-
+    borderBottomColor: 'white',
+    borderBottomWidth: 0.5,
+    paddingBottom: 15
   },
   selection_container: {
 
@@ -58,5 +60,19 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: Fonts.size.regular,
     marginVertical: Metrics.baseMargin
+  },
+  selection: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16
+  },
+  button_container: {
+    width: 278,
+    height: 56,
+    borderRadius: 28,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: Colors.line,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })

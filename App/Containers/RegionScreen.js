@@ -45,10 +45,10 @@ class RegionScreen extends React.Component {
     const articleList = articles.length
       ? (<ArticleListView articles={articles} onPress={this.handleArticlePress} />)
       : (
-        <View style={styles.defaultBlock}>
-          <Text style={styles.defaultText}>등록된 글이 없습니다..</Text>
-          <Text style={styles.defaultText}>왼쪽 아래 버튼으로 만들어주세요!!</Text>
-        </View>
+      <View style={styles.defaultBlock}>
+        <Text style={styles.defaultText}>등록된 글이 없습니다..</Text>
+        <Text style={styles.defaultText}>왼쪽 아래 버튼으로 만들어주세요!!</Text>
+      </View>
       )
     return (
       <View style={styles.mainContainer}>

@@ -28,7 +28,7 @@ class ArticleScreen extends React.Component {
     return (
       <View style={styles.mainContainer}>
         <ScrollView>
-          <Article article={article} onCommentPress={this.handleCommentPress} onPressJoin={this.handlePressJoin}/>
+          <Article article={article} onCommentPress={this.handleCommentPress} onPressJoin={this.handlePressJoin} />
           <TouchableOpacity style={styles.commentCheckButton} onPress={this.handleCommentPress}>
             <Text style={styles.commentCheckText}>
               댓글확인
