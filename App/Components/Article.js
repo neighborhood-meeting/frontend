@@ -10,11 +10,12 @@ export default class Article extends React.Component {
 
   static propTypes = {
     article: PropTypes.object.isRequired,
-    onCommentPress: PropTypes.func.isRequired
+    onCommentPress: PropTypes.func.isRequired,
+    onPressJoin: PropTypes.func.isRequired
   }
 
   render () {
-    const { article, onCommentPress } = this.props
+    const { article, onCommentPress, onPressJoin } = this.props
 
     return (
       <View style={styles.container}>
@@ -23,7 +24,7 @@ export default class Article extends React.Component {
           <Text style={styles.contentText}>{article.contents}</Text>
           <Image source={{uri: article.articleMainImageUrl}} style={styles.articleMainImage} resizeMode='contain' />
         </View>
-        <ArticleBottom article={article} onCommentPress={onCommentPress} />
+        <ArticleBottom article={article} onCommentPress={onCommentPress} onPressJoin={onPressJoin} />
       </View>
     )
   }

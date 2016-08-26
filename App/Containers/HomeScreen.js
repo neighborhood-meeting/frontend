@@ -42,9 +42,9 @@ class HomeScreen extends React.Component {
           {user.name}
         </Text>
         <View style={styles.bottomBlockWrapper}>
-        <TouchableOpacity style={styles.editButton}>
-          <Text style={styles.editText}>편집</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.editButton}>
+            <Text style={styles.editText}>편집</Text>
+          </TouchableOpacity>
           <View style={styles.regionBlock}>
             <View style={styles.regionList}>
               {this.createRegionSimples()}

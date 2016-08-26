@@ -157,9 +157,14 @@ class NewArticleScreen extends React.Component {
         console.log('---------------------------')
         console.log(region.regionId)
         console.log(result)
+        window.alert('저장 되었습니다')
         dismissKeyboard()
         NavigationActions.pop()
-        fetchArticles(region.regionId)
+        const data = {
+          regionId: region.regionId,
+          categoryType: category.type
+        }
+        fetchArticles(data)
       })
   }
 }

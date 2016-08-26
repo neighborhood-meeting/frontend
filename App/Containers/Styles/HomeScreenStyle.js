@@ -54,7 +54,7 @@ export default StyleSheet.create({
   },
   cameraIcon: {
     height: 18,
-    width: 14,
+    width: 18,
     resizeMode: 'contain',
     tintColor: Colors.snow
   },

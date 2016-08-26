@@ -8,14 +8,15 @@ export default class ArticleBottom extends React.Component {
 
   static propTypes = {
     article: PropTypes.object.isRequired,
-    onCommentPress: PropTypes.func.isRequired
+    onCommentPress: PropTypes.func.isRequired,
+    onPressJoin: PropTypes.func.isRequired
   }
 
   render () {
-    const { onCommentPress } = this.props
+    const { onCommentPress, onPressJoin } = this.props
     return (
       <View style={styles.bottomBlock}>
-        <TouchableOpacity style={styles.bottomButtonBlock} onPress={this.handleJoinPress}>
+        <TouchableOpacity style={styles.bottomButtonBlock} onPress={onPressJoin}>
           <Image source={Images.icon_join} style={styles.joinIcon} />
           <Text style={styles.bottomButtonText}>참여하기</Text>
         </TouchableOpacity>
@@ -29,10 +30,6 @@ export default class ArticleBottom extends React.Component {
         </TouchableOpacity>
       </View>
     )
-  }
-
-  handleJoinPress = () => {
-    window.alert('join')
   }
 
   handleSharePress = () => {

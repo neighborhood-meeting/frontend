@@ -74,9 +74,17 @@ const fetchRegion = (regionId, dummyRegion) => {
 const requestArticles = () => ({ type: Types.ARTICLES_REQUEST })
 const receiveArticles = (articles) => ({ type: Types.ARTICLES_RECEIVE, articles })
 const receiveArticlesFailure = () => ({ type: Types.ARTICLES_FAILURE })
-const fetchArticles = (regionId) => {
+const fetchArticles = (data) => {
   return (dispatch) => {
-    return fetch(`http://52.78.120.152/api/v1/articles/regions/${regionId}`)
+    let url
+    if (data.regionId) {
+      url = data.categoryType
+        ? `http://52.78.120.152/api/v1/articles/search?regionId=${data.regionId}&type=${data.categoryType}`
+        : `http://52.78.120.152/api/v1/articles/regions/${data.regionId}`
+    } else {
+      url = `http://52.78.120.152/api/v1/articles/users/${data.userId}`
+    }
+    return fetch(url)
     .then((response) => response.json())
     .then((responseJson) => {
       console.log('-------------articles-------')
@@ -123,9 +131,6 @@ const postArticle = (data) => {
       name: data.mainImage.fileName,
       type: data.mainImage.type
     })
-
-    console.log('asdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
-    console.log(formData)
     return fetch('http://52.78.120.152/api/v1/articles', {
       method: 'POST',
       body: formData
@@ -134,6 +139,18 @@ const postArticle = (data) => {
       console.error(error)
       window.alert('글 등록에 실패했습니다')
       return {}
+    })
+  }
+}
+
+const joinArticle = (data) => {
+  return (dispatch) => {
+    return fetch('http://127.0.0.1:8080/api/v1/regions/join', {
+      method: 'POST',
+      body: {
+        userId: data.userId,
+        articleId: data.articleId
+      }
     })
   }
 }
@@ -209,6 +226,7 @@ export default {
   receiveArticlesFailure,
   fetchArticles,
   postArticle,
+  joinArticle,
 
   requestArticle,
   receiveArticle,
