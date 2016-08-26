@@ -27,7 +27,6 @@ export default StyleSheet.create({
     fontWeight: '800'
   },
   timeText: {
-    ...Fonts.style.time,
-    marginLeft: 6
+    ...Fonts.style.time
   }
 })

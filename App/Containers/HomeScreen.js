@@ -46,7 +46,10 @@ class HomeScreen extends React.Component {
     const {regions} = this.props
     return regions.map((region) => {
       return (
-        <RegionSimple key={region.regionId} region={region} onPress={() => this.handleRegionPress(region)} />
+        <RegionSimple
+          key={region.regionId}
+          region={region}
+          onPress={() => this.handleRegionPress(region)} />
       )
     })
   }

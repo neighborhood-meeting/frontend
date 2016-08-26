@@ -88,8 +88,7 @@ class NavigationRouter extends Component {
               <Scene
                 key='article'
                 component={ArticleScreen}
-                renderBackButton={NavItems.backButton}
-                renderRightButton={NavItems.homeButton} />
+                renderBackButton={NavItems.backButton} />
               <Scene
                 key='newArticle'
                 title='새 글 작성'

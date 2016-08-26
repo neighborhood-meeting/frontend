@@ -10,6 +10,8 @@ const images = {
   icon_del: require('../Images/icon_del.png'),
   icon_menu: require('../Images/icon_menu.png'),
   icon_home: require('../Images/icon_home.png'),
+  icon_mark_a: require('../Images/icon_mark_a.png'),
+  icon_mark_b: require('../Images/icon_mark_b.png'),
   icon_below: require('../Images/icon_below.png'),
   icon_buy: require('../Images/icon_buy.png'),
   icon_free: require('../Images/icon_free.png'),

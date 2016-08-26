@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "npm install && node node_modules/react-native/local-cli/cli.js start",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "standard --verbose | snazzy",
     "lintdiff": "git diff --name-only --cached --relative | grep '\\.js$' | xargs standard | snazzy",
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean",

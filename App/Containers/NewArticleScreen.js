@@ -30,12 +30,13 @@ class NewArticleScreen extends React.Component {
   state = {
     articleTitle: '',
     articleContents: '',
-    contentsHeight: 35
+    contentsHeight: 35,
+    mainImage: {}
   }
 
   render () {
     const { category } = this.props
-    const { articleTitle, articleContents, contentsHeight } = this.state
+    const { articleTitle, articleContents, contentsHeight, mainImage } = this.state
 
     return (
       <View style={styles.mainContainer}>
@@ -71,8 +72,7 @@ class NewArticleScreen extends React.Component {
               underlineColorAndroid='transparent' />
           </View>
           <View style={styles.imageBlock}>
-            <View style={styles.imageAddButton} />
-            <Image source={this.state.avatarSource} style={styles.imageAddButton} />
+            <Image source={{ uri: mainImage.uri, isStatic: true }} style={styles.imageAddButton} />
           </View>
           <View style={styles.bottomBlock}>
             <TouchableOpacity onPress={this.handleImagePickPress}>
@@ -91,10 +91,7 @@ class NewArticleScreen extends React.Component {
 
   handleImagePickPress = () => {
     var options = {
-      title: 'Select Avatar',
-      customButtons: {
-        'Choose Photo from Facebook': 'fb'
-      },
+      title: '사진 선택',
       storageOptions: {
         skipBackup: true,
         path: 'images'
@@ -102,8 +99,6 @@ class NewArticleScreen extends React.Component {
     }
 
     ImagePicker.showImagePicker(options, (response) => {
-      console.log('Response = ', response)
-
       if (response.didCancel) {
         console.log('User cancelled image picker')
       } else if (response.error) {
@@ -111,20 +106,12 @@ class NewArticleScreen extends React.Component {
       } else if (response.customButton) {
         console.log('User tapped custom button: ', response.customButton)
       } else {
-        // You can display the image using either data...
-        let source = {uri: 'data:image/jpegbase64,' + response.data, isStatic: true}
-
-        // or a reference to the platform specific asset location
-        if (Platform.OS === 'ios') {
-          source = {uri: response.uri.replace('file://', ''), isStatic: true}
-        } else {
-          source = {uri: response.uri, isStatic: true}
-        }
-
-        console.log(source)
         this.setState({
-          avatarSource: source,
-          uri: response.uri
+          mainImage: {
+            uri: Platform.OS === 'ios' ? response.uri.replace('file://', '') : response.uri,
+            fileName: response.fileName,
+            type: response.type
+          }
         })
       }
     })
@@ -148,7 +135,7 @@ class NewArticleScreen extends React.Component {
 
   handleRegisterPress = () => {
     const { user, region, category, postArticle, fetchArticles } = this.props
-    const { articleTitle, articleContents, uri } = this.state
+    const { articleTitle, articleContents, mainImage } = this.state
     if (!articleTitle) {
       window.alert('제목을 입력해주세요.')
       return
@@ -163,7 +150,7 @@ class NewArticleScreen extends React.Component {
       categoryType: category.type,
       articleTitle,
       articleContents,
-      uri
+      mainImage
     }
     postArticle(data)
       .then((result) => {
