@@ -58,7 +58,6 @@ class NavigationRouter extends Component {
             hideNavBar
             component={AgreementScreen} />
           <Scene
-            initial
             key='signup'
             hideNavBar={false}
             backTitle='취소'

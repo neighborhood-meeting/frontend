@@ -8,7 +8,8 @@ import Styles from './Styles/NavigationDrawerStyle'
 class NavigationDrawer extends Component {
   static propTypes = {
     navigationState: PropTypes.object,
-    onNavigate: PropTypes.func
+    onNavigate: PropTypes.func,
+    region: PropTypes.object
   }
 
   render () {
@@ -21,7 +22,7 @@ class NavigationDrawer extends Component {
         open={state.open}
         onOpen={() => NavigationActions.refresh({key: state.key, open: true})}
         onClose={() => NavigationActions.refresh({key: state.key, open: false})}
-        content={<DrawerContent />}
+        content={<DrawerContent region={this.props.region} />}
         styles={Styles}
         tapToClose
         openDrawerOffset={0.35}

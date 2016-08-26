@@ -1,15 +1,18 @@
 import React, { PropTypes } from 'react'
-import { View, TextInput, TouchableOpacity, Text } from 'react-native'
+import { View, TextInput, TouchableOpacity, Text, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
 import styles from './Styles/SignupScreenStyle'
 
+import dismissKeyboard from 'dismissKeyboard'
+
 class SignupScreen extends React.Component {
 
   static propTypes = {
-    toHome: PropTypes.func.isRequired,
-    fetchUser: PropTypes.func
+    fetchUser: PropTypes.func,
+    registerUser: PropTypes.func,
+    toRegionSelect: PropTypes.func
   }
 
   constructor (props) {
@@ -30,7 +33,7 @@ class SignupScreen extends React.Component {
 
   render () {
     return (
-      <View>
+      <ScrollView>
         <View style={styles.signup_container}>
           <TextInput
             style={{width: 281, height: 57, borderColor: 'transparent', borderWidth: 1}}
@@ -43,6 +46,7 @@ class SignupScreen extends React.Component {
           <TextInput
             style={{width: 281, height: 57, borderColor: 'gray', borderWidth: 1}}
             onChangeText={(pwd) => { this.setState({ pwd: pwd }) }}
+            secureTextEntry
             placeholder='비밀번호' />
         </View>
         <View style={{flexDirection: 'row', marginTop: 23}}>
@@ -58,7 +62,7 @@ class SignupScreen extends React.Component {
             <Text style={{ color: 'white' }}>남자</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     )
   }
 
@@ -87,6 +91,7 @@ class SignupScreen extends React.Component {
       pwd,
       sex
     }
+    dismissKeyboard()
     registerUser(user)
       .then((user) => toRegionSelect())
   }

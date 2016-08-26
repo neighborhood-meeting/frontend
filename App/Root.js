@@ -22,7 +22,7 @@ export default class Root extends React.Component {
     return (
       <Provider store={this.props.store}>
         <View style={styles.container}>
-          <StatusBar backgroundColor={Colors.bloodOrange} barStyle='light-content' />
+          <StatusBar backgroundColor={Colors.orange} barStyle='light-content' />
           <NavigationRouter />
         </View>
       </Provider>

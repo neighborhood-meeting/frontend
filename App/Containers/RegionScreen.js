@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { View, Image } from 'react-native'
+import { View, Text, Image } from 'react-native'
 // import { Images } from '../Themes'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -20,22 +20,41 @@ class RegionScreen extends React.Component {
     region: PropTypes.object.isRequired,
     fetchArticles: PropTypes.func.isRequired,
     toArticle: PropTypes.func.isRequired,
+    toNewArticle: PropTypes.func.isRequired,
     articles: PropTypes.array,
-    toNewArticle: PropTypes.func.isRequired
+    category: PropTypes.object
+  }
+
+  static defaultProps = {
+    region: {},
+    articles: [],
+    category: {}
   }
 
   componentDidMount () {
-    const { region, fetchArticles } = this.props
-    region && fetchArticles(region.regionId)
+    const { region, fetchArticles, category } = this.props
+    const data = {
+      regionId: region.regionId,
+      categoryType: category.type
+    }
+    fetchArticles(data)
   }
 
   render () {
     const {region, articles} = this.props
+    const articleList = articles.length
+      ? (<ArticleListView articles={articles} onPress={this.handleArticlePress} />)
+      : (
+      <View style={styles.defaultBlock}>
+        <Text style={styles.defaultText}>등록된 글이 없습니다..</Text>
+        <Text style={styles.defaultText}>왼쪽 아래 버튼으로 만들어주세요!!</Text>
+      </View>
+      )
     return (
       <View style={styles.mainContainer}>
         <Notice notice={region.notice} />
         <View style={styles.articleListBlock}>
-          <ArticleListView articles={articles} onPress={this.handleArticlePress} />
+          {articleList}
         </View>
         {this.createRegisterButton()}
       </View>
@@ -74,15 +93,26 @@ class RegionScreen extends React.Component {
 
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
+  const { category = {} } = props
+  const { articles } = state
+
+  let filtered = [...articles.items]
+  if (category.type) {
+    filtered = filtered.filter((article) => {
+      if (article.category && article.category.type === category.type) {
+        return article
+      }
+    })
+  }
   return {
-    articles: state.articles.items
+    articles: filtered
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchArticles: (regionId) => dispatch(Actions.fetchArticles(regionId)),
+    fetchArticles: (data) => dispatch(Actions.fetchArticles(data)),
     toArticle: NavigationActions.article,
     toNewArticle: NavigationActions.newArticle
   }

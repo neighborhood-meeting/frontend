@@ -1,23 +1,32 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics, Fonts } from '../../Themes/'
+import { Colors, Fonts } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
-    width: 300,
-    height: 70,
-    justifyContent: 'center',
+    width: 282,
+    height: 56,
+    flexDirection: 'row',
     alignItems: 'center',
-    margin: Metrics.smallMargin,
-    backgroundColor: Colors.snow,
-    borderRadius: Metrics.smallMargin
+    marginTop: 13,
+    backgroundColor: '#e1e1e1',
+    borderRadius: 28
+  },
+  regionIcon: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: Colors.orange,
+    marginLeft: 15
+  },
+  memberNumber: {
+    ...Fonts.style.small,
+    marginLeft: 9
   },
   regionTitle: {
-    fontWeight: 'bold',
+    ...Fonts.style.title,
+    fontSize: 18,
     alignSelf: 'center',
-    color: Colors.panther,
-    textAlign: 'center',
-    marginBottom: Metrics.smallMargin,
-    fontSize: Fonts.size.medium
+    marginLeft: 16
   },
   noticeText: {
     alignSelf: 'center',

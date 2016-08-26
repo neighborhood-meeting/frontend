@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics, ApplicationStyles } from '../../Themes/'
+import { Colors, Fonts, Metrics, ApplicationStyles } from '../../Themes/'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
@@ -12,5 +12,14 @@ export default StyleSheet.create({
     height: Metrics.icons.small,
     tintColor: Colors.text,
     resizeMode: 'contain'
+  },
+  defaultBlock: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  defaultText: {
+    ...Fonts.style.regular,
+    fontSize: 20
   }
 })
