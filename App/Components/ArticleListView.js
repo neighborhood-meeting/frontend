@@ -21,6 +21,10 @@ export default class ArticleListView extends React.Component {
 
   renderRow = (article) => {
     const { writer } = article
+    const image = article.articleMainImageUrl
+      ? <Image source={{uri: article.articleMainImageUrl}} style={styles.contentMainImage} />
+      : null
+
     return (
       <TouchableOpacity onPress={() => this.props.onPress(article)}>
         <View style={styles.row}>
@@ -34,7 +38,7 @@ export default class ArticleListView extends React.Component {
                 {article.contents}
               </Text>
             </View>
-            <Image source={{uri: article.articleMainImageUrl}} style={styles.contentMainImage} />
+            {image}
           </View>
           <View style={styles.bottomBlock}>
             <View style={styles.writerBlock}>

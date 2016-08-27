@@ -37,7 +37,13 @@ class NewArticleScreen extends React.Component {
   render () {
     const { category } = this.props
     const { articleTitle, articleContents, contentsHeight, mainImage } = this.state
-
+    const imageBox = mainImage.uri
+      ? (
+      <View style={styles.imageBlock}>
+        <Image source={{ uri: mainImage.uri, isStatic: true }} style={styles.imageAddButton} />
+      </View>
+      )
+      : null
     return (
       <View style={styles.mainContainer}>
         <ScrollView style={styles.newArticleBlock}>
@@ -56,8 +62,7 @@ class NewArticleScreen extends React.Component {
               returnKeyType='next'
               placeholder='제목을 입력해주세요'
               placeholderTextColor={Colors.placeholder}
-              underlineColorAndroid='transparent'
-            />
+              underlineColorAndroid='transparent' />
             <TextInput
               ref='articleContents'
               style={[styles.articleContents, {height: Math.max(35, contentsHeight)}]}
@@ -71,9 +76,7 @@ class NewArticleScreen extends React.Component {
               placeholderTextColor={Colors.placeholder}
               underlineColorAndroid='transparent' />
           </View>
-          <View style={styles.imageBlock}>
-            <Image source={{ uri: mainImage.uri, isStatic: true }} style={styles.imageAddButton} />
-          </View>
+          {imageBox}
           <View style={styles.bottomBlock}>
             <TouchableOpacity onPress={this.handleImagePickPress}>
               <Image source={Images.icon_cam} style={styles.cameraIcon} />
@@ -155,13 +158,15 @@ class NewArticleScreen extends React.Component {
       mainImage
     }
     postArticle(data)
+      .then((response) => response.text())
       .then((result) => {
+        console.log('-----------article result---------')
+        console.log(result)
         window.alert('저장 되었습니다')
         dismissKeyboard()
         NavigationActions.pop()
         const data = {
-          regionId: region.regionId,
-          categoryType: category.type
+          regionId: region.regionId
         }
         fetchArticles(data)
       })

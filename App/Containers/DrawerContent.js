@@ -43,9 +43,16 @@ class DrawerContent extends React.Component {
   }
 
   handlePressCategory = (category = {}) => {
-    const { region } = this.props
     this.toggleDrawer()
-    NavigationActions.refresh({ region: region, category: category })
+    const { region, fetchArticles } = this.props
+    const data = {
+      regionId: region.regionId,
+      categoryType: category.type
+    }
+    fetchArticles(data)
+      .then(() => {
+        NavigationActions.refresh({ region: region, category: category })
+      })
   }
 
   render () {

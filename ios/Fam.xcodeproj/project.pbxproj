@@ -34,6 +34,7 @@
 		15B28FAC1D6E759800681D31 /* NanumBarunGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15B28FA81D6E759800681D31 /* NanumBarunGothicBold.ttf */; };
 		15B28FAD1D6E759800681D31 /* NanumSquareB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15B28FA91D6E759800681D31 /* NanumSquareB.ttf */; };
 		15B28FAE1D6E759800681D31 /* NanumSquareR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15B28FAA1D6E759800681D31 /* NanumSquareR.ttf */; };
+		15CD86FD1D71417D00B9122C /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15CD86FB1D713FAC00B9122C /* libRNImagePicker.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,13 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
+		15CD86FA1D713FAC00B9122C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15CD86EC1D713FAC00B9122C /* RNImagePicker.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 014A3B5C1C6CF33500B6D375;
+			remoteInfo = RNImagePicker;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -149,6 +157,7 @@
 		15B28FA81D6E759800681D31 /* NanumBarunGothicBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumBarunGothicBold.ttf; path = ../../../android/app/src/main/assets/fonts/NanumBarunGothicBold.ttf; sourceTree = "<group>"; };
 		15B28FA91D6E759800681D31 /* NanumSquareB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareB.ttf; path = ../../../android/app/src/main/assets/fonts/NanumSquareB.ttf; sourceTree = "<group>"; };
 		15B28FAA1D6E759800681D31 /* NanumSquareR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareR.ttf; path = ../../../android/app/src/main/assets/fonts/NanumSquareR.ttf; sourceTree = "<group>"; };
+		15CD86EC1D713FAC00B9122C /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15CD86FD1D71417D00B9122C /* libRNImagePicker.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
@@ -297,6 +307,14 @@
 			path = "../node_modules/react-native-vector-icons/Fonts";
 			sourceTree = "<group>";
 		};
+		15CD86ED1D713FAC00B9122C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15CD86FB1D713FAC00B9122C /* libRNImagePicker.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +326,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				15CD86EC1D713FAC00B9122C /* RNImagePicker.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -458,6 +477,10 @@
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
+				{
+					ProductGroup = 15CD86ED1D713FAC00B9122C /* Products */;
+					ProjectRef = 15CD86EC1D713FAC00B9122C /* RNImagePicker.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -522,6 +545,13 @@
 			fileType = archive.ar;
 			path = libReact.a;
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		15CD86FB1D713FAC00B9122C /* libRNImagePicker.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNImagePicker.a;
+			remoteRef = 15CD86FA1D713FAC00B9122C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {

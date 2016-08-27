@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { View, Image, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import { Actions as NavigationActions } from 'react-native-router-flux'
+import { Actions as NavigationActions, ActionConst } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
 
 import RegionSimple from '../Components/RegionSimple'
@@ -42,7 +42,7 @@ class HomeScreen extends React.Component {
           {user.name}
         </Text>
         <View style={styles.bottomBlockWrapper}>
-          <TouchableOpacity style={styles.editButton}>
+          <TouchableOpacity style={styles.editButton} onPress={this.handleLogout}>
             <Text style={styles.editText}>편집</Text>
           </TouchableOpacity>
           <View style={styles.regionBlock}>
@@ -73,6 +73,10 @@ class HomeScreen extends React.Component {
       hideNavBar: false,
       renderTitle: () => (<RegionTitle title={region.name} />)
     })
+  }
+
+  handleLogout = () => {
+    NavigationActions.splash({ type: ActionConst.RESET })
   }
 
 }

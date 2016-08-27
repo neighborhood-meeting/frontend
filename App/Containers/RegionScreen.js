@@ -71,7 +71,7 @@ class RegionScreen extends React.Component {
           titleBgColor={Colors.transparent}
           titleColor={Colors.snow}
           title={category.name}
-          onPress={() => toNewArticle({ category: category, region: region })}>
+          onPress={() => toNewArticle({ category: category, region: region, renderTitle: null })}>
           <Image source={category.image} style={styles.categoryIcon} />
         </RegisterButton.Item>
       )

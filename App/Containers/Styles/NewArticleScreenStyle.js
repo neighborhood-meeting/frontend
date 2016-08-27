@@ -28,10 +28,12 @@ export default StyleSheet.create({
     marginTop: Metrics.baseMargin
   },
   articleTitle: {
-    ...Fonts.style.normal
+    ...Fonts.style.normal,
+    height: 40
   },
   articleContents: {
     ...Fonts.style.normal,
+    marginTop: 20,
     marginBottom: Metrics.baseMargin
   },
 

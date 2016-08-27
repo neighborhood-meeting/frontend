@@ -1,24 +1,24 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { autoRehydrate } from 'redux-persist'
-import createLogger from 'redux-logger'
+// import createLogger from 'redux-logger'
 import rootReducer from '../Reducers/'
-import Config from '../Config/DebugSettings'
+// import Config from '../Config/DebugSettings'
 // import createSagaMiddleware from 'redux-saga'
 import thunk from 'redux-thunk'
 // import sagas from '../Sagas/'
-import R from 'ramda'
+// import R from 'ramda'
 import Reactotron from 'reactotron'
 import RehydrationServices from '../Services/RehydrationServices'
 import ReduxPersist from '../Config/ReduxPersist'
 
 // the logger master switch
-const USE_LOGGING = Config.reduxLogging
+// const USE_LOGGING = Config.reduxLogging
 // silence these saga-based messages
-const SAGA_LOGGING_BLACKLIST = ['EFFECT_TRIGGERED', 'EFFECT_RESOLVED', 'EFFECT_REJECTED', 'persist/REHYDRATE']
+// const SAGA_LOGGING_BLACKLIST = ['EFFECT_TRIGGERED', 'EFFECT_RESOLVED', 'EFFECT_REJECTED', 'persist/REHYDRATE']
 // creat the logger
-const logger = createLogger({
-  predicate: (getState, { type }) => USE_LOGGING && R.not(R.contains(type, SAGA_LOGGING_BLACKLIST))
-})
+// const logger = createLogger({
+//   predicate: (getState, { type }) => USE_LOGGING && R.not(R.contains(type, SAGA_LOGGING_BLACKLIST))
+// })
 
 let middleware = []
 // const sagaMiddleware = createSagaMiddleware()
@@ -26,9 +26,9 @@ let middleware = []
 middleware.push(thunk)
 
 // Don't ship these
-if (__DEV__) {
-  middleware.push(logger)
-}
+// if (__DEV__) {
+//   middleware.push(logger)
+// }
 
 // a function which can create our store and auto-persist the data
 export default () => {
@@ -55,7 +55,7 @@ export default () => {
     console.log('-----------------------')
     const enhancers = compose(
       applyMiddleware(...middleware),
-      Reactotron.storeEnhancer()
+      // Reactotron.storeEnhancer()
     )
 
     store = createStore(

@@ -117,6 +117,8 @@ const fetchArticles = (data) => {
     } else {
       url = `http://52.78.120.152/api/v1/articles/users/${data.userId}`
     }
+    console.log('article url -----------------')
+    console.log(url)
     return fetch(url)
     .then((response) => response.json())
     .then((responseJson) => {
@@ -159,11 +161,13 @@ const postArticle = (data) => {
     formData.append('categoryType', data.categoryType)
     formData.append('writerId', data.userId)
     formData.append('regionId', data.regionId)
-    formData.append('articleMainImage', {
-      uri: data.mainImage.uri,
-      name: data.mainImage.fileName,
-      type: data.mainImage.type
-    })
+    if (data.mainImage.fileName) {
+      formData.append('articleMainImage', {
+        uri: data.mainImage.uri,
+        name: data.mainImage.fileName,
+        type: data.mainImage.type
+      })
+    }
     return fetch('http://52.78.120.152/api/v1/articles', {
       method: 'POST',
       body: formData

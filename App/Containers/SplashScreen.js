@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import { View, Image, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 
-import * as Animatable from 'react-native-animatable'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import Actions from '../Actions/Creators'
 
@@ -22,9 +21,6 @@ class SplashScreen extends React.Component {
     return (
       <View style={styles.splash}>
         <Image source={Images.bg_image} style={styles.backgroundImage}>
-          <Animatable.View animation='jello' iterationCount='infinite'>
-            <Image source={Images.clearLogo} style={styles.logo} />
-          </Animatable.View>
           <Image source={Images.logo} style={styles.logo} />
           <TouchableOpacity style={styles.guestButton} onPress={this.handlePressAgreement}>
             <Text style={styles.guestButtonText}>

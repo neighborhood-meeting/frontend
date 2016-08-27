@@ -18,7 +18,7 @@ export default StyleSheet.create({
     height: 59,
     resizeMode: 'contain',
     marginTop: 230,
-    marginBottom: 30
+    marginBottom: 50
   },
   guestButton: {
     width: 200,
